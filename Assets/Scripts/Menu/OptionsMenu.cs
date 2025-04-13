@@ -110,7 +110,7 @@ public class OptionsMenu : MonoBehaviour
     private void SetFpsDropdown()
     {
         fpsDropdown.ClearOptions();
-        fpsDropdown.AddOptions(new List<string> { "30", "60", "90", "120", "150" });
+        fpsDropdown.AddOptions(new List<string> { "30", "60", "90", "120", "150", "240", "Unlimited" });
         fpsDropdown.RefreshShownValue();
 
         int savedFps = PlayerPrefs.GetInt("TargetFPS", 60);
@@ -127,6 +127,8 @@ public class OptionsMenu : MonoBehaviour
             case 90: return 2;
             case 120: return 3;
             case 150: return 4;
+            case 240: return 5;
+            case 300: return 6;
             default: return 1;
         }
     }
@@ -151,6 +153,12 @@ public class OptionsMenu : MonoBehaviour
                 break;
             case 4:
                 fps = 150;
+                break;
+            case 5:
+                fps = 240;
+                break;
+            case 6:
+                fps = 300;
                 break;
         }
 
