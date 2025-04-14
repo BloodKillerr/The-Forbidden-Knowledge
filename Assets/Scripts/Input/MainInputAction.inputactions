@@ -604,56 +604,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "UI",
-            "id": "452cb0ca-7775-405b-92df-1b244e802e9f",
-            "actions": [
-                {
-                    "name": "PauseResume",
-                    "type": "Button",
-                    "id": "61c49d77-35b0-440a-bd56-1b34d28d3a5f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "5727f728-b443-42f7-8d29-8b3dd55bc4ac",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";KeyBoardMouse",
-                    "action": "PauseResume",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5bb3af78-69d9-4743-960f-054c3e99de3a",
-                    "path": "<XInputController>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";XBoxController",
-                    "action": "PauseResume",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "33a6f46e-7c7e-473a-98dc-d0f9730229f2",
-                    "path": "<DualShockGamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";PSController",
-                    "action": "PauseResume",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": [
