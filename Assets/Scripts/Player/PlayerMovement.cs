@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDodging;
     private bool canDodge = true;
 
+    public Rigidbody Rb { get => rb; set => rb = value; }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();

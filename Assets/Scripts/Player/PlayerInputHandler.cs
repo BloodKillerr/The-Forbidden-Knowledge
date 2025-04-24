@@ -44,6 +44,14 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void InteractEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Player.Instance.InteractEvent.Invoke();
+        }
+    }
+
     public void TickInput()
     {
         MoveInput();
