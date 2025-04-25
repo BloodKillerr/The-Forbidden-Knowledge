@@ -1,15 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField] private GameObject interactIcon;
+    [SerializeField] private GameObject interactCanvas;
+    private void Awake()
+    {
+        interactCanvas.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            if (interactIcon != null)
+            if (interactCanvas != null)
             {
-                interactIcon.SetActive(true);
+                interactCanvas.SetActive(true);
             }
             Debug.Log("Player Entered Interactable");
             Player.Instance.SubscribeToInteraction(Interact);
@@ -20,9 +26,9 @@ public abstract class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (interactIcon != null)
+            if (interactCanvas != null)
             {
-                interactIcon.SetActive(false);
+                interactCanvas.SetActive(false);
             }
             Debug.Log("Player Left Interactable");
             Player.Instance.UnsubscribeFromInteraction(Interact);

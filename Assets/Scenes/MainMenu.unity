@@ -13913,6 +13913,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe6c728a657b134da5d71c9f8f35a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyboardIcons:
+  - key: UP
+    value: {fileID: 21300000, guid: 0ec5cda6cf439ce4886499b471ac26a8, type: 3}
+  - key: LEFT
+    value: {fileID: 21300000, guid: 6ee072b6e8bc9c1409b60daa35956094, type: 3}
+  - key: DOWN
+    value: {fileID: 21300000, guid: 649e43d5d887ca9488c61349e4d8fed7, type: 3}
+  - key: RIGHT
+    value: {fileID: 21300000, guid: 580a4271ce810b842ba6b53402c81bcc, type: 3}
+  - key: PRIMARY
+    value: {fileID: 21300000, guid: 1f32189b60897b04295d8954f3fb250f, type: 3}
+  - key: SECONDARY
+    value: {fileID: 21300000, guid: 948247c7d92e54d41811ede82271b2da, type: 3}
+  - key: SPELL1
+    value: {fileID: 21300000, guid: 8726eb0a000786f4e8367acefad40448, type: 3}
+  - key: SPELL2
+    value: {fileID: 21300000, guid: b1dcf1cbfe4863a4989bd4dc97b13a10, type: 3}
+  - key: CONSUMABLE1
+    value: {fileID: 21300000, guid: 8deef5fbc34a4ea43abd34d586ab5c5d, type: 3}
+  - key: CONSUMABLE2
+    value: {fileID: 21300000, guid: e2b90402202febe4c833c49bca590969, type: 3}
+  - key: PAUSE
+    value: {fileID: 21300000, guid: 00936535cfe4c8c4da469c642e5f8bb6, type: 3}
+  - key: INVENTORY
+    value: {fileID: 21300000, guid: d7eaf344583a9844e9ec55fa3ff2ccab, type: 3}
+  - key: DODGE
+    value: {fileID: 21300000, guid: 1be4d1e22a4af8a47824a48c4b8a9105, type: 3}
+  - key: INTERACT
+    value: {fileID: 21300000, guid: fadebb67188453b47a22b724a3e141c7, type: 3}
+  xBoxIcons:
+  - key: UP
+    value: {fileID: 21300000, guid: ce05d76dc4a870e4e948de01727a8366, type: 3}
+  - key: LEFT
+    value: {fileID: 21300000, guid: e4b396a18cc376f44b366e0e2119458e, type: 3}
+  - key: DOWN
+    value: {fileID: 21300000, guid: 2ec7df26ffaea544aa0577c0c2a9c1bf, type: 3}
+  - key: RIGHT
+    value: {fileID: 21300000, guid: e90b5250b2724f14bb9282421e0782e4, type: 3}
+  - key: PRIMARY
+    value: {fileID: 21300000, guid: b9d3300822a94ad4ab7629b42d39c09b, type: 3}
+  - key: SECONDARY
+    value: {fileID: 21300000, guid: 2cfd5398835f9d947976c1d8ba65a063, type: 3}
+  - key: SPELL1
+    value: {fileID: 21300000, guid: 95a5fd67183576d42812446201e1019f, type: 3}
+  - key: SPELL2
+    value: {fileID: 21300000, guid: b588622c42a30124a91898cdb817dc2e, type: 3}
+  - key: CONSUMABLE1
+    value: {fileID: 21300000, guid: facf63d918dad9d45b4626330d35ad21, type: 3}
+  - key: CONSUMABLE2
+    value: {fileID: 21300000, guid: 0c3b3e278a292b042ad0b79258078343, type: 3}
+  - key: PAUSE
+    value: {fileID: 21300000, guid: c8d1c9c61492dcd4bbcee67490b68f61, type: 3}
+  - key: INVENTORY
+    value: {fileID: 21300000, guid: bda27380f120bd444bc3de57822b1acf, type: 3}
+  - key: DODGE
+    value: {fileID: 21300000, guid: 1b3c7f60609450d43997b3d7058291af, type: 3}
+  - key: INTERACT
+    value: {fileID: 21300000, guid: 60034d5705a177344b78c1b05fd0a8b3, type: 3}
+  psIcons:
+  - key: UP
+    value: {fileID: 21300000, guid: 8ca958ccda0dbf24287c9d430f6b17a2, type: 3}
+  - key: LEFT
+    value: {fileID: 21300000, guid: 51ece70ea3a4f4e4f9463092eb919932, type: 3}
+  - key: DOWN
+    value: {fileID: 21300000, guid: 1e89a1adc4793ea44a92650cddd3121c, type: 3}
+  - key: RIGHT
+    value: {fileID: 21300000, guid: 7aaa18dbb12564c409888d729bc1ba23, type: 3}
+  - key: PRIMARY
+    value: {fileID: 21300000, guid: b163e591baa1928409a143aa9e14ab45, type: 3}
+  - key: SECONDARY
+    value: {fileID: 21300000, guid: d1b938559b60c5e4c83b1d053bad07cf, type: 3}
+  - key: SPELL1
+    value: {fileID: 21300000, guid: fc19bd1d19c3ebd46b5df42ce4f05831, type: 3}
+  - key: SPELL2
+    value: {fileID: 21300000, guid: 684ecf6b32fcaec47bbe4b71ddbeaf07, type: 3}
+  - key: CONSUMABLE1
+    value: {fileID: 21300000, guid: a24777f0b0b55834bb802296099d282d, type: 3}
+  - key: CONSUMABLE2
+    value: {fileID: 21300000, guid: d1c05011668040b4a8afa19edf9e52bb, type: 3}
+  - key: PAUSE
+    value: {fileID: 21300000, guid: dc56420b05744524bbfc57a6af56c73d, type: 3}
+  - key: INVENTORY
+    value: {fileID: 21300000, guid: f6f1e07bf2cf47c48b68d1d6841006db, type: 3}
+  - key: DODGE
+    value: {fileID: 21300000, guid: a674623b76807564997ac03826b8c53b, type: 3}
+  - key: INTERACT
+    value: {fileID: 21300000, guid: 35f23bf3ae71f99498963eb16b7379ed, type: 3}
+  IconsUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &691508570
 Transform:
   m_ObjectHideFlags: 0
@@ -13922,7 +14012,7 @@ Transform:
   m_GameObject: {fileID: 691508568}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 509.6148, y: 387.6551, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

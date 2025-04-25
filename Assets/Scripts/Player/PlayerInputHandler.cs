@@ -12,13 +12,22 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 movementInput;
     private Vector2 cameraInput;
 
+    private PlayerInput playerInput;
+
+    [SerializeField] private string lastUsedDevice = "Keyboard";
+
+    public string LastUsedDevice { get => lastUsedDevice; set => lastUsedDevice = value; }
+
+    public PlayerInput PlayerInput { get => playerInput; set => playerInput = value; }
+
     public float MoveAmount { get => moveAmount; set => moveAmount = value; }
     public float Vertical { get => vertical; set => vertical = value; }
     public float Horizontal { get => horizontal; set => horizontal = value; }
 
     private void Awake()
     {
-        
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.controlsChangedEvent.AddListener(UpdateLastUsedDevice);
     }
 
     private void FixedUpdate()
@@ -64,5 +73,21 @@ public class PlayerInputHandler : MonoBehaviour
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
         mouseX = cameraInput.x;
         mouseY = cameraInput.y;
+    }
+
+    public void UpdateLastUsedDevice(PlayerInput playerInput)
+    {
+        switch (playerInput.currentControlScheme)
+        {
+            case "KeyBoardMouse":
+                lastUsedDevice = "Keyboard";
+                break;
+            case "XBoxController":
+                lastUsedDevice = "XBox";
+                break;
+            case "PSController":
+                lastUsedDevice = "PlayStation";
+                break;
+        }
     }
 }
