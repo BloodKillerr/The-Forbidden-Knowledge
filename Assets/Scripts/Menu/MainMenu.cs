@@ -8,6 +8,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject optionsPanel;
 
+    [SerializeField] private Button mainMenuSelectedButton;
+    [SerializeField] private Button optionsMenuSelectedButton;
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -23,6 +26,7 @@ public class MainMenu : MonoBehaviour
     {
         optionsPanel.SetActive(true);
         menuPanel.SetActive(false);
+        UIManager.Instance.ChangeSelectedElement(optionsMenuSelectedButton.gameObject);
     }
 
     public void QuitGame()
@@ -35,5 +39,6 @@ public class MainMenu : MonoBehaviour
     {
         optionsPanel.SetActive(false);
         menuPanel.SetActive(true);
+        UIManager.Instance.ChangeSelectedElement(mainMenuSelectedButton.gameObject);
     }
 }
