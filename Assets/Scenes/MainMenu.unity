@@ -1209,7 +1209,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1634,7 +1634,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2572,7 +2572,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6750,7 +6750,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7542,6 +7542,7 @@ GameObject:
   - component: {fileID: 392830396}
   - component: {fileID: 392830395}
   - component: {fileID: 392830394}
+  - component: {fileID: 392830397}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -7638,6 +7639,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392830392}
   m_CullTransparentMesh: 1
+--- !u!114 &392830397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392830392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca691af8e7332d4f88aa2dbbf81df48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 10
 --- !u!1001 &393915413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8817,7 +8831,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -13870,6 +13884,140 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.7390358, y: 5.8413835, z: 3.1627667}
   m_Center: {x: 0, y: 2.5228574, z: 0}
+--- !u!1 &691508568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 691508570}
+  - component: {fileID: 691508569}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &691508569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691508568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe6c728a657b134da5d71c9f8f35a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardIcons:
+  - key: UP
+    value: {fileID: 21300000, guid: 0ec5cda6cf439ce4886499b471ac26a8, type: 3}
+  - key: LEFT
+    value: {fileID: 21300000, guid: 6ee072b6e8bc9c1409b60daa35956094, type: 3}
+  - key: DOWN
+    value: {fileID: 21300000, guid: 649e43d5d887ca9488c61349e4d8fed7, type: 3}
+  - key: RIGHT
+    value: {fileID: 21300000, guid: 580a4271ce810b842ba6b53402c81bcc, type: 3}
+  - key: PRIMARY
+    value: {fileID: 21300000, guid: 1f32189b60897b04295d8954f3fb250f, type: 3}
+  - key: SECONDARY
+    value: {fileID: 21300000, guid: 948247c7d92e54d41811ede82271b2da, type: 3}
+  - key: SPELL1
+    value: {fileID: 21300000, guid: 8726eb0a000786f4e8367acefad40448, type: 3}
+  - key: SPELL2
+    value: {fileID: 21300000, guid: b1dcf1cbfe4863a4989bd4dc97b13a10, type: 3}
+  - key: CONSUMABLE1
+    value: {fileID: 21300000, guid: 8deef5fbc34a4ea43abd34d586ab5c5d, type: 3}
+  - key: CONSUMABLE2
+    value: {fileID: 21300000, guid: e2b90402202febe4c833c49bca590969, type: 3}
+  - key: PAUSE
+    value: {fileID: 21300000, guid: 00936535cfe4c8c4da469c642e5f8bb6, type: 3}
+  - key: INVENTORY
+    value: {fileID: 21300000, guid: d7eaf344583a9844e9ec55fa3ff2ccab, type: 3}
+  - key: DODGE
+    value: {fileID: 21300000, guid: 1be4d1e22a4af8a47824a48c4b8a9105, type: 3}
+  - key: INTERACT
+    value: {fileID: 21300000, guid: fadebb67188453b47a22b724a3e141c7, type: 3}
+  xBoxIcons:
+  - key: UP
+    value: {fileID: 21300000, guid: ce05d76dc4a870e4e948de01727a8366, type: 3}
+  - key: LEFT
+    value: {fileID: 21300000, guid: e4b396a18cc376f44b366e0e2119458e, type: 3}
+  - key: DOWN
+    value: {fileID: 21300000, guid: 2ec7df26ffaea544aa0577c0c2a9c1bf, type: 3}
+  - key: RIGHT
+    value: {fileID: 21300000, guid: e90b5250b2724f14bb9282421e0782e4, type: 3}
+  - key: PRIMARY
+    value: {fileID: 21300000, guid: b9d3300822a94ad4ab7629b42d39c09b, type: 3}
+  - key: SECONDARY
+    value: {fileID: 21300000, guid: 2cfd5398835f9d947976c1d8ba65a063, type: 3}
+  - key: SPELL1
+    value: {fileID: 21300000, guid: 95a5fd67183576d42812446201e1019f, type: 3}
+  - key: SPELL2
+    value: {fileID: 21300000, guid: b588622c42a30124a91898cdb817dc2e, type: 3}
+  - key: CONSUMABLE1
+    value: {fileID: 21300000, guid: facf63d918dad9d45b4626330d35ad21, type: 3}
+  - key: CONSUMABLE2
+    value: {fileID: 21300000, guid: 0c3b3e278a292b042ad0b79258078343, type: 3}
+  - key: PAUSE
+    value: {fileID: 21300000, guid: c8d1c9c61492dcd4bbcee67490b68f61, type: 3}
+  - key: INVENTORY
+    value: {fileID: 21300000, guid: bda27380f120bd444bc3de57822b1acf, type: 3}
+  - key: DODGE
+    value: {fileID: 21300000, guid: 1b3c7f60609450d43997b3d7058291af, type: 3}
+  - key: INTERACT
+    value: {fileID: 21300000, guid: 60034d5705a177344b78c1b05fd0a8b3, type: 3}
+  psIcons:
+  - key: UP
+    value: {fileID: 21300000, guid: 8ca958ccda0dbf24287c9d430f6b17a2, type: 3}
+  - key: LEFT
+    value: {fileID: 21300000, guid: 51ece70ea3a4f4e4f9463092eb919932, type: 3}
+  - key: DOWN
+    value: {fileID: 21300000, guid: 1e89a1adc4793ea44a92650cddd3121c, type: 3}
+  - key: RIGHT
+    value: {fileID: 21300000, guid: 7aaa18dbb12564c409888d729bc1ba23, type: 3}
+  - key: PRIMARY
+    value: {fileID: 21300000, guid: b163e591baa1928409a143aa9e14ab45, type: 3}
+  - key: SECONDARY
+    value: {fileID: 21300000, guid: d1b938559b60c5e4c83b1d053bad07cf, type: 3}
+  - key: SPELL1
+    value: {fileID: 21300000, guid: fc19bd1d19c3ebd46b5df42ce4f05831, type: 3}
+  - key: SPELL2
+    value: {fileID: 21300000, guid: 684ecf6b32fcaec47bbe4b71ddbeaf07, type: 3}
+  - key: CONSUMABLE1
+    value: {fileID: 21300000, guid: a24777f0b0b55834bb802296099d282d, type: 3}
+  - key: CONSUMABLE2
+    value: {fileID: 21300000, guid: d1c05011668040b4a8afa19edf9e52bb, type: 3}
+  - key: PAUSE
+    value: {fileID: 21300000, guid: dc56420b05744524bbfc57a6af56c73d, type: 3}
+  - key: INVENTORY
+    value: {fileID: 21300000, guid: f6f1e07bf2cf47c48b68d1d6841006db, type: 3}
+  - key: DODGE
+    value: {fileID: 21300000, guid: a674623b76807564997ac03826b8c53b, type: 3}
+  - key: INTERACT
+    value: {fileID: 21300000, guid: 35f23bf3ae71f99498963eb16b7379ed, type: 3}
+  IconsUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &691508570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691508568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &695405948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16197,7 +16345,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
@@ -16213,7 +16361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 2146789884}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &797655549
@@ -17834,6 +17982,7 @@ GameObject:
   - component: {fileID: 935075050}
   - component: {fileID: 935075049}
   - component: {fileID: 935075048}
+  - component: {fileID: 935075051}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -17930,6 +18079,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935075046}
   m_CullTransparentMesh: 1
+--- !u!114 &935075051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935075046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca691af8e7332d4f88aa2dbbf81df48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 10
 --- !u!1 &936979480
 GameObject:
   m_ObjectHideFlags: 0
@@ -19609,7 +19771,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -21246,7 +21408,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -23616,7 +23778,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -24129,7 +24291,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -24580,7 +24742,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -25136,7 +25298,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -26570,7 +26732,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -28264,7 +28426,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -29255,7 +29417,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -33382,7 +33544,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -34376,6 +34538,7 @@ GameObject:
   - component: {fileID: 1620122396}
   - component: {fileID: 1620122395}
   - component: {fileID: 1620122394}
+  - component: {fileID: 1620122397}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -34472,6 +34635,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620122392}
   m_CullTransparentMesh: 1
+--- !u!114 &1620122397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620122392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca691af8e7332d4f88aa2dbbf81df48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 10
 --- !u!1001 &1620658125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35818,6 +35994,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 1479485612}
   optionsPanel: {fileID: 1368075059}
+  mainMenuSelectedButton: {fileID: 1573486329}
+  optionsMenuSelectedButton: {fileID: 1059620795}
 --- !u!1001 &1660558241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36434,7 +36612,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -40968,6 +41146,7 @@ GameObject:
   - component: {fileID: 2004287156}
   - component: {fileID: 2004287155}
   - component: {fileID: 2004287154}
+  - component: {fileID: 2004287157}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -41064,6 +41243,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004287152}
   m_CullTransparentMesh: 1
+--- !u!114 &2004287157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004287152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca691af8e7332d4f88aa2dbbf81df48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 10
 --- !u!1 &2005362402
 GameObject:
   m_ObjectHideFlags: 0
@@ -43642,7 +43834,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -43678,10 +43870,11 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 691508570}
   - {fileID: 1623684512}
+  - {fileID: 1400752810}
   - {fileID: 1657361279}
   - {fileID: 797655549}
-  - {fileID: 1400752810}
   - {fileID: 782210428}
   - {fileID: 1742441753}
   - {fileID: 51644500}
