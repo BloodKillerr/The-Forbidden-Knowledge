@@ -57,7 +57,18 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            Player.Instance.InteractEvent.Invoke();
+            if(!GameManager.Instance.IsGameStatePaused)
+            {
+                Player.Instance.InteractEvent.Invoke();
+            }
+        }
+    }
+
+    public void InventoryEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.ShowHideInventory();
         }
     }
 

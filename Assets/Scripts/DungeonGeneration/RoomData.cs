@@ -8,6 +8,7 @@ public class RoomData
     private Vector2Int position;
     private List<Direction> connections = new List<Direction>();
     private bool isBoss = false;
+    private bool isStart = false;
     [NonSerialized] private bool hasBeenEntered = false;
 
     public RoomData(Vector2Int pos, bool boss = false)
@@ -20,4 +21,5 @@ public class RoomData
     public List<Direction> Connections { get => connections; set => connections = value; }
     public bool IsBoss { get => isBoss; set => isBoss = value; }
     public bool HasBeenEntered { get => hasBeenEntered; set => hasBeenEntered = value; }
+    public bool IsStart { get => isStart; set => isStart = value; }
 }

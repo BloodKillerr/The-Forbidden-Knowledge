@@ -29,9 +29,6 @@ public class Player : MonoBehaviour
     {
         inputHander = GetComponent<PlayerInputHandler>();
         animator = GetComponentInChildren<Animator>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public void SubscribeToInteraction(UnityAction callback)
