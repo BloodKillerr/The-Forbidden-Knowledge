@@ -13916,6 +13916,10 @@ MonoBehaviour:
   inventoryPanel: {fileID: 0}
   inventoryHolder: {fileID: 0}
   inventorySlot: {fileID: 0}
+  tabHolder: {fileID: 0}
+  equipmentSlotHolders: []
+  equipmentConsumableHolders: []
+  equipmentSpellHolders: []
 --- !u!4 &691508570
 Transform:
   m_ObjectHideFlags: 0
@@ -35909,6 +35913,7 @@ MonoBehaviour:
   optionsPanel: {fileID: 1368075059}
   mainMenuSelectedButton: {fileID: 1573486329}
   optionsMenuSelectedButton: {fileID: 1059620795}
+  mainHubSceneIndex: 1
 --- !u!1001 &1660558241
 PrefabInstance:
   m_ObjectHideFlags: 0

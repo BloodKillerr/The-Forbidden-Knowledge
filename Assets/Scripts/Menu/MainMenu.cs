@@ -11,9 +11,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button mainMenuSelectedButton;
     [SerializeField] private Button optionsMenuSelectedButton;
 
+    [SerializeField] private int mainHubSceneIndex = 2;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(mainHubSceneIndex);
         Debug.Log("Start game");
     }
 
