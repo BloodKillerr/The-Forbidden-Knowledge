@@ -49,7 +49,10 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if(context.performed)
         {
-            Player.Instance.GetComponent<PlayerMovement>().HandleDodge();
+            if(!GameManager.Instance.IsGameStatePaused)
+            {
+                Player.Instance.GetComponent<PlayerMovement>().HandleDodge();
+            }
         }
     }
 
@@ -57,7 +60,18 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            Player.Instance.InteractEvent.Invoke();
+            if(!GameManager.Instance.IsGameStatePaused)
+            {
+                Player.Instance.InteractEvent.Invoke();
+            }
+        }
+    }
+
+    public void InventoryEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.ToogleMenu(MenuType.INVENTORY);
         }
     }
 

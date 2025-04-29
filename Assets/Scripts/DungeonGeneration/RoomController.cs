@@ -9,6 +9,11 @@ public class RoomController : MonoBehaviour
     public void Init(RoomData data)
     {
         this.data = data;
+
+        if(data.IsStart)
+        {
+            //Disable Enemy and Objects spawning
+        }
     }
     public void MovePlayerThroughDoor(Direction direction)
     {
@@ -37,6 +42,12 @@ public class RoomController : MonoBehaviour
 
     private void TriggerOnEntryToRoom()
     {
+        if(data.IsStart)
+        {
+            data.HasBeenEntered = true;
+            return;
+        }
+
         if(!data.HasBeenEntered)
         {
             //Spawn Objects and Enemies
