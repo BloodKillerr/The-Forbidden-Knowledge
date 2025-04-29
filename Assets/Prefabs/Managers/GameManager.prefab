@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9190938780679920982}
   - component: {fileID: 2682410800577544761}
   - component: {fileID: 2863442861457126608}
+  - component: {fileID: 2461668452256614757}
   - component: {fileID: 9100424138267112386}
   m_Layer: 0
   m_Name: GameManager
@@ -49,6 +50,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 0}
   inventoryHolder: {fileID: 0}
   inventorySlot: {fileID: 9025598219417548852, guid: e105bd0a5133ac84989758ea6bb34cff, type: 3}
+  tabHolder: {fileID: 0}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +64,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+--- !u!114 &2461668452256614757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab44d322acdec374a9472b79cc15abbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9100424138267112386
 MonoBehaviour:
   m_ObjectHideFlags: 0

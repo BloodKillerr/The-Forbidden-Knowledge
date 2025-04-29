@@ -1,14 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private List<Item> items = new List<Item>();
-
-    private bool isShown = false;
-
-    public bool IsShown { get => isShown; set => isShown = value; }
+    private List<Item> items = new List<Item>();
 
     public List<Item> Items { get => items; set => items = value; }
 

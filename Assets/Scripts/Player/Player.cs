@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    private PlayerInputHandler inputHander;
+    private PlayerInputHandler inputHandler;
     private Animator animator;
 
     private UnityEvent interactEvent = new UnityEvent();
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        inputHander = GetComponent<PlayerInputHandler>();
+        inputHandler = GetComponent<PlayerInputHandler>();
         animator = GetComponentInChildren<Animator>();
     }
 

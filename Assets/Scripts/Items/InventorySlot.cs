@@ -7,6 +7,8 @@ public class InventorySlot : MonoBehaviour
 
     [SerializeField] private Image icon;
 
+    [SerializeField] private Image equippedFrame;
+
     public void AddItem(Item _item)
     {
         item = _item;
@@ -17,7 +19,13 @@ public class InventorySlot : MonoBehaviour
     {
         if(item != null)
         {
+            UIManager.Instance.LastUsedItem = item;
             item.Use();
         }
+    }
+
+    public void UpdateEquippedUI()
+    {
+        equippedFrame.enabled = item.UpdateUIState();
     }
 }

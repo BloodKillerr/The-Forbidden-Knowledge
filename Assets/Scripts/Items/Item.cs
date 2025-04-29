@@ -12,6 +12,11 @@ public class Item : ScriptableObject
     {
 
     }
+
+    public virtual bool UpdateUIState()
+    {
+        return false;
+    }
 }
 
 public enum ItemType
