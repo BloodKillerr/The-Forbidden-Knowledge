@@ -7,6 +7,7 @@ public class Equipment : Item
 
     public int ArmorModifier;
     public int DamageModifier;
+    public int MovementSpeedModifier;
 
     public bool Equipped = false;
 

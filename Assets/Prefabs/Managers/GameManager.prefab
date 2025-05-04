@@ -51,6 +51,11 @@ MonoBehaviour:
   inventoryHolder: {fileID: 0}
   inventorySlot: {fileID: 9025598219417548852, guid: e105bd0a5133ac84989758ea6bb34cff, type: 3}
   tabHolder: {fileID: 0}
+  statBlockPrefab: {fileID: 8054701418758060748, guid: 08e4c17118ce05d4796e9d5d4aae3fd3, type: 3}
+  statsHolder: {fileID: 0}
+  equipmentSlotHolders: []
+  equipmentConsumableHolders: []
+  equipmentSpellHolders: []
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a572f87992bdf5141959c13d43a63fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
 --- !u!114 &2461668452256614757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab44d322acdec374a9472b79cc15abbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EquipmentChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9100424138267112386
 MonoBehaviour:
   m_ObjectHideFlags: 0

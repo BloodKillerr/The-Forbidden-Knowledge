@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Stat
@@ -7,6 +8,10 @@ public class Stat
     [SerializeField] private int baseValue;
 
     private List<int> modifiers = new List<int>();
+
+    [SerializeField] private int valueUpgradeCap;
+
+    public UnityEvent ValueChanged = new UnityEvent();
 
     public int GetValue()
     {
@@ -22,6 +27,7 @@ public class Stat
         if(modifier != 0)
         {
             modifiers.Add(modifier);
+            ValueChanged?.Invoke();
         }
     }
 
@@ -30,6 +36,13 @@ public class Stat
         if (modifier != 0)
         {
             modifiers.Remove(modifier);
+            ValueChanged?.Invoke();
         }
+    }
+
+    public void Upgrade(int upgrade)
+    {
+        baseValue = Mathf.Min(baseValue + upgrade, valueUpgradeCap);
+        ValueChanged?.Invoke();
     }
 }

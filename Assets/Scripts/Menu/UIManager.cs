@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject inventorySlot;
 
     [SerializeField] private GameObject tabHolder;
+
+    [SerializeField] private GameObject statBlockPrefab;
+
+    [SerializeField] private Transform statsHolder;
 
     [SerializeField] private EquipmentSlotHolder[] equipmentSlotHolders;
 
@@ -65,6 +70,8 @@ public class UIManager : MonoBehaviour
             inventoryPanel.blocksRaycasts = false;
             inventoryPanel.interactable = false;
         }
+
+        BuildStatUI(Player.Instance.GetComponent<PlayerStats>());
     }
 
     public void ChangeSelectedElement(GameObject toSelect)
@@ -232,6 +239,75 @@ public class UIManager : MonoBehaviour
         {
 
         }
+    }
+
+    private void BuildStatUI(PlayerStats playerStats)
+    {
+        foreach (Transform t in statsHolder)
+        {
+            Destroy(t.gameObject);
+        }
+        
+        CreateStatBlock(
+            "Health",
+            () => $"{playerStats.CurrentHealth}/{playerStats.MaxHealth.GetValue()}",
+            () => playerStats.UpgradeMaxHealth(50),
+            playerStats.HealthChanged
+        );
+
+        // Dodge Charges
+        CreateStatBlock(
+            "Dodge Charges",
+            () => $"{playerStats.CurrentDodgeCharges}/{playerStats.MaxDodgeCharges.GetValue()}",
+            () => playerStats.UpgradeMaxDodgeCharges(1),
+            playerStats.DodgeChargesChanged
+        );
+
+        // Armor
+        CreateStatBlock(
+            "Armor",
+            () => playerStats.Armor.GetValue().ToString(),
+            () => playerStats.Armor.Upgrade(10),
+            playerStats.Armor.ValueChanged
+        );
+
+        // Damage
+        CreateStatBlock(
+            "Damage",
+            () => playerStats.Damage.GetValue().ToString(),
+            () => playerStats.Damage.Upgrade(10),
+            playerStats.Damage.ValueChanged
+        );
+
+        // Movement Speed
+        CreateStatBlock(
+            "Move Speed",
+            () => playerStats.MovementSpeed.GetValue().ToString(),
+            () => playerStats.MovementSpeed.Upgrade(1),
+            playerStats.MovementSpeed.ValueChanged
+        );
+    }
+
+    private void CreateStatBlock(string label,
+                                 Func<string> readout,
+                                 Action onUpgrade,
+                                 UnityEvent changeEvent)
+    {
+        var go = Instantiate(statBlockPrefab, statsHolder);
+        var sb = go.GetComponent<StatBlock>();
+        sb.Initialize(label, readout, onUpgrade);
+        changeEvent.AddListener(sb.Refresh);
+    }
+
+    private void CreateStatBlock(string label,
+                                 Func<string> readout,
+                                 Action onUpgrade,
+                                 UnityEvent<int, int> changeEvent)
+    {
+        var go = Instantiate(statBlockPrefab, statsHolder);
+        var sb = go.GetComponent<StatBlock>();
+        sb.Initialize(label, readout, onUpgrade);
+        changeEvent.AddListener((cur, max) => sb.Refresh());
     }
 }
 

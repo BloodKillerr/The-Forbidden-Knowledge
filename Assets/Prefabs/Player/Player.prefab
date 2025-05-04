@@ -752,9 +752,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armor:
     baseValue: 0
+    valueUpgradeCap: 500
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
   damage:
     baseValue: 0
-  maxHealth: 100
+    valueUpgradeCap: 500
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  maxHealth:
+    baseValue: 100
+    valueUpgradeCap: 5000
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  HealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  movementSpeed:
+    baseValue: 4
+    valueUpgradeCap: 7
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  maxDodgeCharges:
+    baseValue: 2
+    valueUpgradeCap: 5
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  DodgeChargesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1840855254429717138
 GameObject:
   m_ObjectHideFlags: 0
