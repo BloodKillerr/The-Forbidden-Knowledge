@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2863442861457126608}
   - component: {fileID: 2461668452256614757}
   - component: {fileID: 9100424138267112386}
+  - component: {fileID: 5703706633453147418}
+  - component: {fileID: 6553719612815060865}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -56,6 +58,7 @@ MonoBehaviour:
   equipmentSlotHolders: []
   equipmentConsumableHolders: []
   equipmentSpellHolders: []
+  statsButton: {fileID: 0}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,5 +96,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb1e6285925be894fad86f6b8a9fa625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5703706633453147418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b027676a08c2704ca603150060994c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6553719612815060865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a185d30bee9447998894cb7e8470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

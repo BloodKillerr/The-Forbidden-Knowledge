@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private EquipmentSlotHolder[] equipmentSpellHolders;
 
+    [SerializeField] private GameObject statsButton;
+
     private Item lastUsedItem = null;
 
     private EventSystem eventSystem;
@@ -70,8 +72,10 @@ public class UIManager : MonoBehaviour
             inventoryPanel.blocksRaycasts = false;
             inventoryPanel.interactable = false;
         }
-
-        BuildStatUI(Player.Instance.GetComponent<PlayerStats>());
+        if(Player.Instance != null)
+        {
+            BuildStatUI(Player.Instance.GetComponent<PlayerStats>());
+        }
     }
 
     public void ChangeSelectedElement(GameObject toSelect)
@@ -110,7 +114,7 @@ public class UIManager : MonoBehaviour
                     inventoryPanel.interactable = true;
                     UpdateInventoryUI(InventoryTab.ALL);
                     currentInventoryTab = InventoryTab.ALL;
-                    ChangeSelectedElement(tabHolder.transform.GetChild(0).gameObject);
+                    ChangeSelectedElement(statsButton);
                 }
                 break;
             case MenuType.CRAFTING:
@@ -233,11 +237,59 @@ public class UIManager : MonoBehaviour
         }
         else if(item.Type == ItemType.CONSUMABLE)
         {
+            Consumable co = (Consumable)item;
 
+            if(equipped)
+            {
+                if (co.slot == 1)
+                {
+                    equipmentConsumableHolders[0].AddItem(item);
+                }
+                else if(co.slot == 2)
+                {
+                    equipmentConsumableHolders[1].AddItem(item);
+                }
+            }
+            else
+            {
+                if (co.slot == 1)
+                {
+                    equipmentConsumableHolders[0].RemoveItem();
+                }
+                else if (co.slot == 2)
+                {
+                    equipmentConsumableHolders[1].RemoveItem();
+                }
+                co.slot = 0;
+            }
         }
         else if(item.Type == ItemType.SPELL)
         {
+            Spell sp = (Spell)item;
 
+            if (equipped)
+            {
+                if (sp.slot == 1)
+                {
+                    equipmentSpellHolders[0].AddItem(item);
+                }
+                else if (sp.slot == 2)
+                {
+                    equipmentSpellHolders[1].AddItem(item);
+                }
+            }
+            else
+            {
+                if (sp.slot == 1)
+                {
+                    equipmentSpellHolders[0].RemoveItem();
+                }
+                else if (sp.slot == 2)
+                {
+                    equipmentSpellHolders[1].RemoveItem();
+                }
+                sp.slot = 0;
+            }
         }
     }
 
