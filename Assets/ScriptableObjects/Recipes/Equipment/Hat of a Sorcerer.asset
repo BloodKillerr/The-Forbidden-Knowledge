@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660526fbf0dafa54988c57fcbde3cfdc, type: 3}
+  m_Name: Hat of a Sorcerer
+  m_EditorClassIdentifier: 
+  Result: {fileID: 11400000, guid: 093fea3838a906845bb509da19be4d19, type: 2}
+  Components:
+  - Item: {fileID: 11400000, guid: ee29300b1a35d8045b64adc76ecb92fe, type: 2}
+    Amount: 15
+  - Item: {fileID: 11400000, guid: ad08992b8c26a4f4398f0d82f924730f, type: 2}
+    Amount: 10

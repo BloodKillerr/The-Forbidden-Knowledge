@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Executioner's Greaves
   m_EditorClassIdentifier: 
   Name: Executioner's Greaves
-  Icon: {fileID: 21300000, guid: 460ba12ec8e291645a0619b88c768421, type: 2}
+  Icon: {fileID: 21300000, guid: 10e44727b4f96d946bf17447cabf4a70, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 2

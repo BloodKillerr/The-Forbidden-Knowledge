@@ -59,6 +59,11 @@ MonoBehaviour:
   equipmentConsumableHolders: []
   equipmentSpellHolders: []
   statsButton: {fileID: 0}
+  craftingPanel: {fileID: 0}
+  resourcesHolder: {fileID: 0}
+  craftingCloseButton: {fileID: 0}
+  recipesHolder: {fileID: 0}
+  recipeBlockPrefab: {fileID: 2136136887437041811, guid: 20ecbc2f663ad9d42a405cb9bd15f7d9, type: 3}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0

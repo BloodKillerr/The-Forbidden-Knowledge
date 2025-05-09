@@ -64,4 +64,19 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
+
+    public bool ContainsItem(Item item, int amount)
+    {
+        foreach(Item inventoryItem in items)
+        {
+            if(inventoryItem.Name == item.Name)
+            {
+                if(inventoryItem.Amount >= amount)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
