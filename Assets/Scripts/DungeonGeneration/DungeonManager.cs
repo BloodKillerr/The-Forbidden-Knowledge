@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +11,13 @@ public class DungeonManager : MonoBehaviour
 
     [SerializeField] private GameObject[] bossRoomPrefabs;
 
+    [Range(0f, 1f)]
+    [SerializeField] private float branchProbability = 0.5f;
+    [SerializeField] private int maxCorridorLength = 4;
+
+    [Min(2)]
+    [SerializeField] private int minRooms = 10;
+    [Min(2)]
     [SerializeField] private int maxRooms = 20;
 
     private List<RoomData> graph = new List<RoomData>();
@@ -28,7 +35,7 @@ public class DungeonManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
@@ -46,9 +53,14 @@ public class DungeonManager : MonoBehaviour
 
     public void GenerateDungeon(int seed)
     {
+        if (minRooms > maxRooms)
+        {
+            throw new Exception("minRooms must be ≤ maxRooms");
+        }
         UnityEngine.Random.InitState(seed);
         BuildGraph();
         InstantiateFromGraph();
+        Player.Instance.gameObject.transform.position = Vector3.zero;
     }
 
     /*#region BFS
@@ -137,51 +149,88 @@ public class DungeonManager : MonoBehaviour
     #endregion */
 
     #region DFS
-    void BuildGraph()
+    private void BuildGraph()
     {
         graph.Clear();
 
         RoomData start = new RoomData(Vector2Int.zero);
+        start.IsStart = true;
         graph.Add(start);
 
-        Carve(start, maxRooms - 1);
+        int minNormal = minRooms - 1;
+        int steps = Mathf.Max(0, minNormal - 1);
+        RoomData current = start;
+
+        for (int i = 0; i < steps; i++)
+        {
+            List<Direction> freeDirs = Enum.GetValues(typeof(Direction))
+                .Cast<Direction>()
+                .Where(d => !current.Connections.Contains(d)
+                         && !graph.Any(r => r.Position == current.Position + DirectionExtensions.ToVector2Int(d)))
+                .ToList();
+            if (freeDirs.Count == 0)
+            {
+                break;
+            }
+
+            Direction dir = freeDirs[UnityEngine.Random.Range(0, freeDirs.Count)];
+            Vector2Int newPos = current.Position + DirectionExtensions.ToVector2Int(dir);
+
+            current.Connections.Add(dir);
+            RoomData next = new RoomData(newPos);
+            next.Connections.Add(DirectionExtensions.Opposite(dir));
+            graph.Add(next);
+            current = next;
+        }
+
+        Carve(start, maxRooms - 1, 0);
 
         PlaceBossRoom();
     }
 
-    void Carve(RoomData current, int roomsToPlace)
+    private void Carve(RoomData node, int normalRoomTarget, int depth)
     {
-        if (graph.Count >= roomsToPlace + 1)
+        if (graph.Count >= normalRoomTarget)
         {
             return;
         }
 
-        List<Direction> directions = new List<Direction>
+        if (depth >= maxCorridorLength)
         {
+            return;
+        }
+        
+        List<Direction> directions = new List<Direction> {
             Direction.North, Direction.South,
             Direction.East,  Direction.West
         };
-
         Shuffle(directions);
 
+        bool first = true;
         foreach (Direction d in directions)
         {
-            if (graph.Count >= roomsToPlace + 1)
+            if (graph.Count >= normalRoomTarget)
             {
                 break;
             }
-            Vector2Int newPos = current.Position + DirectionExtensions.ToVector2Int(d);
-            if (graph.Any(r => r.Position == newPos))
+
+            if (!first && UnityEngine.Random.value > branchProbability)
+            {
+                break;
+            }
+            first = false;
+
+            Vector2Int np = node.Position + DirectionExtensions.ToVector2Int(d);
+            if (graph.Any(r => r.Position == np))
             {
                 continue;
             }
             
-            current.Connections.Add(d);
-            RoomData neighbor = new RoomData(newPos);
-            neighbor.Connections.Add(DirectionExtensions.Opposite(d));
-            graph.Add(neighbor);
-
-            Carve(neighbor, roomsToPlace);
+            node.Connections.Add(d);
+            RoomData neighbour = new RoomData(np);
+            neighbour.Connections.Add(DirectionExtensions.Opposite(d));
+            graph.Add(neighbour);
+            Carve(neighbour, normalRoomTarget, depth + 1);
         }
     }
 
@@ -194,18 +243,18 @@ public class DungeonManager : MonoBehaviour
 
         foreach (RoomData parent in leaves)
         {
-            List<Direction> freeDirs = Enum.GetValues(typeof(Direction))
+            List<Direction> freeDirections = Enum.GetValues(typeof(Direction))
                 .Cast<Direction>()
                 .Where(d => !parent.Connections.Contains(d)
                          && !graph.Any(r => r.Position == parent.Position + DirectionExtensions.ToVector2Int(d)))
                 .ToList();
 
-            if (freeDirs.Count == 0)
+            if (freeDirections.Count == 0)
             {
                 continue;
             }
 
-            Direction dir = freeDirs[UnityEngine.Random.Range(0, freeDirs.Count)];
+            Direction dir = freeDirections[UnityEngine.Random.Range(0, freeDirections.Count)];
             parent.Connections.Add(dir);
 
             Vector2Int bossPos = parent.Position + DirectionExtensions.ToVector2Int(dir);

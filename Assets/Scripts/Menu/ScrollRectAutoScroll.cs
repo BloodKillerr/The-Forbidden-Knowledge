@@ -36,11 +36,9 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     }
     void Update()
     {
-        // Scroll via input.
         InputScroll();
         if (!mouseOver)
         {
-            // Lerp scrolling code.
             m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
         }
         else

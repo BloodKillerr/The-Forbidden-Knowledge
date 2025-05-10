@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
+        movementSpeed = GetComponent<PlayerStats>().MovementSpeed.GetValue();
         moveDirection = cameraTransform.forward * inputHandler.Vertical + cameraTransform.right * inputHandler.Horizontal;
         moveDirection.y = 0f;
 

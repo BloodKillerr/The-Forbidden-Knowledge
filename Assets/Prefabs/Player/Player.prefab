@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 2140205870551161778}
   - component: {fileID: 1765463157824886046}
   - component: {fileID: 7191223891302231559}
+  - component: {fileID: 5696734765504203619}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -643,7 +644,19 @@ MonoBehaviour:
     m_ActionId: d1ee3959-c1d7-4b51-8cae-e1b7b881b0a4
     m_ActionName: 'Player/PauseResume[/Keyboard/escape]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140205870551161778}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: InventoryEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2281a7d0-fe53-4e56-9e19-5da7f5f45987
     m_ActionName: 'Player/Inventory[/Keyboard/tab]'
   - m_PersistentCalls:
@@ -695,6 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318a76f6b748d604389c3e5e0a29bb88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastUsedDevice: Keyboard
 --- !u!114 &1765463157824886046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +738,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40eb9dd961c2b94a810b4b0b4699447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5696734765504203619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709887911785335043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e528030542913c4bad23b3c83bfa678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor:
+    baseValue: 0
+    valueUpgradeCap: 500
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  damage:
+    baseValue: 0
+    valueUpgradeCap: 500
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  maxHealth:
+    baseValue: 100
+    valueUpgradeCap: 5000
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  HealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  movementSpeed:
+    baseValue: 4
+    valueUpgradeCap: 7
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  maxDodgeCharges:
+    baseValue: 2
+    valueUpgradeCap: 5
+    ValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  DodgeChargesChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1840855254429717138
 GameObject:
   m_ObjectHideFlags: 0

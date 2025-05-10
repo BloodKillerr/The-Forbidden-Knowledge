@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660526fbf0dafa54988c57fcbde3cfdc, type: 3}
+  m_Name: Demon Crown
+  m_EditorClassIdentifier: 
+  Result: {fileID: 11400000, guid: e118529e24f98e248940c277efb98fb9, type: 2}
+  Components:
+  - Item: {fileID: 11400000, guid: d41f624a5d2a0db4ab619de51abf8d7a, type: 2}
+    Amount: 5
+  - Item: {fileID: 11400000, guid: dd93252b6c749db46aa4d597da4c3589, type: 2}
+    Amount: 20
+  - Item: {fileID: 11400000, guid: 3d20141bed7cbb34f99cc93bb5873439, type: 2}
+    Amount: 10
