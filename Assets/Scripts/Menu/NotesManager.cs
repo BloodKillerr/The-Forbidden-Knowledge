@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
@@ -39,7 +40,7 @@ public class NotesManager : MonoBehaviour
 	{
 		if (unlockedNoteIDs.Add(noteID))
 		{
-			Debug.Log("Odblokowano notatkê: " + noteID);
+			Debug.Log("Note Unlocked: " + noteID);
 		}
 	}
 
@@ -66,6 +67,8 @@ public class NotesManager : MonoBehaviour
 			{
 				ShowNote(index);
 			});
+
+			UnlockNote(note.noteID);
 		}
 	}
 
@@ -73,8 +76,8 @@ public class NotesManager : MonoBehaviour
 	{
 		Note note = allNotes[index];
 		if (unlockedNoteIDs.Contains(note.noteID))
-			noteContentText.text = note.content;
+			noteContentText.text = String.Format("{0}\n\n{1}",note.title,note.content);
 		else
-			noteContentText.text = "Ta notatka jest zablokowana.";
+			noteContentText.text = "This note is locked";
 	}
 }

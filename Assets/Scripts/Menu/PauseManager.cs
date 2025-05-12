@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class PauseManager : MonoBehaviour
 	[SerializeField] private GameObject pausePanel;
 	[SerializeField] private GameObject optionsPanel;
 	[SerializeField] private GameObject notesPanel;
+
+	public GameObject ResumeButton;
+	public GameObject OptionsButton;
 
 	private void Awake()
 	{
@@ -22,7 +26,8 @@ public class PauseManager : MonoBehaviour
 	public void Resume()
 	{
 		Debug.Log("Resume");
-	}
+        UIManager.Instance.ToogleMenu(MenuType.PAUSE);
+    }
 
 	public void Save()
 	{
@@ -48,19 +53,30 @@ public class PauseManager : MonoBehaviour
 		{
 			optionsPanel.SetActive(false);
 			pausePanel.SetActive(true);
-		}
+            UIManager.Instance.ChangeSelectedElement(ResumeButton);
+        }
 		else
 		{
 			optionsPanel.SetActive(true);
 			pausePanel.SetActive(false);
 			notesPanel.SetActive(false);
-		}
+            UIManager.Instance.ChangeSelectedElement(OptionsButton);
+        }
 	}
+
+	public void Hide()
+	{
+        pausePanel.SetActive(true);
+        optionsPanel.SetActive(false);
+        notesPanel.SetActive(false);
+    }
 
 	public void MainMenu()
 	{
 		Debug.Log("Main Menu");
-	}
+        SceneManager.LoadScene(0);
+        GameManager.Instance.ResumeGameState();
+    }
 
 	public void Quit()
 	{

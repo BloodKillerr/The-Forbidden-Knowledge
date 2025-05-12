@@ -45,6 +45,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject recipeBlockPrefab;
 
+    [SerializeField] private CanvasGroup pausePanel;
+
     private Item lastUsedItem = null;
 
     private EventSystem eventSystem;
@@ -87,6 +89,14 @@ public class UIManager : MonoBehaviour
             craftingPanel.blocksRaycasts = false;
             craftingPanel.interactable = false;
         }
+
+        if (pausePanel != null)
+        {
+            pausePanel.alpha = 0f;
+            pausePanel.blocksRaycasts = false;
+            pausePanel.interactable = false;
+        }
+
         if (Player.Instance != null)
         {
             BuildStatUI(Player.Instance.GetComponent<PlayerStats>());
@@ -125,6 +135,13 @@ public class UIManager : MonoBehaviour
         switch(type)
         {
             case MenuType.PAUSE:
+                if (NotesManager.Instance != null && pausePanel != null)
+                {
+                    pausePanel.alpha = 1f;
+                    pausePanel.blocksRaycasts = true;
+                    pausePanel.interactable = true;
+                    ChangeSelectedElement(PauseManager.Instance.ResumeButton);
+                }
                 break;
             case MenuType.INVENTORY:
                 if(InventoryManager.Instance != null && inventoryPanel != null)
@@ -156,6 +173,13 @@ public class UIManager : MonoBehaviour
         switch (type)
         {
             case MenuType.PAUSE:
+                if (NotesManager.Instance != null && pausePanel != null)
+                {
+                    pausePanel.alpha = 0f;
+                    pausePanel.blocksRaycasts = false;
+                    pausePanel.interactable = false;
+                    PauseManager.Instance.Hide();
+                }
                 break;
             case MenuType.INVENTORY:
                 if (InventoryManager.Instance != null && inventoryPanel != null)

@@ -640,7 +640,19 @@ MonoBehaviour:
     m_ActionId: 78fb6d58-7510-42c4-ba41-6cbaa75f3abe
     m_ActionName: 'Player/Consumable[/Keyboard/1,/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140205870551161778}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: PauseResumeEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d1ee3959-c1d7-4b51-8cae-e1b7b881b0a4
     m_ActionName: 'Player/PauseResume[/Keyboard/escape]'
   - m_PersistentCalls:
