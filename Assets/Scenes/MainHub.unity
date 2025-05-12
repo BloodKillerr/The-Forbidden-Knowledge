@@ -42038,7 +42038,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 244833721083183348, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
       propertyPath: lootTable.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 244833721083183348, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
       propertyPath: lootTable.Array.data[0].Item
@@ -42063,7 +42063,7 @@ PrefabInstance:
     - target: {fileID: 244833721083183348, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
       propertyPath: lootTable.Array.data[5].Item
       value: 
-      objectReference: {fileID: 11400000, guid: 646d4464e4a078e498e20069698309e2, type: 2}
+      objectReference: {fileID: 11400000, guid: 4e0d28c33b1f08141a9fb0fd0d522d98, type: 2}
     - target: {fileID: 244833721083183348, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
       propertyPath: lootTable.Array.data[6].Item
       value: 

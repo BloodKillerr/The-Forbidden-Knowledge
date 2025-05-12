@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e37ba309becbf4bbd2f6fe17ad303f, type: 3}
+  m_Name: Wooden Sword
+  m_EditorClassIdentifier: 
+  Name: Wooden Sword
+  Icon: {fileID: -1253031052, guid: 5f4a38980c8c3794ead6d879bede4549, type: 3}
+  Amount: 1
+  Type: 1
+  EqSlot: 4
+  ArmorModifier: 0
+  DamageModifier: 10
+  MovementSpeedModifier: 0
+  Equipped: 0
+  mesh: {fileID: 8420959461155091612, guid: 349aea3184566c842a0c9ef51445e427, type: 3}
+  HolsterPositionOffset: {x: 0.282, y: -0.172, z: -0.015}
+  HolsterRotationOffset: {x: 1.97, y: -3.877, z: 53.855}
+  HandPositionOffset: {x: 0, y: 0, z: 0}
+  HandRotationOffset: {x: 0, y: 0, z: 0}

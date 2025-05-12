@@ -44,6 +44,15 @@ public class EquipmentManager : MonoBehaviour
         item.Equipped = true;
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
         EquipmentChanged.Invoke(item, oldItem);
+
+        if(item.EqSlot == EquipmentSlot.PRIMARY)
+        {
+            Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon(item);
+        }
+        else if(item.EqSlot == EquipmentSlot.SECONDARY)
+        {
+            Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon(item);
+        }
     }
 
     public void UnEquip(int slotIndex)
@@ -55,6 +64,15 @@ public class EquipmentManager : MonoBehaviour
             currentEquipment[slotIndex] = null;
             UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
             EquipmentChanged.Invoke(null, oldItem);
+
+            if (oldItem.EqSlot == EquipmentSlot.PRIMARY)
+            {
+                Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon(null);
+            }
+            else if (oldItem.EqSlot == EquipmentSlot.SECONDARY)
+            {
+                Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon(null);
+            }
         }
     }
 
