@@ -7,8 +7,11 @@ public class Equipment : Item
 
     public int ArmorModifier;
     public int DamageModifier;
+    public int MovementSpeedModifier;
 
     public bool Equipped = false;
+
+    public GameObject mesh;
 
     public override void Use()
     {

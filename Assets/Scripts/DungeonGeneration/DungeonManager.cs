@@ -60,6 +60,7 @@ public class DungeonManager : MonoBehaviour
         UnityEngine.Random.InitState(seed);
         BuildGraph();
         InstantiateFromGraph();
+        Player.Instance.gameObject.transform.position = Vector3.zero;
     }
 
     /*#region BFS

@@ -1,30 +1,46 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterStats : MonoBehaviour
 {
-    [SerializeField] protected Stat armor;
-    [SerializeField] protected Stat damage;
+    [SerializeField] private Stat armor;
+    [SerializeField] private Stat damage;
 
-    protected int currentHealth;
-    [SerializeField] protected int maxHealth;
+    private int currentHealth;
+    [SerializeField] private Stat maxHealth;
+
+    public Stat Armor { get => armor; set => armor = value; }
+    public Stat Damage { get => damage; set => damage = value; }
+    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public Stat MaxHealth { get => maxHealth; set => maxHealth = value; }
+
+    public UnityEvent<int, int> HealthChanged = new UnityEvent<int, int>();
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth.GetValue();
+        HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
     }
 
     public void TakeDamage(int damage)
     {
-        damage -= armor.GetValue();
+        int net = Mathf.Clamp(damage - armor.GetValue(), 0, int.MaxValue);
 
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+        currentHealth = Mathf.Max(currentHealth - net, 0);
 
-        currentHealth -= damage;
+        HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void UpgradeMaxHealth(int upgrade)
+    {
+        maxHealth.Upgrade(upgrade);
+        currentHealth = Mathf.Clamp(currentHealth + upgrade, 0, maxHealth.GetValue());
+        HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
     }
 
     private void Die()

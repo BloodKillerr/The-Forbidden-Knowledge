@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 2863442861457126608}
   - component: {fileID: 2461668452256614757}
   - component: {fileID: 9100424138267112386}
+  - component: {fileID: 5703706633453147418}
+  - component: {fileID: 6553719612815060865}
+  - component: {fileID: 5582262123035614877}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,6 +54,17 @@ MonoBehaviour:
   inventoryHolder: {fileID: 0}
   inventorySlot: {fileID: 9025598219417548852, guid: e105bd0a5133ac84989758ea6bb34cff, type: 3}
   tabHolder: {fileID: 0}
+  statBlockPrefab: {fileID: 8054701418758060748, guid: 08e4c17118ce05d4796e9d5d4aae3fd3, type: 3}
+  statsHolder: {fileID: 0}
+  equipmentSlotHolders: []
+  equipmentConsumableHolders: []
+  equipmentSpellHolders: []
+  statsButton: {fileID: 0}
+  craftingPanel: {fileID: 0}
+  resourcesHolder: {fileID: 0}
+  craftingCloseButton: {fileID: 0}
+  recipesHolder: {fileID: 0}
+  recipeBlockPrefab: {fileID: 2136136887437041811, guid: 20ecbc2f663ad9d42a405cb9bd15f7d9, type: 3}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a572f87992bdf5141959c13d43a63fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
 --- !u!114 &2461668452256614757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab44d322acdec374a9472b79cc15abbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EquipmentChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9100424138267112386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,3 +104,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1e6285925be894fad86f6b8a9fa625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5703706633453147418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b027676a08c2704ca603150060994c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6553719612815060865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a185d30bee9447998894cb7e8470e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5582262123035614877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54adb98bf03607149b1407321f8251bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  notesPanel: {fileID: 0}

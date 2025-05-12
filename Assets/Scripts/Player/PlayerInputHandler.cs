@@ -75,6 +75,14 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void PauseResumeEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.ToogleMenu(MenuType.PAUSE);
+        }
+    }
+
     public void TickInput()
     {
         MoveInput();
