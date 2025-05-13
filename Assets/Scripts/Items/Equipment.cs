@@ -11,10 +11,13 @@ public class Equipment : Item
 
     public bool Equipped = false;
 
-    public GameObject mesh;
-
     public override void Use()
     {
+        if(Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
+        {
+            return;
+        }
+
         base.Use();
         if(Equipped)
         {

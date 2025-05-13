@@ -11,6 +11,10 @@ public class DungeonDoor : Interactable
 
     public override void Interact()
     {
+        if (Player.Instance.GetComponent<PlayerMovement>().IsDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
+        {
+            return;
+        }
         base.Interact();
         roomController.MovePlayerThroughDoor(direction);
     }
