@@ -94,6 +94,8 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 Player.Instance.GetComponent<PlayerAttack>().HandleNormalSecondaryAttack();
             }
+        }
+    }
             
     public void PauseResumeEvent(InputAction.CallbackContext context)
     {
