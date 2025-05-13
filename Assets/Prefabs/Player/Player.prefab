@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 7191223891302231559}
   - component: {fileID: 5696734765504203619}
   - component: {fileID: 3113472710714396203}
+  - component: {fileID: 7880979900624599828}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -625,11 +626,35 @@ MonoBehaviour:
     m_ActionId: 2b090ae7-176b-4791-afa8-b47ac80b384a
     m_ActionName: 'Player/Camera[/Mouse/delta]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140205870551161778}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: PrimaryEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ca9d6904-148d-450d-853e-2c12dc578370
     m_ActionName: 'Player/Primary[/Mouse/leftButton]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140205870551161778}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: SecondaryEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 34ef268a-481e-4239-9651-feb097e1faba
     m_ActionName: 'Player/Secondary[/Mouse/rightButton]'
   - m_PersistentCalls:
@@ -801,6 +826,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolster: {fileID: 5581579338347723342}
   hand: {fileID: 1020092407085805339}
+--- !u!114 &7880979900624599828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709887911785335043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d1f87043aaf0e4f9dc0cdc2041f3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1840855254429717138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,7 +3136,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.000355, y: 0.000928, z: -0.00008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7342215389793966267}

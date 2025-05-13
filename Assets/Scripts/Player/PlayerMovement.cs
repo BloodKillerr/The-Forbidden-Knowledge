@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDodge = true;
 
     public Rigidbody Rb { get => rb; set => rb = value; }
+    public bool IsDodging { get => isDodging; set => isDodging = value; }
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDodging)
+        if (!isDodging && !Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
         {
             HandleMovement();
             HandleRotation();
@@ -100,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void HandleDodge()
     {
-        if (!canDodge || isDodging)
+        if (!canDodge || isDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
         {
             return;
         }

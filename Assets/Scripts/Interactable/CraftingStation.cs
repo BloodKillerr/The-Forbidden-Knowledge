@@ -6,6 +6,10 @@ public class CraftingStation : Interactable
     [SerializeField] private List<Recipe> recipes = new List<Recipe>();
     public override void Interact()
     {
+        if (Player.Instance.GetComponent<PlayerMovement>().IsDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
+        {
+            return;
+        }
         base.Interact();
 
         if(UIManager.Instance != null)

@@ -6,6 +6,10 @@ public class Chest : Interactable
     [SerializeField] private List<Loot> lootTable = new List<Loot>();
     public override void Interact()
     {
+        if (Player.Instance.GetComponent<PlayerMovement>().IsDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
+        {
+            return;
+        }
         base.Interact();
         foreach (Loot entry in lootTable)
         {

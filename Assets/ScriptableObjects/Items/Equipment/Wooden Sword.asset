@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e37ba309becbf4bbd2f6fe17ad303f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a0c9b78b8a74fb4593079b3c718362e, type: 3}
   m_Name: Wooden Sword
   m_EditorClassIdentifier: 
   Name: Wooden Sword
@@ -22,7 +22,8 @@ MonoBehaviour:
   MovementSpeedModifier: 0
   Equipped: 0
   mesh: {fileID: 8420959461155091612, guid: 349aea3184566c842a0c9ef51445e427, type: 3}
-  HolsterPositionOffset: {x: 0.282, y: -0.172, z: -0.015}
-  HolsterRotationOffset: {x: 1.97, y: -3.877, z: 53.855}
-  HandPositionOffset: {x: 0, y: 0, z: 0}
-  HandRotationOffset: {x: 0, y: 0, z: 0}
+  HolsterPositionOffset: {x: 0.228, y: -0.196, z: -0.029}
+  HolsterRotationOffset: {x: 0, y: 0, z: 52.624}
+  HandPositionOffset: {x: -0.0097, y: 0.0142, z: -0.0021}
+  HandRotationOffset: {x: -6.074, y: -90.883, z: -81.711}
+  NormalAttackAnimation: SwordAttack1

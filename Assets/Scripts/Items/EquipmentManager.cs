@@ -47,11 +47,11 @@ public class EquipmentManager : MonoBehaviour
 
         if(item.EqSlot == EquipmentSlot.PRIMARY)
         {
-            Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon(item);
+            Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon((Weapon)item);
         }
         else if(item.EqSlot == EquipmentSlot.SECONDARY)
         {
-            Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon(item);
+            Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon((Weapon)item);
         }
     }
 

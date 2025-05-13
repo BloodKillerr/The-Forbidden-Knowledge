@@ -75,6 +75,28 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void PrimaryEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!GameManager.Instance.IsGameStatePaused)
+            {
+                Player.Instance.GetComponent<PlayerAttack>().HandleNormalPrimaryAttack();
+            }
+        }
+    }
+
+    public void SecondaryEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!GameManager.Instance.IsGameStatePaused)
+            {
+                Player.Instance.GetComponent<PlayerAttack>().HandleNormalSecondaryAttack();
+            }
+        }
+    }
+
     public void TickInput()
     {
         MoveInput();

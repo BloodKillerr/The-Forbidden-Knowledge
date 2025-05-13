@@ -5,12 +5,16 @@ public class WeaponMeshController : MonoBehaviour
     [SerializeField] private Transform weaponHolster;
     [SerializeField] private Transform hand;
 
-    private Equipment primaryWeapon;
-    private Equipment secondaryWeapon;
+    private Weapon primaryWeapon;
+    private Weapon secondaryWeapon;
 
     private GameObject currentHolsteredMesh;
+    private GameObject currentHandMesh;
 
-    public void SetPrimaryWeapon(Equipment weapon)
+    public Weapon PrimaryWeapon { get => primaryWeapon; set => primaryWeapon = value; }
+    public Weapon SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
+
+    public void SetPrimaryWeapon(Weapon weapon)
     {
         if (currentHolsteredMesh != null)
         {
@@ -33,7 +37,7 @@ public class WeaponMeshController : MonoBehaviour
         }
     }
 
-    public void SetSecondaryWeapon(Equipment weapon)
+    public void SetSecondaryWeapon(Weapon weapon)
     {
         if (weapon == null)
         {
@@ -43,5 +47,43 @@ public class WeaponMeshController : MonoBehaviour
         {
             secondaryWeapon = weapon;
         }
+    }
+
+    public void AttackWithPrimaryWeapon()
+    {
+        if (currentHolsteredMesh != null)
+        {
+            Destroy(currentHolsteredMesh);
+        }
+
+        if (currentHandMesh != null)
+        {
+            Destroy(currentHandMesh);
+        }
+
+        currentHandMesh = Instantiate(primaryWeapon.mesh, hand);
+        currentHandMesh.transform.localPosition = primaryWeapon.HandPositionOffset;
+        currentHandMesh.transform.localEulerAngles = primaryWeapon.HandRotationOffset;
+    }
+
+    public void AttackWithSecondaryWeapon()
+    {
+
+    }
+
+    public void HolsterPrimaryWeapon()
+    {
+        if (currentHandMesh != null)
+        {
+            Destroy(currentHandMesh);
+        }
+        currentHolsteredMesh = Instantiate(primaryWeapon.mesh, weaponHolster);
+        currentHolsteredMesh.transform.localPosition = primaryWeapon.HolsterPositionOffset;
+        currentHolsteredMesh.transform.localEulerAngles = primaryWeapon.HolsterRotationOffset;
+    }
+
+    public void HideSecondaryWeapon()
+    {
+
     }
 }

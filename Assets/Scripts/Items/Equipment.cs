@@ -11,16 +11,13 @@ public class Equipment : Item
 
     public bool Equipped = false;
 
-    public GameObject mesh;
-
-    public Vector3 HolsterPositionOffset;
-    public Vector3 HolsterRotationOffset;
-
-    public Vector3 HandPositionOffset;
-    public Vector3 HandRotationOffset;
-
     public override void Use()
     {
+        if(Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
+        {
+            return;
+        }
+
         base.Use();
         if(Equipped)
         {
