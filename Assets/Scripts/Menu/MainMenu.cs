@@ -2,6 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -34,7 +36,7 @@ public class MainMenu : MonoBehaviour
     {
         optionsPanel.SetActive(true);
         menuPanel.SetActive(false);
-        UIManager.Instance.ChangeSelectedElement(optionsMenuSelectedButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(optionsMenuSelectedButton.gameObject);
     }
 
     public void QuitGame()
@@ -47,6 +49,6 @@ public class MainMenu : MonoBehaviour
     {
         optionsPanel.SetActive(false);
         menuPanel.SetActive(true);
-        UIManager.Instance.ChangeSelectedElement(mainMenuSelectedButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(mainMenuSelectedButton.gameObject);
     }
 }

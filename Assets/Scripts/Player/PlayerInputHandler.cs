@@ -94,6 +94,12 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 Player.Instance.GetComponent<PlayerAttack>().HandleNormalSecondaryAttack();
             }
+            
+    public void PauseResumeEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.ToogleMenu(MenuType.PAUSE);
         }
     }
 
