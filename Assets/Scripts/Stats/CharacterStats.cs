@@ -43,7 +43,7 @@ public class CharacterStats : MonoBehaviour
         HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
     }
 
-    private void Die()
+    public virtual void Die()
     {
         //Die
     }

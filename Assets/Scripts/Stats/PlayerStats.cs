@@ -53,4 +53,10 @@ public class PlayerStats : CharacterStats
         currentDodgeCharges = Mathf.Clamp(currentDodgeCharges + upgrade, 0, maxDodgeCharges.GetValue());
         DodgeChargesChanged?.Invoke(currentDodgeCharges, maxDodgeCharges.GetValue());
     }
+
+    public override void Die()
+    {
+        base.Die();
+        GetComponentInChildren<Animator>().Play("PlayerDeath");
+    }
 }
