@@ -93,6 +93,21 @@ public class PlayerAnimatorHandler : MonoBehaviour
     {
         playerAttack.SetAttacking(false);
         Player.Instance.GetComponent<WeaponMeshController>().HolsterPrimaryWeapon();
+        playerAttack.OnAttackAnimationComplete();
+    }
+    public void EnableComboWindow()
+    {
+        playerAttack.CanAttack = true;
+    }
+
+    public void EnablePrimaryDamageCollider()
+    {
+        Player.Instance.GetComponent<WeaponMeshController>().EnablePrimaryDamageCollider();
+    }
+
+    public void DisablePrimaryDamageCollider()
+    {
+        Player.Instance.GetComponent<WeaponMeshController>().DisablePrimaryDamageCollider();
     }
 
     public void StartSecondaryAttack()
