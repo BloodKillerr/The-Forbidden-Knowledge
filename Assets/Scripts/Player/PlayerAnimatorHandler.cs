@@ -8,6 +8,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
 
     private PlayerInputHandler inputHandler;
     private PlayerMovement playerMovement;
+    private PlayerAttack playerAttack;
 
     public bool CanRotate { get => canRotate; set => canRotate = value; }
     public Animator Animator { get => animator; set => animator = value; }
@@ -17,6 +18,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
         animator = GetComponent<Animator>();
         inputHandler = GetComponentInParent<PlayerInputHandler>();
         playerMovement = GetComponentInParent<PlayerMovement>();
+        playerAttack = GetComponentInParent<PlayerAttack>();
     }
 
     public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement)
@@ -79,5 +81,44 @@ public class PlayerAnimatorHandler : MonoBehaviour
     public void StopRotation()
     {
         canRotate = false;
+    }
+
+    public void StartAttack()
+    {
+        playerAttack.SetAttacking(true);
+        Player.Instance.GetComponent<WeaponMeshController>().AttackWithPrimaryWeapon();
+    }
+
+    public void StopAttack()
+    {
+        playerAttack.SetAttacking(false);
+        Player.Instance.GetComponent<WeaponMeshController>().HolsterPrimaryWeapon();
+        playerAttack.OnAttackAnimationComplete();
+    }
+    public void EnableComboWindow()
+    {
+        playerAttack.CanAttack = true;
+    }
+
+    public void EnablePrimaryDamageCollider()
+    {
+        Player.Instance.GetComponent<WeaponMeshController>().EnablePrimaryDamageCollider();
+    }
+
+    public void DisablePrimaryDamageCollider()
+    {
+        Player.Instance.GetComponent<WeaponMeshController>().DisablePrimaryDamageCollider();
+    }
+
+    public void StartSecondaryAttack()
+    {
+        playerAttack.SetAttacking(true);
+        Player.Instance.GetComponent<WeaponMeshController>().AttackWithSecondaryWeapon();
+    }
+
+    public void StopSecondaryAttack()
+    {
+        playerAttack.SetAttacking(false);
+        Player.Instance.GetComponent<WeaponMeshController>().HideSecondaryWeapon();
     }
 }
