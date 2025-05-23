@@ -5,9 +5,6 @@ public class SpellManager : MonoBehaviour
     private Spell spell1 = null;
     private Spell spell2 = null;
 
-    private float nextUseTime1 = 0f;
-    private float nextUseTime2 = 0f;
-
     public static SpellManager Instance { get; private set; }
 
     private void Awake()
@@ -73,54 +70,5 @@ public class SpellManager : MonoBehaviour
             spell2 = null;
         }
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
-    }
-
-    public void UseSpell1()
-    {
-        if (spell1 == null)
-        {
-            return;
-        }
-
-        if (Time.time < nextUseTime1)
-        {
-            return;
-        }
-
-        spell1.UseEffects();
-
-
-        nextUseTime1 = Time.time + spell1.Cooldown;
-    }
-
-    public void UseSpell2()
-    {
-        if (spell2 == null)
-        {
-            return;
-        }
-
-        if (Time.time < nextUseTime2)
-        {
-            return;
-        }
-
-        spell2.UseEffects();
-
-
-        nextUseTime2 = Time.time + spell2.Cooldown;
-    }
-
-    public void ShortenCooldown(float amount)
-    {
-        if (spell1 != null)
-        {
-            nextUseTime1 = Mathf.Max(Time.time, nextUseTime1 - amount);
-        }
-
-        if (spell2 != null)
-        {
-            nextUseTime2 = Mathf.Max(Time.time, nextUseTime2 - amount);
-        }
     }
 }

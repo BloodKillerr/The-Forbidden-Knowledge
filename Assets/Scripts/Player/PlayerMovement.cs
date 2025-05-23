@@ -16,11 +16,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float dodgeForce = 10f;
     [SerializeField] private float dodgeDuration = 0.5f;
+    [SerializeField] private float dodgeCooldown = 1f;
 
     private bool isDodging;
-
-    [SerializeField] private float dodgeRechargeInterval = 3f;
-    private Coroutine rechargeCoroutine;
+    private bool canDodge = true;
 
     public Rigidbody Rb { get => rb; set => rb = value; }
     public bool IsDodging { get => isDodging; set => isDodging = value; }
@@ -51,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDodging && !Player.Instance.GetComponent<PlayerAttack>().IsAttacking && !Player.Instance.IsDead)
+        if (!isDodging && !Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
         {
             HandleMovement();
             HandleRotation();
@@ -102,49 +101,31 @@ public class PlayerMovement : MonoBehaviour
     }
     public void HandleDodge()
     {
-        if (isDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
+        if (!canDodge || isDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
         {
             return;
         }
 
-        PlayerStats stats = GetComponent<PlayerStats>();
-
-        StartCoroutine(PerformDodge(stats));
+        StartCoroutine(PerformDodge());
     }
 
-    private IEnumerator PerformDodge(PlayerStats stats)
+    private IEnumerator PerformDodge()
     {
-        if(stats.UseDodgeCharge())
-        {
-            isDodging = true;
+        canDodge = false;
+        isDodging = true;
 
-            animatorHandler.Animator.SetTrigger("Dodge");
+        animatorHandler.Animator.SetTrigger("Dodge");
 
-            Vector3 dodgeDir = moveDirection.sqrMagnitude > 0f ? moveDirection : transform.forward;
-            dodgeDir.Normalize();
+        Vector3 dodgeDir = moveDirection.sqrMagnitude > 0f ? moveDirection : transform.forward;
+        dodgeDir.Normalize();
 
-            rb.AddForce(dodgeDir * dodgeForce, ForceMode.VelocityChange);
+        rb.AddForce(dodgeDir * dodgeForce, ForceMode.VelocityChange);
 
-            if (rechargeCoroutine == null)
-            {
-                rechargeCoroutine = StartCoroutine(RechargeDodge(stats));
-            }
+        yield return new WaitForSeconds(dodgeDuration);
 
-            yield return new WaitForSeconds(dodgeDuration);
+        isDodging = false;
 
-            isDodging = false;
-        }
-    }
-
-    private IEnumerator RechargeDodge(PlayerStats stats)
-    {
-        while (stats.CurrentDodgeCharges < stats.MaxDodgeCharges.GetValue())
-        {
-            yield return new WaitForSeconds(dodgeRechargeInterval);
-            stats.CurrentDodgeCharges++;
-            stats.DodgeChargesChanged?.Invoke(stats.CurrentDodgeCharges, stats.MaxDodgeCharges.GetValue());
-        }
-
-        rechargeCoroutine = null;
+        yield return new WaitForSeconds(dodgeCooldown);
+        canDodge = true;
     }
 }

@@ -47,8 +47,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private CanvasGroup pausePanel;
 
-    [SerializeField] private TMP_Text statPointsText;
-
     private Item lastUsedItem = null;
 
     private EventSystem eventSystem;
@@ -108,8 +106,6 @@ public class UIManager : MonoBehaviour
         {
             craftingCloseButton.onClick.AddListener(delegate { ToogleMenu(MenuType.CRAFTING); });
         }
-
-        UpdateStatPointsText();
     }
 
     public void ChangeSelectedElement(GameObject toSelect)
@@ -464,14 +460,6 @@ public class UIManager : MonoBehaviour
         var sb = go.GetComponent<StatBlock>();
         sb.Initialize(label, readout, onUpgrade);
         changeEvent.AddListener((cur, max) => sb.Refresh());
-    }
-
-    public void UpdateStatPointsText()
-    {
-        if(statPointsText != null)
-        {
-            statPointsText.text = string.Format("Stat Points: {0}", LevelingManager.Instance.StatPoints);
-        }
     }
 }
 
