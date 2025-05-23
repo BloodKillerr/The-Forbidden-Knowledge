@@ -92,7 +92,42 @@ public class PlayerAnimatorHandler : MonoBehaviour
     public void StopAttack()
     {
         playerAttack.SetAttacking(false);
+        playerAttack.OnAttackAnimationComplete();
         Player.Instance.GetComponent<WeaponMeshController>().HolsterPrimaryWeapon();
+    }
+    public void EnableComboWindow()
+    {
+        playerAttack.CanAttack = true;
+
+        if(playerAttack.InputBuffered)
+        {
+            playerAttack.FireComboStep();
+        }
+    }
+
+    public void EnableIFrames()
+    {
+        Player.Instance.GetComponent<PlayerStats>().IsInvincible = true;
+    }
+
+    public void DisableIFrames()
+    {
+        Player.Instance.GetComponent<PlayerStats>().IsInvincible = false;
+    }
+
+    public void DisableComboWindow()
+    {
+        playerAttack.CanAttack = false;
+    }
+
+    public void EnablePrimaryDamageCollider()
+    {
+        Player.Instance.GetComponent<WeaponMeshController>().EnablePrimaryDamageCollider();
+    }
+
+    public void DisablePrimaryDamageCollider()
+    {
+        Player.Instance.GetComponent<WeaponMeshController>().DisablePrimaryDamageCollider();
     }
 
     public void StartSecondaryAttack()

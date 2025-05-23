@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Consumable", menuName = "Inventory/Consumable")]
@@ -5,6 +6,10 @@ public class Consumable : Item
 {
     public bool Equipped = false;
     public int slot = 0;
+
+    public float Cooldown = 5f;
+
+    public List<Effect> effects = new List<Effect>();
 
     public override void Use()
     {
@@ -18,6 +23,14 @@ public class Consumable : Item
         {
             ConsumableManager.Instance.EquipConsumable(this);
             UIManager.Instance.UpdateEquipmentSlotHolder(this, true);
+        }
+    }
+
+    public void UseEffects()
+    {
+        foreach (Effect effect in effects)
+        {
+            effect.UseEffect();
         }
     }
 

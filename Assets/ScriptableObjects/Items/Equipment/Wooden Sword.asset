@@ -26,4 +26,8 @@ MonoBehaviour:
   HolsterRotationOffset: {x: 0, y: 0, z: 52.624}
   HandPositionOffset: {x: -0.0097, y: 0.0142, z: -0.0021}
   HandRotationOffset: {x: -6.074, y: -90.883, z: -81.711}
-  NormalAttackAnimation: SwordAttack1
+  AttackAnimations:
+  - SwordAttack1
+  - SwordAttack2
+  - SwordAttack3
+  ComboResetTime: 1

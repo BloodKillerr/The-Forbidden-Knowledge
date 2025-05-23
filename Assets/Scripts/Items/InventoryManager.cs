@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
-    private List<Item> items = new List<Item>();
+    [SerializeField] private List<Item> items = new List<Item>();
 
     public List<Item> Items { get => items; set => items = value; }
 
     public static InventoryManager Instance { get; private set; }
+
+    [SerializeField] private Item startingItem;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class InventoryManager : MonoBehaviour
         {
             Instance = this;
         }
+        Add(startingItem);
     }
 
     public void Add(Item item)
