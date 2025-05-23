@@ -57,29 +57,13 @@ public class DungeonManager : MonoBehaviour
         {
             throw new Exception("minRooms must be ≤ maxRooms");
         }
-
-		FindObjectOfType<PlayerTracker>()?.EnterDungeon();
-
-		MinimapManager.Instance?.ClearMinimap();
-
-		UnityEngine.Random.InitState(seed);
+        UnityEngine.Random.InitState(seed);
         BuildGraph();
         InstantiateFromGraph();
         Player.Instance.gameObject.transform.position = Vector3.zero;
-        MinimapManager.Instance?.CreateRoomIcon(Vector2Int.zero);
-        MinimapManager.Instance?.HighlightPlayer(Vector2Int.zero);
-		Player.Instance.GetComponent<PlayerTracker>().enabled = true;
-	}
+    }
 
-	public Vector2Int GetRoomPositionFromWorld(Vector3 worldPos)
-	{
-		int x = Mathf.RoundToInt(worldPos.x / 25f);
-		int y = Mathf.RoundToInt(worldPos.z / 25f);
-		return new Vector2Int(x, y);
-	}
-
-
-	/*#region BFS
+    /*#region BFS
     void BuildGraph()
     {
         graph.Clear();
@@ -164,8 +148,8 @@ public class DungeonManager : MonoBehaviour
     }
     #endregion */
 
-	#region DFS
-	private void BuildGraph()
+    #region DFS
+    private void BuildGraph()
     {
         graph.Clear();
 
