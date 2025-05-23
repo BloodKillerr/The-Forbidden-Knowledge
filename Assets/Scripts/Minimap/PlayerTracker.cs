@@ -2,38 +2,39 @@ using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
 {
-	public Transform player;
 	public float checkInterval = 0.2f;
 
-	private Vector2Int currentRoomPos;
-	private DungeonManager dungeonManager;
-	private MinimapManager minimap;
+	private Vector2Int currentRoomPos = Vector2Int.zero;
 
 	private bool inDungeon = false;
 
-	private void Start()
-	{
-		dungeonManager = FindObjectOfType<DungeonManager>();
-		minimap = FindObjectOfType<MinimapManager>();
-		InvokeRepeating(nameof(CheckRoom), 0f, checkInterval);
-	}
+    private void Start()
+    {
+        InvokeRepeating(nameof(CheckRoom), 0f, checkInterval);
+    }
 
-	public void EnterDungeon()
+    public void EnterDungeon()
 	{
 		inDungeon = true;
 	}
 
-	void CheckRoom()
+    public void ExitDungeon()
+    {
+        inDungeon = false;
+    }
+
+    public void CheckRoom()
 	{
 		if (!inDungeon) return;
 
-		Vector2Int playerGridPos = dungeonManager.GetRoomPositionFromWorld(player.position);
+		Vector2Int playerGridPos = DungeonManager.Instance.GetRoomPositionFromWorld(Player.Instance.transform.localPosition);
 
 		if (playerGridPos != currentRoomPos)
 		{
 			currentRoomPos = playerGridPos;
-			minimap.CreateRoomIcon(playerGridPos);
-			minimap.HighlightPlayer(playerGridPos);
+			MinimapManager.Instance.CreateRoomIcon(playerGridPos);
+            MinimapManager.Instance.HighlightPlayer(playerGridPos);
+			Debug.Log("Changed Room");
 		}
 	}
 }
