@@ -40,14 +40,9 @@ public class Stat
         }
     }
 
-    public bool Upgrade(int upgrade)
+    public void Upgrade(int upgrade)
     {
-        if(baseValue < valueUpgradeCap && LevelingManager.Instance.UseStatPoint())
-        {
-            baseValue = Mathf.Min(baseValue + upgrade, valueUpgradeCap);
-            ValueChanged?.Invoke();
-            return true;
-        }
-        return false;
+        baseValue = Mathf.Min(baseValue + upgrade, valueUpgradeCap);
+        ValueChanged?.Invoke();
     }
 }

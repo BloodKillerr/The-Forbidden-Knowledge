@@ -1,17 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Unity.AI.Navigation;
+﻿using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    protected RoomData data;
-    protected bool isFinished = false;
-    protected bool checkCompletion = false;
-    protected List<Enemy> enemies = new List<Enemy>();
-
-    public List<Enemy> Enemies { get => enemies; set => enemies = value; }
+    private RoomData data;
 
     public void Init(RoomData data)
     {
@@ -19,27 +12,11 @@ public class RoomController : MonoBehaviour
 
         if(data.IsStart)
         {
-            GetComponent<EnemySpawner>().enabled = false;
-            isFinished = true;
-            checkCompletion = false;
+            //Disable Enemy and Objects spawning
         }
     }
-
-    private void Update()
-    {
-        if(checkCompletion && !isFinished && enemies.Count == 0)
-        {
-            isFinished = true;
-        }
-    }
-
     public void MovePlayerThroughDoor(Direction direction)
     {
-        if(!isFinished)
-        {
-            return;
-        }
-
         Vector2Int targetPos = data.Position + DirectionExtensions.ToVector2Int(direction);
         RoomData targetData = DungeonManager.Instance.GetRoomData(targetPos);
         if (targetData == null)
@@ -68,31 +45,13 @@ public class RoomController : MonoBehaviour
         if(data.IsStart)
         {
             data.HasBeenEntered = true;
-            isFinished = true;
-            checkCompletion = false;
             return;
         }
 
         if(!data.HasBeenEntered)
         {
             //Spawn Objects and Enemies
-            GetComponent<EnemySpawner>()?.SpawnEnemies();
-            Enemy.OnEnemyKilled.AddListener(RemoveEnemy);
             data.HasBeenEntered = true;
-            checkCompletion = true;
         }
     }
-
-    private void OnDisable()
-    {
-        Enemy.OnEnemyKilled.RemoveListener(RemoveEnemy);
-    }
-
-    private void RemoveEnemy(Enemy enemy)
-    {
-        if(enemies.Contains(enemy))
-        {
-            enemies.Remove(enemy);
-        }
-    }    
 }

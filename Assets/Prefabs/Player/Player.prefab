@@ -658,35 +658,11 @@ MonoBehaviour:
     m_ActionId: 34ef268a-481e-4239-9651-feb097e1faba
     m_ActionName: 'Player/Secondary[/Mouse/rightButton]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2140205870551161778}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: SpellEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: f8e783a0-1072-44d7-8b54-757d65fc0d90
     m_ActionName: 'Player/Spell[/Keyboard/q,/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2140205870551161778}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: ConsumableEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 78fb6d58-7510-42c4-ba41-6cbaa75f3abe
     m_ActionName: 'Player/Consumable[/Keyboard/1,/Keyboard/2]'
   - m_PersistentCalls:
@@ -824,9 +800,8 @@ MonoBehaviour:
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
-  currentHealth: 0
   maxHealth:
-    baseValue: 300
+    baseValue: 100
     valueUpgradeCap: 5000
     ValueChanged:
       m_PersistentCalls:
