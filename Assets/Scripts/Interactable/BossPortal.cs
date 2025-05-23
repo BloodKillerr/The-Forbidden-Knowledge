@@ -19,6 +19,8 @@ public class BossPortal : Interactable
         {
             if(informationShown)
             {
+                Player.Instance.GetComponent<PlayerTracker>().ExitDungeon();
+                MinimapManager.Instance.ClearMinimap();
                 SceneManager.LoadScene(SceneIndex);
             }
             else

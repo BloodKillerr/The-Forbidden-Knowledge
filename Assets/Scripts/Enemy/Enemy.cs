@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         {
             Attack();
         }
-        else
+        else if(!attacked)
         {
             Chase();
         }
@@ -103,9 +103,9 @@ public class Enemy : MonoBehaviour
             agent.ResetPath();
             return;
         }
-        agent.SetDestination(transform.position);
-        agent.isStopped = true;
         agent.ResetPath();
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
         animationHandler.Animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
 
         Vector3 lookPos = Player.Instance.transform.position;

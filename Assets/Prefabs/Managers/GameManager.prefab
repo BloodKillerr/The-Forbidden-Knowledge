@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5703706633453147418}
   - component: {fileID: 6553719612815060865}
   - component: {fileID: 5582262123035614877}
+  - component: {fileID: 1146698597382497791}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -66,6 +67,7 @@ MonoBehaviour:
   recipesHolder: {fileID: 0}
   recipeBlockPrefab: {fileID: 2136136887437041811, guid: 20ecbc2f663ad9d42a405cb9bd15f7d9, type: 3}
   pausePanel: {fileID: 0}
+  statPointsText: {fileID: 0}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +150,19 @@ MonoBehaviour:
   notesPanel: {fileID: 0}
   ResumeButton: {fileID: 0}
   OptionsButton: {fileID: 0}
+--- !u!114 &1146698597382497791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779471027861619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadcae4250f2270438792e409e9df66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapIconPrefab: {fileID: 8056752428740489929, guid: a88c9d55aeec11244bdb10788dab39c0, type: 3}
+  minimapParent: {fileID: 0}
+  minimapBounds: {fileID: 0}
+  iconSpacing: 40

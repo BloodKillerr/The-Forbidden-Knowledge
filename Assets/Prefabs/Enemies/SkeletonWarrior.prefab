@@ -1871,16 +1871,16 @@ MonoBehaviour:
       damageMultiplier: 1.5
       probability: 0.7
     attackCooldown: 2
-    attackRange: 1
-    moveSpeed: 3
+    attackRange: 0.8
+    moveSpeed: 4
   - entryAnimationName: PhaseChange
     attacks:
     - animationName: Attack3
       damageMultiplier: 2
       probability: 1
-    attackCooldown: 1
+    attackCooldown: 4
     attackRange: 1
-    moveSpeed: 2
+    moveSpeed: 3
   portalPrefab: {fileID: 6844379756280990573, guid: 23c563c8f45d6ec43b89f4fa63a6e5ed, type: 3}
   nextScene: 1
   isFinal: 1

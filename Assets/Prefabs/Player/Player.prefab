@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 5696734765504203619}
   - component: {fileID: 3113472710714396203}
   - component: {fileID: 7880979900624599828}
+  - component: {fileID: 7664701910961031248}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -787,7 +788,7 @@ MonoBehaviour:
   rotationSpeed: 10
   dodgeForce: 3
   dodgeDuration: 0.9
-  dodgeCooldown: 1
+  dodgeRechargeInterval: 3
 --- !u!114 &7191223891302231559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +876,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d1f87043aaf0e4f9dc0cdc2041f3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7664701910961031248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709887911785335043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb03965b4556aa04987aa7a6dc851c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkInterval: 0.2
 --- !u!1 &1840855254429717138
 GameObject:
   m_ObjectHideFlags: 0

@@ -119,6 +119,7 @@ public class Boss : Enemy
 
         timeBetweenAttacks = currentPhaseSettings.attackCooldown;
         agent.speed = currentPhaseSettings.moveSpeed;
+        agent.stoppingDistance = currentPhaseSettings.attackRange;
         attackRange = currentPhaseSettings.attackRange;
     }
 
