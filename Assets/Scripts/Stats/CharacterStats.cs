@@ -6,13 +6,16 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private Stat armor;
     [SerializeField] private Stat damage;
 
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
     [SerializeField] private Stat maxHealth;
+
+    private bool isInvincible = false;
 
     public Stat Armor { get => armor; set => armor = value; }
     public Stat Damage { get => damage; set => damage = value; }
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
     public Stat MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public bool IsInvincible { get => isInvincible; set => isInvincible = value; }
 
     public UnityEvent<int, int> HealthChanged = new UnityEvent<int, int>();
 
@@ -24,6 +27,11 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(isInvincible)
+        {
+            return;
+        }
+
         int net = Mathf.Clamp(damage - armor.GetValue(), 0, int.MaxValue);
 
         currentHealth = Mathf.Max(currentHealth - net, 0);
@@ -36,14 +44,22 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void UpgradeMaxHealth(int upgrade)
+    public void Heal(int amount)
     {
-        maxHealth.Upgrade(upgrade);
-        currentHealth = Mathf.Clamp(currentHealth + upgrade, 0, maxHealth.GetValue());
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth.GetValue());
         HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
     }
 
-    private void Die()
+    public void UpgradeMaxHealth(int upgrade)
+    {
+        if(maxHealth.Upgrade(upgrade))
+        {
+            currentHealth = Mathf.Clamp(currentHealth + upgrade, 0, maxHealth.GetValue());
+            HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
+        }
+    }
+
+    public virtual void Die()
     {
         //Die
     }

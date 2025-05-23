@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,19 +39,60 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public void UseDodgeCharge()
+    public bool UseDodgeCharge()
     {
         if (currentDodgeCharges > 0)
         {
             currentDodgeCharges--;
             DodgeChargesChanged?.Invoke(currentDodgeCharges, maxDodgeCharges.GetValue());
+            return true;
         }
+        return false;
     }
 
     public void UpgradeMaxDodgeCharges(int upgrade)
     {
-        maxDodgeCharges.Upgrade(upgrade);
-        currentDodgeCharges = Mathf.Clamp(currentDodgeCharges + upgrade, 0, maxDodgeCharges.GetValue());
-        DodgeChargesChanged?.Invoke(currentDodgeCharges, maxDodgeCharges.GetValue());
+        if(maxDodgeCharges.Upgrade(upgrade))
+        {
+            currentDodgeCharges = Mathf.Clamp(currentDodgeCharges + upgrade, 0, maxDodgeCharges.GetValue());
+            DodgeChargesChanged?.Invoke(currentDodgeCharges, maxDodgeCharges.GetValue());
+        }  
+    }
+
+    public void ApplyEffectToMovementSpeed(int amount, float duration)
+    {
+        movementSpeed.AddModifier(amount);
+        StartCoroutine(RemoveEffectFromStat(movementSpeed, amount, duration));
+    }
+
+    public void ApplyEffectToDamage(int amount, float duration)
+    {
+        Damage.AddModifier(amount);
+        StartCoroutine(RemoveEffectFromStat(Damage, amount, duration));
+    }
+
+    public void ApplyInvincibility(float duration)
+    {
+        IsInvincible = true;
+        StartCoroutine(RemoveInvincibility(duration));
+    }
+
+    private IEnumerator RemoveEffectFromStat(Stat stat, int amount, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        stat.RemoveModifier(amount);
+    }
+
+    private IEnumerator RemoveInvincibility(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        IsInvincible = false;
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        GetComponentInChildren<Animator>().Play("PlayerDeath");
+        Player.Instance.IsDead = true;
     }
 }

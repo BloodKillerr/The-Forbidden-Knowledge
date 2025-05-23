@@ -105,6 +105,46 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void ConsumableEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!GameManager.Instance.IsGameStatePaused)
+            {
+                float direction = context.ReadValue<float>();
+
+                if (direction < 0)
+                {
+                    ConsumableManager.Instance.UseConsumable1();
+                }
+                else if (direction > 0)
+                {
+                    ConsumableManager.Instance.UseConsumable2();
+                }
+            }
+        }
+    }
+
+    public void SpellEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!GameManager.Instance.IsGameStatePaused)
+            {
+                float direction = context.ReadValue<float>();
+
+                if (direction < 0)
+                {
+                    SpellManager.Instance.UseSpell1();
+                }
+                else if (direction > 0)
+                {
+                    SpellManager.Instance.UseSpell2();
+                }
+            }
+        }
+    }
+
     public void TickInput()
     {
         MoveInput();
