@@ -27,6 +27,10 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private float roomSizeX = 50f;
     [SerializeField] private float roomSizeY = 50f;
 
+    public GameObject ChestPrefab;
+
+    public List<Item> ItemsToDrop = new List<Item>();
+
     public Dictionary<Vector2Int, GameObject> PlacedRooms { get => placedRooms; set => placedRooms = value; }
 
     public static DungeonManager Instance { get; private set; }
@@ -236,35 +240,63 @@ public class DungeonManager : MonoBehaviour
 
     void PlaceBossRoom()
     {
-        List<RoomData> leaves = graph
-          .Where(r => !r.IsBoss && r.Connections.Count < 4)
-          .OrderBy(_ => UnityEngine.Random.value)
-          .ToList();
+        Dictionary<RoomData, int> distances = new Dictionary<RoomData, int>();
+        Queue<RoomData> queue = new Queue<RoomData>();
 
-        foreach (RoomData parent in leaves)
+        RoomData start = graph.First(r => r.Position == Vector2Int.zero);
+        distances[start] = 0;
+        queue.Enqueue(start);
+
+        while (queue.Count > 0)
         {
-            List<Direction> freeDirections = Enum.GetValues(typeof(Direction))
-                .Cast<Direction>()
-                .Where(d => !parent.Connections.Contains(d)
-                         && !graph.Any(r => r.Position == parent.Position + DirectionExtensions.ToVector2Int(d)))
-                .ToList();
-
-            if (freeDirections.Count == 0)
+            RoomData node = queue.Dequeue();
+            int distance = distances[node];
+            foreach (Direction direction in node.Connections)
             {
-                continue;
+                Vector2Int neighborPos = node.Position + DirectionExtensions.ToVector2Int(direction);
+                RoomData neighbor = graph.First(r => r.Position == neighborPos);
+                if (distances.ContainsKey(neighbor))
+                {
+                    continue;
+                }
+                distances[neighbor] = distance + 1;
+                queue.Enqueue(neighbor);
             }
+        }
 
-            Direction dir = freeDirections[UnityEngine.Random.Range(0, freeDirections.Count)];
-            parent.Connections.Add(dir);
+        List<RoomData> leaves = graph
+            .Where(r => !r.IsBoss
+                        && !(r.Position == Vector2Int.zero)
+                        && r.Connections.Count == 1)
+            .ToList();
 
-            Vector2Int bossPos = parent.Position + DirectionExtensions.ToVector2Int(dir);
-            RoomData bossRoom = new RoomData(bossPos, boss: true);
-            bossRoom.Connections.Add(DirectionExtensions.Opposite(dir));
-            graph.Add(bossRoom);
+        if (leaves.Count == 0)
+        {
             return;
         }
 
-        Debug.LogError("Failed to place boss room: no leaf had a free exit.");
+        RoomData farthestLeaf = leaves
+            .OrderByDescending(r => distances[r])
+            .First();
+
+        List<Direction> freeDirections = Enum.GetValues(typeof(Direction))
+            .Cast<Direction>()
+            .Where(direction => !farthestLeaf.Connections.Contains(direction)
+                        && !graph.Any(r => r.Position == farthestLeaf.Position + DirectionExtensions.ToVector2Int(direction)))
+            .ToList();
+
+        if (freeDirections.Count == 0)
+        {
+            return;
+        }
+
+        Direction chosenDirection = freeDirections[UnityEngine.Random.Range(0, freeDirections.Count)];
+        farthestLeaf.Connections.Add(chosenDirection);
+
+        Vector2Int bossPos = farthestLeaf.Position + DirectionExtensions.ToVector2Int(chosenDirection);
+        RoomData bossRoom = new RoomData(bossPos, boss: true);
+        bossRoom.Connections.Add(DirectionExtensions.Opposite(chosenDirection));
+        graph.Add(bossRoom);
     }
 
     void Shuffle<T>(List<T> list)

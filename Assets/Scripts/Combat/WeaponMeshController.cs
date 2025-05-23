@@ -11,6 +11,8 @@ public class WeaponMeshController : MonoBehaviour
     private GameObject currentHolsteredMesh;
     private GameObject currentHandMesh;
 
+    private DamageCollider primaryWeaponCollider;
+
     public Weapon PrimaryWeapon { get => primaryWeapon; set => primaryWeapon = value; }
     public Weapon SecondaryWeapon { get => secondaryWeapon; set => secondaryWeapon = value; }
 
@@ -64,6 +66,17 @@ public class WeaponMeshController : MonoBehaviour
         currentHandMesh = Instantiate(primaryWeapon.mesh, hand);
         currentHandMesh.transform.localPosition = primaryWeapon.HandPositionOffset;
         currentHandMesh.transform.localEulerAngles = primaryWeapon.HandRotationOffset;
+        primaryWeaponCollider = currentHandMesh.GetComponentInChildren<DamageCollider>();
+    }
+
+    public void EnablePrimaryDamageCollider()
+    {
+        primaryWeaponCollider.EnableDamageCollider();
+    }
+
+    public void DisablePrimaryDamageCollider()
+    {
+        primaryWeaponCollider.DisableDamageCollider();
     }
 
     public void AttackWithSecondaryWeapon()
@@ -80,6 +93,7 @@ public class WeaponMeshController : MonoBehaviour
         currentHolsteredMesh = Instantiate(primaryWeapon.mesh, weaponHolster);
         currentHolsteredMesh.transform.localPosition = primaryWeapon.HolsterPositionOffset;
         currentHolsteredMesh.transform.localEulerAngles = primaryWeapon.HolsterRotationOffset;
+        primaryWeaponCollider = null;
     }
 
     public void HideSecondaryWeapon()

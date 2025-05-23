@@ -13917,9 +13917,19 @@ MonoBehaviour:
   inventoryHolder: {fileID: 0}
   inventorySlot: {fileID: 0}
   tabHolder: {fileID: 0}
+  statBlockPrefab: {fileID: 0}
+  statsHolder: {fileID: 0}
   equipmentSlotHolders: []
   equipmentConsumableHolders: []
   equipmentSpellHolders: []
+  statsButton: {fileID: 0}
+  craftingPanel: {fileID: 0}
+  resourcesHolder: {fileID: 0}
+  craftingCloseButton: {fileID: 0}
+  recipesHolder: {fileID: 0}
+  recipeBlockPrefab: {fileID: 0}
+  pausePanel: {fileID: 0}
+  statPointsText: {fileID: 0}
 --- !u!4 &691508570
 Transform:
   m_ObjectHideFlags: 0

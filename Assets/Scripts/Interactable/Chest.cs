@@ -29,4 +29,9 @@ public class Chest : Interactable
         }
         Destroy(gameObject);
     }
+
+    public void AddItem(Item item, int minAmount, int maxAmount, float dropChance)
+    {
+        lootTable.Add(new Loot(Instantiate(item), minAmount, maxAmount, dropChance));
+    }
 }

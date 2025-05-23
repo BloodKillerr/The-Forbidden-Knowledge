@@ -72,3 +72,5 @@ MonoBehaviour:
   maxRooms: 15
   roomSizeX: 25
   roomSizeY: 25
+  ChestPrefab: {fileID: 1002652233622115229, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
+  ItemsToDrop: []

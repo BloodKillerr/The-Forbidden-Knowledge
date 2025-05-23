@@ -18,3 +18,6 @@ MonoBehaviour:
   Type: 2
   Equipped: 0
   slot: 0
+  Cooldown: 30
+  effects:
+  - {fileID: 11400000, guid: af605e0109bb5864d8eb4afd581fcb94, type: 2}

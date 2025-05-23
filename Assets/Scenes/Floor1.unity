@@ -511,6 +511,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: ItemsToDrop.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'ItemsToDrop.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 61d2d5e6d8b593c4ba978f3450833e34, type: 2}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'ItemsToDrop.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d644398e52e2004e8432f4ffe3ac812, type: 2}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'ItemsToDrop.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b549b1499ad5bfb448908d3a17be5ecb, type: 2}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'ItemsToDrop.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 21b4655ce2d043f41a16f9b9554e177b, type: 2}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'ItemsToDrop.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f764940bb44aa944a9e62fa43d101bb, type: 2}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'ItemsToDrop.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 432e8d32245c36e40b0babaeace45c45, type: 2}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'bossRoomPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 9163779169686516746, guid: 643481a37ffaadb44a0a801afbaf3638, type: 3}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'bossRoomPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3563522719698387834, guid: e09480325d310d34eac3da35ea6da58b, type: 3}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'bossRoomPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6356689472583952710, guid: 7ac2a992f0ddcec41879d6ee630c1d4b, type: 3}
+    - target: {fileID: 6564915795342399786, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      propertyPath: 'bossRoomPrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1780203060546759512, guid: 6fcca1fe07b5267449f413bdb7c666b4, type: 3}
     - target: {fileID: 6824933115359314920, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
       propertyPath: m_Name
       value: SceneManager
@@ -558,8 +602,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6824933115359314920, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7747352638691551148}
   m_SourcePrefab: {fileID: 100100000, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+--- !u!1 &7747352638691551147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6824933115359314920, guid: a1fd01b2f5efac349b3ce8e3bcc53f43, type: 3}
+  m_PrefabInstance: {fileID: 7747352638691551146}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7747352638691551148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747352638691551147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bb0b788bd5a2848bce25978aa9f4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingPosition: {x: 0, y: 0, z: 0}
+  StartingRotation: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

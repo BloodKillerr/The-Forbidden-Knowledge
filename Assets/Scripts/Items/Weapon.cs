@@ -12,5 +12,6 @@ public class Weapon : Equipment
     public Vector3 HandRotationOffset;
 
     [Header("Attack Animations")]
-    public string NormalAttackAnimation;
+    public string[] AttackAnimations;
+    public float ComboResetTime = 1f;
 }
