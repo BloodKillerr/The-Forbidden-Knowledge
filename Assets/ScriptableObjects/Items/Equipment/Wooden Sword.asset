@@ -29,4 +29,5 @@ MonoBehaviour:
   AttackAnimations:
   - SwordAttack1
   - SwordAttack2
+  - SwordAttack3
   ComboResetTime: 1

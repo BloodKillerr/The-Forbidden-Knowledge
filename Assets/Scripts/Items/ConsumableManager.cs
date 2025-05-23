@@ -7,6 +7,9 @@ public class ConsumableManager : MonoBehaviour
     private Consumable consumable1 = null;
     private Consumable consumable2 = null;
 
+    private float nextUseTime1 = 0f;
+    private float nextUseTime2 = 0f;
+
     public static ConsumableManager Instance { get; private set; }
 
     private void Awake()
@@ -72,5 +75,54 @@ public class ConsumableManager : MonoBehaviour
             consumable2 = null;
         }
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
+    }
+
+    public void UseConsumable1()
+    {
+        if (consumable1 == null)
+        {
+            return;
+        }
+
+        if (Time.time < nextUseTime1)
+        {
+            return;
+        }
+        
+        consumable1.UseEffects();
+
+        
+        nextUseTime1 = Time.time + consumable1.Cooldown;
+    }
+
+    public void UseConsumable2()
+    {
+        if (consumable2 == null)
+        {
+            return;
+        }
+
+        if (Time.time < nextUseTime2)
+        {
+            return;
+        }
+
+        consumable2.UseEffects();
+
+
+        nextUseTime2 = Time.time + consumable2.Cooldown;
+    }
+
+    public void ShortenCooldown(float amount)
+    {
+        if (consumable1 != null)
+        {
+            nextUseTime1 = Mathf.Max(Time.time, nextUseTime1 - amount);
+        }
+
+        if (consumable2 != null)
+        {
+            nextUseTime2 = Mathf.Max(Time.time, nextUseTime2 - amount);
+        }
     }
 }

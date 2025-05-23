@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageCollider : MonoBehaviour
 {
-    private Collider damageCollider;
+    protected Collider damageCollider;
 
     private void Awake()
     {
@@ -21,8 +21,13 @@ public class DamageCollider : MonoBehaviour
         damageCollider.enabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
+        if(!damageCollider.enabled)
+        {
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             PlayerStats stats = other.GetComponent<PlayerStats>();
