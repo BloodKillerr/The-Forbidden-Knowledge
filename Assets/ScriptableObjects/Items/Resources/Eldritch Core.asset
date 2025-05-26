@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Eldritch Core
   m_EditorClassIdentifier: 
   Name: Eldritch Core
+  Description: Source of great power
   Icon: {fileID: 21300000, guid: b05ed71c29991984eba9a3aad48153c1, type: 3}
   Amount: 1
   Type: 4

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Reinforced Wood Scrap
   m_EditorClassIdentifier: 
   Name: Reinforced Wood Scrap
+  Description: Harder and more durable
   Icon: {fileID: 21300000, guid: a0842fe4c5524ad47aa1caca4b00c8d2, type: 2}
   Amount: 1
   Type: 4

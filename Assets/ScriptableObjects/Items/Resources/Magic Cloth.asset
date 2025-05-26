@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Magic Cloth
   m_EditorClassIdentifier: 
   Name: Magic Cloth
+  Description: Cloth filled with magic
   Icon: {fileID: 21300000, guid: 0eb08ec2de8f4a74b9a4b556e134374b, type: 2}
   Amount: 1
   Type: 4

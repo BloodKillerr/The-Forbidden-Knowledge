@@ -43,7 +43,7 @@ public class PauseManager : MonoBehaviour
 		else
 		{
 			notesPanel.SetActive(true);
-			NotesManager.Instance.PopulateNotesList();
+			NotesManager.Instance.OnNotesPanelOpened();
 		}
 	}
 

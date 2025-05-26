@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Refresh Potion
   m_EditorClassIdentifier: 
   Name: Refresh Potion
+  Description: Potion shortening cooldown
   Icon: {fileID: 21300000, guid: a3e4cd25084b6c94581703632b185952, type: 3}
   Amount: 1
   Type: 2

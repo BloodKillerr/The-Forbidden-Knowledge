@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Essence Stone
   m_EditorClassIdentifier: 
   Name: Essence Stone
+  Description: Stone filled with energy
   Icon: {fileID: 21300000, guid: 90c0429e6e9234443b3589469c89cfb7, type: 2}
   Amount: 1
   Type: 4

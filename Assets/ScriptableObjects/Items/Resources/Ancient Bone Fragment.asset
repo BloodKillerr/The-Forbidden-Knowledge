@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ancient Bone Fragment
   m_EditorClassIdentifier: 
   Name: Ancient Bone Fragment
+  Description: Bone of ancient king
   Icon: {fileID: 21300000, guid: 61434932e9dc64943abb58cf23060572, type: 2}
   Amount: 1
   Type: 4

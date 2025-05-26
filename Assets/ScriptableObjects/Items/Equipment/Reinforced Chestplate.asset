@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Reinforced Chestplate
   m_EditorClassIdentifier: 
   Name: Reinforced Chestplate
+  Description: Strong and reliable
   Icon: {fileID: 21300000, guid: b2bdf98752f172c4cb90d54a52f06308, type: 3}
   Amount: 1
   Type: 1
   EqSlot: 1
-  ArmorModifier: 25
-  DamageModifier: 15
+  ArmorModifier: 24
+  DamageModifier: 0
   MovementSpeedModifier: -1
   Equipped: 0
-  mesh: {fileID: 0}

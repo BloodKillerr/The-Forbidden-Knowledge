@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Executioner's Greaves
   m_EditorClassIdentifier: 
   Name: Executioner's Greaves
+  Description: Covered in blood of the innocent
   Icon: {fileID: 21300000, guid: 10e44727b4f96d946bf17447cabf4a70, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 2
-  ArmorModifier: 25
-  DamageModifier: 10
+  ArmorModifier: 16
+  DamageModifier: 0
   MovementSpeedModifier: -1
   Equipped: 0
-  mesh: {fileID: 0}

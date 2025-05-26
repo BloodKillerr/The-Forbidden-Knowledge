@@ -35,12 +35,14 @@ public class NotesManager : MonoBehaviour
 		noteContentText.text = "";
 	}
 
-	public void UnlockNote(string noteID)
+	public bool UnlockNote(string noteID)
 	{
 		if (unlockedNoteIDs.Add(noteID))
 		{
 			Debug.Log("Note Unlocked: " + noteID);
+			return true;
 		}
+		return false;
 	}
 
 	public void PopulateNotesList()
@@ -66,8 +68,6 @@ public class NotesManager : MonoBehaviour
 			{
 				ShowNote(index);
 			});
-
-			UnlockNote(note.noteID);
 		}
 	}
 

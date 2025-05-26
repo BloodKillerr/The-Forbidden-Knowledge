@@ -3,10 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Healing Effect", menuName = "Effects/Healing Effect")]
 public class HealingEffect : Effect
 {
-    public int HealAmount = 50;
+    [Range(0.0f, 1.0f)]
+    public float HealAmount = .5f;
     public override void UseEffect()
     {
         base.UseEffect();
-        Player.Instance.GetComponent<PlayerStats>().Heal(HealAmount);
+        PlayerStats stats = Player.Instance.GetComponent<PlayerStats>();
+        stats.Heal((int)(stats.MaxHealth.GetValue()*HealAmount));
     }
 }

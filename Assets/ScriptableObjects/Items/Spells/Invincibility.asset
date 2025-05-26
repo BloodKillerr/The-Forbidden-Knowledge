@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Invincibility
   m_EditorClassIdentifier: 
   Name: Invincibility
+  Description: Grants invincibility
   Icon: {fileID: 21300000, guid: 8dd770abaa261d549acf0c7b6e65debf, type: 3}
   Amount: 1
   Type: 3

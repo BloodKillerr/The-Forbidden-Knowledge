@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2ac0009a58c2b43b39db10eef9cc57, type: 3}
   m_Name: Potion Damage Effect
   m_EditorClassIdentifier: 
-  amount: 15
+  amount: 0.2
   effectTime: 3

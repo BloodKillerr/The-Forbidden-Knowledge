@@ -4,7 +4,7 @@ public class FireballProjectile : MonoBehaviour
 {
     public float Speed = 10f;
 
-    public int Damage = 25;
+    public int Damage = 30;
 
     public float lifeTime = 5f;
 
@@ -21,9 +21,10 @@ public class FireballProjectile : MonoBehaviour
     private void HandleCollision(GameObject hit)
     {
         EnemyStats stats = hit.GetComponent<EnemyStats>();
+        PlayerStats playerStats = Player.Instance.GetComponent<PlayerStats>();
         if (stats != null)
         {
-            stats.TakeDamage(Damage);
+            stats.TakeDamage((int)(playerStats.Damage.GetValue()*1.5f) + Damage);
         }
         Destroy(gameObject);
     }

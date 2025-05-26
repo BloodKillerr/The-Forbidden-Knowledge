@@ -10,6 +10,7 @@ public class Boss : Enemy
     {
         public string animationName;
         public float damageMultiplier;
+        public float attackCooldown;
 
         [Range(0f, 1f)]
         public float probability;
@@ -21,8 +22,6 @@ public class Boss : Enemy
         public string entryAnimationName;
 
         public List<Attack> attacks;
-
-        public float attackCooldown;
 
         public float attackRange;
 
@@ -43,6 +42,8 @@ public class Boss : Enemy
     [SerializeField] private GameObject portalPrefab;
     [SerializeField] private int nextScene;
     [SerializeField] private bool isFinal = false;
+
+    [SerializeField] private List<string> notes = new List<string>();
 
     protected override void Awake()
     {
@@ -117,7 +118,6 @@ public class Boss : Enemy
     {
         currentPhaseSettings = phases[phaseIndex];
 
-        timeBetweenAttacks = currentPhaseSettings.attackCooldown;
         agent.speed = currentPhaseSettings.moveSpeed;
         agent.stoppingDistance = currentPhaseSettings.attackRange;
         attackRange = currentPhaseSettings.attackRange;
@@ -158,6 +158,7 @@ public class Boss : Enemy
             roll -= chunk;
         }
 
+        timeBetweenAttacks = chosen.attackCooldown;
         bossDamageCollider.CurrentDamageMultiplier = chosen.damageMultiplier;
         animationHandler.Animator.CrossFade(chosen.animationName, 0.2f);
     }
@@ -175,5 +176,21 @@ public class Boss : Enemy
             portal.SceneIndex = nextScene;
             portal.isFinal = isFinal;
         }
+
+        UnlockNote();
+    }
+
+    private void UnlockNote()
+    {
+        bool unlocked = false;
+        do
+        {
+            int random = UnityEngine.Random.Range(0, notes.Count);
+
+            if(NotesManager.Instance.UnlockNote(notes[random]))
+            {
+                unlocked = true;
+            }
+        } while (!unlocked);
     }
 }

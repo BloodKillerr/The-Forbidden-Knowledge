@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,16 @@ public enum MenuType
     INVENTORY,
     CRAFTING
 }
+
+public enum InventoryTab
+{
+    ALL,
+    EQUIPMENT,
+    CONSUMABLES,
+    SPELLS,
+    RESOURCES
+}
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private CanvasGroup inventoryPanel;
@@ -47,7 +58,37 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private CanvasGroup pausePanel;
 
+    [Header("Health")]
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private Image healthFrame;
+    [SerializeField] private Color normalHealthColor = Color.white;
+    [SerializeField] private Color invincibleHealthColor = Color.yellow;
+
+    [Header("Dodge Charges")]
+    [SerializeField] private Transform dodgeContainer;
+    [SerializeField] private GameObject dodgeChargePrefab;
+
+    [Header("XP & Stat Points")]
+    [SerializeField] private Image xpFillImage;
     [SerializeField] private TMP_Text statPointsText;
+
+    [Header("Consumable Cooldowns")]
+    [SerializeField] private Image[] consumableImages = new Image[2];
+    [SerializeField] private Slider[] consumableCooldownSliders = new Slider[2];
+
+    [Header("Spell Cooldowns")]
+    [SerializeField] private Image[] spellImages = new Image[2];
+    [SerializeField] private Slider[] spellCooldownSliders = new Slider[2];
+
+    [Header("Pickup Messages")]
+    [SerializeField] private RectTransform messageBoxContainer;
+    [SerializeField] private GameObject messagePrefab;
+    [SerializeField] private float messageDisplayTime = 2f;
+    [SerializeField] private int maxConcurrentMessages = 3;
+    private Queue<GameObject> pendingMessages = new Queue<GameObject>();
+    private List<GameObject> activeMessages = new List<GameObject>();
+    private bool processingQueue = false;
 
     private Item lastUsedItem = null;
 
@@ -60,6 +101,10 @@ public class UIManager : MonoBehaviour
     public InventoryTab CurrentInventoryTab { get => currentInventoryTab; set => currentInventoryTab = value; }
 
     public Item LastUsedItem { get => lastUsedItem; set => lastUsedItem = value; }
+
+    [SerializeField] private GameObject TooltipGO;
+
+    public ToolTipUI Tooltip;
 
     public static UIManager Instance { get; private set; }
 
@@ -74,6 +119,7 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
         eventSystem = EventSystem.current;
+        Tooltip = TooltipGO.GetComponent<ToolTipUI>();
     }
 
     private void Start()
@@ -109,8 +155,286 @@ public class UIManager : MonoBehaviour
             craftingCloseButton.onClick.AddListener(delegate { ToogleMenu(MenuType.CRAFTING); });
         }
 
-        UpdateStatPointsText();
+        Tooltip.Hide();
+
+        if (Player.Instance == null)
+        {
+            return;
+        }
+        PlayerStats playerStats = Player.Instance.GetComponent<PlayerStats>();
+
+        playerStats.HealthChanged.AddListener(OnHealthChanged);
+        playerStats.ApplyInvincibilityEvent.AddListener(OnInvincibilityStarted);
+        OnHealthChanged(playerStats.CurrentHealth, playerStats.MaxHealth.GetValue());
+
+        playerStats.DodgeChargesChanged.AddListener(OnDodgeChargesChanged);
+        OnDodgeChargesChanged(playerStats.CurrentDodgeCharges, playerStats.MaxDodgeCharges.GetValue());
+
+        LevelingManager levelingManager = LevelingManager.Instance;
+        levelingManager.XPChanged.AddListener(OnXPChanged);
+        levelingManager.StatPointsChanged.AddListener(OnStatPointsChanged);
+        OnXPChanged(levelingManager.CurrentXP, levelingManager.RequiredXP);
+        OnStatPointsChanged(levelingManager.StatPoints);
+
+        InventoryManager.Instance.OnItemAdded.AddListener(OnItemAdded);
+
+        for (int i = 0; i < 2; i++)
+        {
+            consumableImages[i].gameObject.SetActive(false);
+            consumableCooldownSliders[i].gameObject.SetActive(false);
+            spellImages[i].gameObject.SetActive(false);
+            spellCooldownSliders[i].gameObject.SetActive(false);
+        }
+
+        ConsumableManager consumableManager = ConsumableManager.Instance;
+        consumableManager.OnConsumableEquipped.AddListener(OnConsumableEquipped);
+        consumableManager.OnConsumableUnequipped.AddListener(OnConsumableUnequipped);
+        consumableManager.OnConsumableUsed.AddListener(OnConsumableUsed);
+
+        SpellManager spellManager = SpellManager.Instance;
+        spellManager.OnSpellEquipped.AddListener(OnSpellEquipped);
+        spellManager.OnSpellUnequipped.AddListener(OnSpellUnequipped);
+        spellManager.OnSpellUsed.AddListener(OnSpellUsed);
     }
+
+    #region Health & Invincibility
+
+    private void OnHealthChanged(int current, int max)
+    {
+        healthSlider.maxValue = max;
+        healthSlider.value = current;
+        healthText.text = $"{current} / {max}";
+    }
+
+    private void OnInvincibilityStarted(float duration)
+    {
+        healthFrame.color = invincibleHealthColor;
+        StartCoroutine(ResetHealthFrameAfter(duration));
+    }
+
+    private IEnumerator ResetHealthFrameAfter(float t)
+    {
+        yield return new WaitForSeconds(t);
+        healthFrame.color = normalHealthColor;
+    }
+
+    public void ShowInvincibilityFrame()
+    {
+        healthFrame.color = invincibleHealthColor;
+    }
+
+    public void HideInvincibilityFrame()
+    {
+        healthFrame.color = normalHealthColor;
+    }
+
+    #endregion
+
+    #region Dodge Charges
+
+    private void OnDodgeChargesChanged(int current, int max)
+    {
+        foreach (Transform t in dodgeContainer)
+        {
+            Destroy(t.gameObject);
+        }
+
+        for (int i = 0; i < max; i++)
+        {
+            GameObject go = Instantiate(dodgeChargePrefab, dodgeContainer);
+            Image img = go.GetComponent<Image>();
+            img.color = (i < current) ? Color.white : Color.gray;
+        }
+    }
+
+    #endregion
+
+    #region XP & Stat Points
+
+    private void OnXPChanged(int currentXP, int requiredXP)
+    {
+        xpFillImage.fillAmount = requiredXP > 0 ? (float)currentXP / requiredXP : 0f;
+    }
+
+    private void OnStatPointsChanged(int points)
+    {
+        statPointsText.text = points.ToString();
+    }
+
+    #endregion
+
+    #region Consumable & Spell Cooldowns
+
+    private void OnConsumableEquipped(int slot, Consumable item)
+    {
+        int idx = slot - 1;
+        consumableImages[idx].sprite = item.Icon;
+        consumableImages[idx].gameObject.SetActive(true);
+
+        if (consumableCooldownSliders[idx].gameObject.activeSelf)
+        {
+            return;
+        }
+
+        consumableCooldownSliders[idx].gameObject.SetActive(false);
+    }
+
+    private void OnConsumableUnequipped(int slot)
+    {
+        int idx = slot - 1;
+        consumableImages[idx].gameObject.SetActive(false);
+
+        if (consumableCooldownSliders[idx].gameObject.activeSelf)
+        {
+            return;
+        }
+
+        consumableCooldownSliders[idx].gameObject.SetActive(false);
+    }
+
+    private void OnSpellEquipped(int slot, Spell item)
+    {
+        int idx = slot - 1;
+        spellImages[idx].sprite = item.Icon;
+        spellImages[idx].gameObject.SetActive(true);
+
+        if (spellCooldownSliders[idx].gameObject.activeSelf)
+        {
+            return;
+        }
+
+        spellCooldownSliders[idx].gameObject.SetActive(false);
+    }
+
+    private void OnSpellUnequipped(int slot)
+    {
+        int idx = slot - 1;
+        spellImages[idx].gameObject.SetActive(false);
+
+        if (spellCooldownSliders[idx].gameObject.activeSelf)
+        {
+            return;
+        }
+
+        spellCooldownSliders[idx].gameObject.SetActive(false);
+    }
+
+    private void OnConsumableUsed(int slot, Consumable item)
+    {
+        int idx = slot - 1;
+        StartCoroutine(RunCooldown(item.Cooldown, idx, consumableImages, consumableCooldownSliders, item.Icon));
+    }
+
+    private void OnSpellUsed(int slot, Spell item)
+    {
+        int idx = slot - 1;
+        StartCoroutine(RunCooldown(item.Cooldown, idx, spellImages, spellCooldownSliders, item.Icon));
+    }
+
+    private IEnumerator RunCooldown(float cooldown, int idx, Image[] images, Slider[] sliders, Sprite icon)
+    {
+        images[idx].sprite = icon;
+        images[idx].gameObject.SetActive(true);
+
+        sliders[idx].maxValue = cooldown;
+        sliders[idx].value = cooldown;
+        sliders[idx].gameObject.SetActive(true);
+
+        float remaining = cooldown;
+        while (remaining > 0f)
+        {
+            remaining -= Time.deltaTime;
+            sliders[idx].value = Mathf.Max(0f, remaining);
+            yield return null;
+        }
+
+        sliders[idx].gameObject.SetActive(false);
+    }
+
+    public void ResetAllCooldownUI()
+    {
+        for (int i = 0; i < consumableCooldownSliders.Length; i++)
+        {
+            consumableCooldownSliders[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < spellCooldownSliders.Length; i++)
+        {
+            spellCooldownSliders[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void RefreshQuickbarUI()
+    {
+        ResetAllCooldownUI();
+
+        StopAllCoroutines();
+    }
+
+    #endregion
+
+    #region Pickup Message Queue
+
+    private void OnItemAdded(Item item)
+    {
+        GameObject go = Instantiate(messagePrefab, messageBoxContainer);
+        go.SetActive(false);
+        TMP_Text txt = go.GetComponentInChildren<TMP_Text>();
+        txt.text = $"Picked up {item.Name} x{item.Amount}";
+
+        pendingMessages.Enqueue(go);
+
+        if (!processingQueue)
+        {
+            StartCoroutine(ProcessMessageQueue());
+        }
+    }
+
+    private IEnumerator ProcessMessageQueue()
+    {
+        processingQueue = true;
+
+        while (pendingMessages.Count > 0)
+        {
+            GameObject msg = pendingMessages.Dequeue();
+
+            if (activeMessages.Count >= maxConcurrentMessages)
+            {
+                GameObject oldest = activeMessages[0];
+                activeMessages.RemoveAt(0);
+                Destroy(oldest);
+            }
+
+            msg.SetActive(true);
+            activeMessages.Add(msg);
+
+            yield return new WaitForSeconds(messageDisplayTime);
+        }
+
+        while (activeMessages.Count > 0)
+        {
+            GameObject oldest = activeMessages[0];
+            activeMessages.RemoveAt(0);
+            Destroy(oldest);
+            yield return new WaitForSeconds(messageDisplayTime);
+        }
+
+        processingQueue = false;
+    }
+
+    public void ClearMessages()
+    {
+        pendingMessages.Clear();
+        activeMessages.Clear();
+        processingQueue = false;
+
+        foreach(Transform child in messageBoxContainer)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    #endregion
 
     public void ChangeSelectedElement(GameObject toSelect)
     {
@@ -191,6 +515,7 @@ public class UIManager : MonoBehaviour
                     inventoryPanel.alpha = 0f;
                     inventoryPanel.blocksRaycasts = false;
                     inventoryPanel.interactable = false;
+                    Tooltip.Hide();
                 }
                 break;
             case MenuType.CRAFTING:
@@ -199,6 +524,7 @@ public class UIManager : MonoBehaviour
                     craftingPanel.alpha = 0f;
                     craftingPanel.blocksRaycasts = false;
                     craftingPanel.interactable = false;
+                    Tooltip.Hide();
                 }
                 break;
         }
@@ -407,7 +733,7 @@ public class UIManager : MonoBehaviour
         CreateStatBlock(
             "Health",
             () => $"{playerStats.CurrentHealth}/{playerStats.MaxHealth.GetValue()}",
-            () => playerStats.UpgradeMaxHealth(50),
+            () => playerStats.UpgradeMaxHealth(60),
             playerStats.HealthChanged
         );
 
@@ -423,7 +749,7 @@ public class UIManager : MonoBehaviour
         CreateStatBlock(
             "Armor",
             () => playerStats.Armor.GetValue().ToString(),
-            () => playerStats.Armor.Upgrade(10),
+            () => playerStats.Armor.Upgrade(8),
             playerStats.Armor.ValueChanged
         );
 
@@ -431,7 +757,7 @@ public class UIManager : MonoBehaviour
         CreateStatBlock(
             "Damage",
             () => playerStats.Damage.GetValue().ToString(),
-            () => playerStats.Damage.Upgrade(10),
+            () => playerStats.Damage.Upgrade(12),
             playerStats.Damage.ValueChanged
         );
 
@@ -465,21 +791,4 @@ public class UIManager : MonoBehaviour
         sb.Initialize(label, readout, onUpgrade);
         changeEvent.AddListener((cur, max) => sb.Refresh());
     }
-
-    public void UpdateStatPointsText()
-    {
-        if(statPointsText != null)
-        {
-            statPointsText.text = string.Format("Stat Points: {0}", LevelingManager.Instance.StatPoints);
-        }
-    }
-}
-
-public enum InventoryTab
-{
-    ALL,
-    EQUIPMENT,
-    CONSUMABLES,
-    SPELLS,
-    RESOURCES
 }

@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private List<Item> items = new List<Item>();
 
+    [SerializeField] private Item startingItem;
+
     public List<Item> Items { get => items; set => items = value; }
 
-    public static InventoryManager Instance { get; private set; }
+    public UnityEvent<Item> OnItemAdded = new UnityEvent<Item>();
 
-    [SerializeField] private Item startingItem;
+    public static InventoryManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class InventoryManager : MonoBehaviour
         {
             items.Add(copy);
         }
+        OnItemAdded.Invoke(copy);
     }
 
     public bool Remove(Item item, int amount)

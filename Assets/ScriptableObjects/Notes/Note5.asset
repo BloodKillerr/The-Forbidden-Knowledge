@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b82653bffd4ca524eb8f3738c81d067c, type: 3}
-  m_Name: SampleNote1
+  m_Name: Note5
   m_EditorClassIdentifier: 
-  noteID: sample_note_01
-  title: Sample Note 01
-  content: Sample note content 1
+  noteID: Note5
+  title: Interest
+  content: "\u2026an unwavering spirit. Spirit and the will to live no matter what.
+    That was the key to create a vessel that would one day reach what even the King
+    could not reach by his own means. So from that day onward, the King followed
+    boys every step, not looking after him but looking at him."

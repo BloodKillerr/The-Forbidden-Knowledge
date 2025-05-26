@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class CharacterStats : MonoBehaviour
 {
+    public string CharacterName;
+
     [SerializeField] private Stat armor;
     [SerializeField] private Stat damage;
 
@@ -32,7 +34,8 @@ public class CharacterStats : MonoBehaviour
             return;
         }
 
-        int net = Mathf.Clamp(damage - armor.GetValue(), 0, int.MaxValue);
+        int net = (damage * 100) / (100 + armor.GetValue());
+        net = Mathf.Clamp(net, 0, int.MaxValue);
 
         currentHealth = Mathf.Max(currentHealth - net, 0);
 

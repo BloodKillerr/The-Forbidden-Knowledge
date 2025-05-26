@@ -90,9 +90,13 @@ public class WeaponMeshController : MonoBehaviour
         {
             Destroy(currentHandMesh);
         }
-        currentHolsteredMesh = Instantiate(primaryWeapon.mesh, weaponHolster);
-        currentHolsteredMesh.transform.localPosition = primaryWeapon.HolsterPositionOffset;
-        currentHolsteredMesh.transform.localEulerAngles = primaryWeapon.HolsterRotationOffset;
+
+        if(primaryWeapon != null)
+        {
+            currentHolsteredMesh = Instantiate(primaryWeapon.mesh, weaponHolster);
+            currentHolsteredMesh.transform.localPosition = primaryWeapon.HolsterPositionOffset;
+            currentHolsteredMesh.transform.localEulerAngles = primaryWeapon.HolsterRotationOffset;
+        }
         primaryWeaponCollider = null;
     }
 

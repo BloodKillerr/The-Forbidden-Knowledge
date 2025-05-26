@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b82653bffd4ca524eb8f3738c81d067c, type: 3}
-  m_Name: SampleNote2
+  m_Name: Note1
   m_EditorClassIdentifier: 
-  noteID: sample_note_2
-  title: Sample Note 2
-  content: Sample note content 2
+  noteID: Note1
+  title: Beginning
+  content: "At the very beginning of time, the - - King dreamt about the world that
+    would suit him. But despite many efforts, he could not achieve his \u201Cdream\u201D.
+    So then he thought. What if not him, but someone else, were to reach his\u2026"

@@ -813,22 +813,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e528030542913c4bad23b3c83bfa678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterName: Unnamed One
   armor:
-    baseValue: 0
-    valueUpgradeCap: 500
+    baseValue: 20
+    valueUpgradeCap: 100
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 0
-    valueUpgradeCap: 500
+    baseValue: 40
+    valueUpgradeCap: 160
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   currentHealth: 0
   maxHealth:
-    baseValue: 300
-    valueUpgradeCap: 5000
+    baseValue: 400
+    valueUpgradeCap: 1000
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
@@ -848,6 +849,9 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   DodgeChargesChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  ApplyInvincibilityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3113472710714396203

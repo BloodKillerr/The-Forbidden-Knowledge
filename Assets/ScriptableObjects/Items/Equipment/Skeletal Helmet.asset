@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Skeletal Helmet
   m_EditorClassIdentifier: 
   Name: Skeletal Helmet
+  Description: A chilly atmosphere around it...
   Icon: {fileID: 21300000, guid: 011258840af9662478e1f16b94b6809c, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 0
-  ArmorModifier: 5
-  DamageModifier: 10
+  ArmorModifier: 8
+  DamageModifier: 0
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}

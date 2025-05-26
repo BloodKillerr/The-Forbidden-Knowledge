@@ -33,7 +33,7 @@ public class DamageCollider : MonoBehaviour
             PlayerStats stats = other.GetComponent<PlayerStats>();
             EnemyStats ownStats = gameObject.GetComponentInParent<EnemyStats>();
 
-            if (stats != null)
+            if (stats != null && ownStats != null)
             {
                 stats.TakeDamage(ownStats.Damage.GetValue());
             }
@@ -44,7 +44,7 @@ public class DamageCollider : MonoBehaviour
             EnemyStats stats = other.GetComponent<EnemyStats>();
             PlayerStats ownStats = gameObject.GetComponentInParent<PlayerStats>();
 
-            if (stats != null)
+            if (stats != null && ownStats != null)
             {
                 stats.TakeDamage(ownStats.Damage.GetValue());
             }

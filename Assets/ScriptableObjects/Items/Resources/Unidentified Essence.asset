@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unidentified Essence
   m_EditorClassIdentifier: 
   Name: Unidentified Essence
+  Description: ...Yet feels familiar
   Icon: {fileID: 21300000, guid: 948f66bf06c76c14583cd2b24b57c0d9, type: 3}
   Amount: 1
   Type: 4

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Old Bones
   m_EditorClassIdentifier: 
   Name: Old Bones
+  Description: Bones of old traveller
   Icon: {fileID: 21300000, guid: ea726b12be80a3441be733ea15975b25, type: 2}
   Amount: 1
   Type: 4

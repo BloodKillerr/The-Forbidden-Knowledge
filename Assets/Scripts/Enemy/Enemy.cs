@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
     protected bool isFrozen = false;
     protected float originalRotationSpeed;
 
+    private EnemyHealthUI healthUI;
+
     public RoomController RoomController;
 
     public static UnityEvent<Enemy> OnEnemyKilled = new UnityEvent<Enemy>();
@@ -46,6 +48,8 @@ public class Enemy : MonoBehaviour
         agent.updateRotation = false;
         damageCollider = GetComponentInChildren<DamageCollider>();
         originalRotationSpeed = rotationSpeed;
+        healthUI = GetComponentInChildren<EnemyHealthUI>();
+        healthUI.Initialize(enemyStats);
     }
 
     protected virtual void Update()

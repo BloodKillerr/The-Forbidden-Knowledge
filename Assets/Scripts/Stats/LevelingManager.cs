@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class LevelingManager : MonoBehaviour
@@ -7,10 +8,17 @@ public class LevelingManager : MonoBehaviour
 
     [SerializeField] private int currentXP = 0;
 
-    [SerializeField] private int requiredXP = 100;
+    [SerializeField] private int requiredXP = 400;
+
+    public int StatPoints { get => statPoints; set => statPoints = value; }
+    public int StatPoints1 { get => statPoints; set => statPoints = value; }
+    public int CurrentXP { get => currentXP; set => currentXP = value; }
+    public int RequiredXP { get => requiredXP; set => requiredXP = value; }
+
+    public UnityEvent<int, int> XPChanged = new UnityEvent<int, int>();
+    public UnityEvent<int> StatPointsChanged = new UnityEvent<int>();
 
     public static LevelingManager Instance { get; private set; }
-    public int StatPoints { get => statPoints; set => statPoints = value; }
 
     private void Awake()
     {
@@ -28,14 +36,18 @@ public class LevelingManager : MonoBehaviour
     {
         currentXP += xp;
 
-        if(currentXP >= requiredXP)
+        XPChanged.Invoke(currentXP, requiredXP);
+
+        if (currentXP >= requiredXP)
         {
             statPoints++;
+            StatPointsChanged.Invoke(statPoints);
 
             int remainder = currentXP - requiredXP;
             currentXP = remainder;
-            requiredXP = (int)((requiredXP + 59) * 1.05f);
-            UIManager.Instance.UpdateStatPointsText();
+            requiredXP = (int)((requiredXP + 50) * 1.05f);
+
+            XPChanged.Invoke(currentXP, requiredXP);
         }
     }
 
@@ -44,7 +56,7 @@ public class LevelingManager : MonoBehaviour
         if(statPoints > 0)
         {
             statPoints--;
-            UIManager.Instance.UpdateStatPointsText();
+            StatPointsChanged.Invoke(statPoints);
             return true;
         }
         return false;

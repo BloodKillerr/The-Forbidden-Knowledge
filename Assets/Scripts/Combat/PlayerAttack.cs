@@ -96,4 +96,13 @@ public class PlayerAttack : MonoBehaviour
     {
         IsAttacking = state;
     }
+
+    public void ResetAttackState()
+    {
+        isAttacking = false;
+        canAttack = true;
+        inputBuffered = false;
+        comboIndex = 0;
+        lastAttackTime = 0f;
+    }
 }

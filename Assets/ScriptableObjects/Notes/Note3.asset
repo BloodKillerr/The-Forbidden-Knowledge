@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82653bffd4ca524eb8f3738c81d067c, type: 3}
+  m_Name: Note3
+  m_EditorClassIdentifier: 
+  noteID: Note3
+  title: Search
+  content: "\u2026to one day, reach the place he was destined to reach. But after
+    years and years of searching for someone suitable, the King started to lose hope.
+    But one day, he stumbled across someone so weak and pathetic that he couldn\u2019t
+    feel anything but pity for him."

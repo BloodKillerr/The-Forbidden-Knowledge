@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wood Scrap
   m_EditorClassIdentifier: 
   Name: Wood Scrap
+  Description: Barely held together
   Icon: {fileID: 21300000, guid: 776680a3dca913d4a91f5a7afdf9d514, type: 2}
   Amount: 1
   Type: 4

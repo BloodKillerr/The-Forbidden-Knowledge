@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Blackstone Gauntlets
   m_EditorClassIdentifier: 
   Name: Blackstone Gauntlets
+  Description: Made with utmost care
   Icon: {fileID: 21300000, guid: 2d2aa3c4af2417f4da56b3a85d20adc6, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 3
-  ArmorModifier: 30
-  DamageModifier: 50
+  ArmorModifier: 12
+  DamageModifier: 4
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}
