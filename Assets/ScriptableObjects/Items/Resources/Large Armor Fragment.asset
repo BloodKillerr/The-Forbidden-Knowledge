@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Large Armor Fragment
   m_EditorClassIdentifier: 
   Name: Large Armor Fragment
+  Description: Sturdy yet broken
   Icon: {fileID: 21300000, guid: b7058bf723039974080e38ca8e72bd47, type: 3}
   Amount: 1
   Type: 4

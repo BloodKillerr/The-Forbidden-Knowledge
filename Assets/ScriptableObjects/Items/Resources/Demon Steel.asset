@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Demon Steel
   m_EditorClassIdentifier: 
   Name: Demon Steel
+  Description: Refined by the strongest race
   Icon: {fileID: 1441115109, guid: 45a1ac77bf307054899c568d3f71e111, type: 3}
   Amount: 1
   Type: 4

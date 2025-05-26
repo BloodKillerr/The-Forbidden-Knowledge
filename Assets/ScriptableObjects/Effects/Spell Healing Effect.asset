@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c87c68d6c77fd7409d0fea870114c68, type: 3}
   m_Name: Spell Healing Effect
   m_EditorClassIdentifier: 
-  HealAmount: 200
+  HealAmount: 0.5

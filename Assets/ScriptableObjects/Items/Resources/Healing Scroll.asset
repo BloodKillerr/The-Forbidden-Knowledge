@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Healing Scroll
   m_EditorClassIdentifier: 
   Name: Healing Scroll
+  Description: 'Teaches: Healing'
   Icon: {fileID: 21300000, guid: f390c4c572309cf4f94463acd4efcdc1, type: 3}
   Amount: 1
   Type: 4

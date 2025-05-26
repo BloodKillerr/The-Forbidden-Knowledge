@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Eldritch Infused Greaves
   m_EditorClassIdentifier: 
   Name: Eldritch Infused Greaves
+  Description: Energy of cosmos sips through
   Icon: {fileID: 21300000, guid: 01fcbfedbfd921d4d824d6cb7a22fa58, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 2
-  ArmorModifier: 35
-  DamageModifier: 45
+  ArmorModifier: 24
+  DamageModifier: 8
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}

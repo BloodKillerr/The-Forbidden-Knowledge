@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Hat of a Sorcerer
   m_EditorClassIdentifier: 
   Name: Hat of a Sorcerer
+  Description: A pointy hat
   Icon: {fileID: 21300000, guid: 46c404366621b354eb1a3275e12d5a79, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 0
-  ArmorModifier: 0
-  DamageModifier: 20
+  ArmorModifier: 4
+  DamageModifier: 4
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}

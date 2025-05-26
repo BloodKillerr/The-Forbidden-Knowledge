@@ -49,7 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if(context.performed)
         {
-            if(!GameManager.Instance.IsGameStatePaused)
+            if(!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
             {
                 Player.Instance.GetComponent<PlayerMovement>().HandleDodge();
             }
@@ -60,7 +60,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            if(!GameManager.Instance.IsGameStatePaused)
+            if(!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
             {
                 Player.Instance.InteractEvent.Invoke();
             }
@@ -69,7 +69,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void InventoryEvent(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !Player.Instance.IsDead)
         {
             UIManager.Instance.ToogleMenu(MenuType.INVENTORY);
         }
@@ -79,7 +79,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!GameManager.Instance.IsGameStatePaused)
+            if (!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
             {
                 Player.Instance.GetComponent<PlayerAttack>().HandleNormalPrimaryAttack();
             }
@@ -90,7 +90,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!GameManager.Instance.IsGameStatePaused)
+            if (!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
             {
                 Player.Instance.GetComponent<PlayerAttack>().HandleNormalSecondaryAttack();
             }
@@ -99,7 +99,7 @@ public class PlayerInputHandler : MonoBehaviour
             
     public void PauseResumeEvent(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !Player.Instance.IsDead)
         {
             UIManager.Instance.ToogleMenu(MenuType.PAUSE);
         }
@@ -109,7 +109,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!GameManager.Instance.IsGameStatePaused)
+            if (!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
             {
                 float direction = context.ReadValue<float>();
 
@@ -129,7 +129,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!GameManager.Instance.IsGameStatePaused)
+            if (!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
             {
                 float direction = context.ReadValue<float>();
 

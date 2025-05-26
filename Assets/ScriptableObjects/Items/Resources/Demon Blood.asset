@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Demon Blood
   m_EditorClassIdentifier: 
   Name: Demon Blood
+  Description: Blood of demon kin
   Icon: {fileID: 21300000, guid: 476c9046a5f15e245a1e60cddde2e312, type: 3}
   Amount: 1
   Type: 4

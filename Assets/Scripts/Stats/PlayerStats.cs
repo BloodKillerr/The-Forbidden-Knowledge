@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,11 +10,12 @@ public class PlayerStats : CharacterStats
     private int currentDodgeCharges;
     [SerializeField] private Stat maxDodgeCharges;
 
-    public UnityEvent<int, int> DodgeChargesChanged = new UnityEvent<int, int>();
-
     public Stat MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public int CurrentDodgeCharges { get => currentDodgeCharges; set => currentDodgeCharges = value; }
     public Stat MaxDodgeCharges { get => maxDodgeCharges; set => maxDodgeCharges = value; }
+
+    public UnityEvent<int, int> DodgeChargesChanged = new UnityEvent<int, int>();
+    public UnityEvent<float> ApplyInvincibilityEvent = new UnityEvent<float>();
 
     private void Start()
     {
@@ -74,6 +76,7 @@ public class PlayerStats : CharacterStats
     public void ApplyInvincibility(float duration)
     {
         IsInvincible = true;
+        ApplyInvincibilityEvent.Invoke(duration);
         StartCoroutine(RemoveInvincibility(duration));
     }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Blackstone
   m_EditorClassIdentifier: 
   Name: Blackstone
+  Description: Ston from the deep
   Icon: {fileID: 21300000, guid: 978480aa3da24d34e8504bbfaec192ed, type: 2}
   Amount: 1
   Type: 4

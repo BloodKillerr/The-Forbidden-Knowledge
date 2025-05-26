@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,19 @@ public class BossPortal : Interactable
     public int SceneIndex;
     public bool isFinal = false;
     private bool informationShown = false;
+    [SerializeField] private TMP_Text interactMessage;
+
+    private void Start()
+    {
+        if (isFinal)
+        {
+            interactMessage.text = "You have finished the run!";
+        }
+        else
+        {
+            interactMessage.text = "Move Forward";
+        }
+    }
 
     public override void Interact()
     {
@@ -25,7 +39,7 @@ public class BossPortal : Interactable
             }
             else
             {
-                //Run information to be added
+                interactMessage.text = "Move Forward";
                 informationShown = true;
             }
         }

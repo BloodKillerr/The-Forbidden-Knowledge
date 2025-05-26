@@ -67,7 +67,33 @@ MonoBehaviour:
   recipesHolder: {fileID: 0}
   recipeBlockPrefab: {fileID: 2136136887437041811, guid: 20ecbc2f663ad9d42a405cb9bd15f7d9, type: 3}
   pausePanel: {fileID: 0}
+  healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
+  healthFrame: {fileID: 0}
+  normalHealthColor: {r: 1, g: 1, b: 1, a: 1}
+  invincibleHealthColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  dodgeContainer: {fileID: 0}
+  dodgeChargePrefab: {fileID: 4108447855320689142, guid: 808a1e6a32433f146abe5b8c6ec1463b, type: 3}
+  xpFillImage: {fileID: 0}
   statPointsText: {fileID: 0}
+  consumableImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  consumableCooldownSliders:
+  - {fileID: 0}
+  - {fileID: 0}
+  spellImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  spellCooldownSliders:
+  - {fileID: 0}
+  - {fileID: 0}
+  messageBoxContainer: {fileID: 0}
+  messagePrefab: {fileID: 3183422807112092883, guid: 386d72d92008c7441b0f2aa990a39b63, type: 3}
+  messageDisplayTime: 2
+  maxConcurrentMessages: 3
+  TooltipGO: {fileID: 0}
+  Tooltip: {fileID: 0}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   startingItem: {fileID: 11400000, guid: 4e0d28c33b1f08141a9fb0fd0d522d98, type: 2}
+  OnItemAdded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2461668452256614757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +150,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b027676a08c2704ca603150060994c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnConsumableUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnConsumableEquipped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnConsumableUnequipped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6553719612815060865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +171,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a185d30bee9447998894cb7e8470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSpellUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSpellEquipped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSpellUnequipped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5582262123035614877
 MonoBehaviour:
   m_ObjectHideFlags: 0

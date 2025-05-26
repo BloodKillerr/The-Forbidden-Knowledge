@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Temple Heart
   m_EditorClassIdentifier: 
   Name: Temple Heart
+  Description: Long lost
   Icon: {fileID: 21300000, guid: 7ab97b1c930b28148807e9df00aa5f4a, type: 3}
   Amount: 1
   Type: 4

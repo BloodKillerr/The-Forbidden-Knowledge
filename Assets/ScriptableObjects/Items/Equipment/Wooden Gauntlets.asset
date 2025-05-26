@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Wooden Gauntlets
   m_EditorClassIdentifier: 
   Name: Wooden Gauntlets
+  Description: Made from wood
   Icon: {fileID: 21300000, guid: 62aa25b98a88bcd43a81b0b17a002316, type: 3}
   Amount: 1
   Type: 1
   EqSlot: 3
-  ArmorModifier: 10
-  DamageModifier: 15
+  ArmorModifier: 6
+  DamageModifier: 0
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Speed Potion
   m_EditorClassIdentifier: 
   Name: Speed Potion
+  Description: Potion amplifying speed
   Icon: {fileID: 21300000, guid: 408bdf2ebe4b7754e9429d1d226d388a, type: 3}
   Amount: 1
   Type: 2

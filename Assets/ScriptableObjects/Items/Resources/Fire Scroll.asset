@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fire Scroll
   m_EditorClassIdentifier: 
   Name: Fire Scroll
+  Description: 'Teaches: Fireball'
   Icon: {fileID: 21300000, guid: 1319b21c09241f249aa9da8e3b9314c1, type: 3}
   Amount: 1
   Type: 4

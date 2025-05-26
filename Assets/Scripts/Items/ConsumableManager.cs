@@ -10,7 +10,13 @@ public class ConsumableManager : MonoBehaviour
     private float nextUseTime1 = 0f;
     private float nextUseTime2 = 0f;
 
+    public UnityEvent<int, Consumable> OnConsumableUsed = new UnityEvent<int, Consumable>();
+    public UnityEvent<int, Consumable> OnConsumableEquipped = new UnityEvent<int, Consumable>();
+    public UnityEvent<int> OnConsumableUnequipped = new UnityEvent<int>();
+
     public static ConsumableManager Instance { get; private set; }
+    public Consumable Consumable1 { get => consumable1; set => consumable1 = value; }
+    public Consumable Consumable2 { get => consumable2; set => consumable2 = value; }
 
     private void Awake()
     {
@@ -26,24 +32,27 @@ public class ConsumableManager : MonoBehaviour
 
     public void EquipConsumable(Consumable consumable)
     {
+        int slot;
         if (consumable1 == null)
         {
             consumable1 = consumable;
-            consumable.slot = 1;
+            slot = 1;
         }
         else if (consumable2 == null)
         {
             consumable2 = consumable;
-            consumable.slot = 2;
+            slot = 2;
         }
         else
         {
             consumable1.Equipped = false;
             consumable1 = consumable;
-            consumable.slot = 1;
+            slot = 1;
         }
 
         consumable.Equipped = true;
+        consumable.slot = slot;
+        OnConsumableEquipped.Invoke(slot, consumable);
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
     }
 
@@ -53,11 +62,13 @@ public class ConsumableManager : MonoBehaviour
         {
             consumable1.Equipped = false;
             consumable1 = null;
+            OnConsumableUnequipped.Invoke(1);
         }
         else if(consumable2 != null && consumable2.Name == consumable.Name)
         {
             consumable2.Equipped = false;
             consumable2 = null;
+            OnConsumableUnequipped.Invoke(2);
         }
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
     }
@@ -68,11 +79,13 @@ public class ConsumableManager : MonoBehaviour
         {
             consumable1.Equipped = false;
             consumable1 = null;
+            OnConsumableUnequipped.Invoke(1);
         }
         if (consumable2 != null)
         {
             consumable2.Equipped = false;
             consumable2 = null;
+            OnConsumableUnequipped.Invoke(2);
         }
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
     }
@@ -93,6 +106,7 @@ public class ConsumableManager : MonoBehaviour
 
         
         nextUseTime1 = Time.time + consumable1.Cooldown;
+        OnConsumableUsed.Invoke(1, consumable1);
     }
 
     public void UseConsumable2()
@@ -111,6 +125,7 @@ public class ConsumableManager : MonoBehaviour
 
 
         nextUseTime2 = Time.time + consumable2.Cooldown;
+        OnConsumableUsed.Invoke(2, consumable2);
     }
 
     public void ShortenCooldown(float amount)
@@ -124,5 +139,11 @@ public class ConsumableManager : MonoBehaviour
         {
             nextUseTime2 = Mathf.Max(Time.time, nextUseTime2 - amount);
         }
+    }
+
+    public void ResetCooldowns()
+    {
+        nextUseTime1 = 0f;
+        nextUseTime2 = 0f;
     }
 }

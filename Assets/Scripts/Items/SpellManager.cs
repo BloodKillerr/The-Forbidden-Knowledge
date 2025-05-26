@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpellManager : MonoBehaviour
 {
@@ -8,7 +9,13 @@ public class SpellManager : MonoBehaviour
     private float nextUseTime1 = 0f;
     private float nextUseTime2 = 0f;
 
+    public UnityEvent<int, Spell> OnSpellUsed = new UnityEvent<int, Spell>();
+    public UnityEvent<int, Spell> OnSpellEquipped = new UnityEvent<int, Spell>();
+    public UnityEvent<int> OnSpellUnequipped = new UnityEvent<int>();
+
     public static SpellManager Instance { get; private set; }
+    public Spell Spell1 { get => spell1; set => spell1 = value; }
+    public Spell Spell2 { get => spell2; set => spell2 = value; }
 
     private void Awake()
     {
@@ -24,24 +31,27 @@ public class SpellManager : MonoBehaviour
 
     public void EquipSpell(Spell spell)
     {
+        int slot;
         if (spell1 == null)
         {
             spell1 = spell;
-            spell.slot = 1;
+            slot = 1;
         }
         else if (spell2 == null)
         {
             spell2 = spell;
-            spell.slot = 2;
+            slot = 2;
         }
         else
         {
             spell1.Equipped = false;
             spell1 = spell;
-            spell.slot = 1;
+            slot = 1;
         }
 
         spell.Equipped = true;
+        spell.slot = slot;
+        OnSpellEquipped.Invoke(slot, spell);
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
     }
 
@@ -51,11 +61,13 @@ public class SpellManager : MonoBehaviour
         {
             spell1.Equipped = false;
             spell1 = null;
+            OnSpellUnequipped.Invoke(1);
         }
         else if (spell2 != null && spell2.Name == spell.Name)
         {
             spell2.Equipped = false;
             spell2 = null;
+            OnSpellUnequipped.Invoke(2);
         }
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
     }
@@ -91,6 +103,7 @@ public class SpellManager : MonoBehaviour
 
 
         nextUseTime1 = Time.time + spell1.Cooldown;
+        OnSpellUsed.Invoke(1, spell1);
     }
 
     public void UseSpell2()
@@ -109,6 +122,7 @@ public class SpellManager : MonoBehaviour
 
 
         nextUseTime2 = Time.time + spell2.Cooldown;
+        OnSpellUsed.Invoke(2, spell2);
     }
 
     public void ShortenCooldown(float amount)
@@ -122,5 +136,11 @@ public class SpellManager : MonoBehaviour
         {
             nextUseTime2 = Mathf.Max(Time.time, nextUseTime2 - amount);
         }
+    }
+
+    public void ResetCooldowns()
+    {
+        nextUseTime1 = 0f;
+        nextUseTime2 = 0f;
     }
 }

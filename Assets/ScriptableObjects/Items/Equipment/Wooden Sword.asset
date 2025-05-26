@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Wooden Sword
   m_EditorClassIdentifier: 
   Name: Wooden Sword
+  Description: A decent start
   Icon: {fileID: -1253031052, guid: 5f4a38980c8c3794ead6d879bede4549, type: 3}
   Amount: 1
   Type: 1
   EqSlot: 4
   ArmorModifier: 0
-  DamageModifier: 10
+  DamageModifier: 8
   MovementSpeedModifier: 0
   Equipped: 0
   mesh: {fileID: 8420959461155091612, guid: 349aea3184566c842a0c9ef51445e427, type: 3}

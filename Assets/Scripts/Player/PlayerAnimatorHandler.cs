@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimatorHandler : MonoBehaviour
 {
@@ -108,11 +109,21 @@ public class PlayerAnimatorHandler : MonoBehaviour
     public void EnableIFrames()
     {
         Player.Instance.GetComponent<PlayerStats>().IsInvincible = true;
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowInvincibilityFrame();
+        }
     }
 
     public void DisableIFrames()
     {
         Player.Instance.GetComponent<PlayerStats>().IsInvincible = false;
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.HideInvincibilityFrame();
+        }
     }
 
     public void DisableComboWindow()
@@ -140,5 +151,11 @@ public class PlayerAnimatorHandler : MonoBehaviour
     {
         playerAttack.SetAttacking(false);
         Player.Instance.GetComponent<WeaponMeshController>().HideSecondaryWeapon();
+    }
+
+    public void Die()
+    {
+        //Debug only
+        SceneManager.LoadScene(1);
     }
 }

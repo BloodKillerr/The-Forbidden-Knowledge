@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Divine Scroll
   m_EditorClassIdentifier: 
   Name: Divine Scroll
+  Description: 'Teaches: Invincibility'
   Icon: {fileID: 21300000, guid: 2c3bda5df40c85241be8b66a0843d07c, type: 3}
   Amount: 1
   Type: 4

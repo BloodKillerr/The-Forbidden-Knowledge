@@ -49,7 +49,8 @@ public class DungeonManager : MonoBehaviour
 
     private void Start()
     {
-        if(debugRun)
+        GameManager.Instance.ResetPlayer();
+        if (debugRun)
         {
             GenerateDungeon(UnityEngine.Random.Range(0, int.MaxValue));
         }

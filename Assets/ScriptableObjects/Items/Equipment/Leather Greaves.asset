@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Leather Greaves
   m_EditorClassIdentifier: 
   Name: Leather Greaves
+  Description: Simple yet useful at times
   Icon: {fileID: 21300000, guid: 257e9466ccec2de439fd5694c571d54d, type: 2}
   Amount: 1
   Type: 1
   EqSlot: 2
-  ArmorModifier: 10
+  ArmorModifier: 8
   DamageModifier: 0
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}

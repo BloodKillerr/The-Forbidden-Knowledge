@@ -37,6 +37,11 @@ public class PersistBetweenScenes : MonoBehaviour
             Destroy(gameObject);
             Instance = null;
         }
+
+        if(scene.buildIndex == allowedScenes[0])
+        {
+            GameManager.Instance.ResetPlayer();
+        }
     }
 
     void OnDestroy()

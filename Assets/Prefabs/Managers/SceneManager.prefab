@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7927753801104009225}
   - component: {fileID: 6564915795342399786}
+  - component: {fileID: 1037119391901808808}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -62,10 +63,10 @@ MonoBehaviour:
   - {fileID: 732328247034027000, guid: 0a969ab44aa2bc24882b0e3c1ebe83e2, type: 3}
   - {fileID: 1780203060546759512, guid: 30caa4b6041c9f240a831b3547f83124, type: 3}
   bossRoomPrefabs:
-  - {fileID: 9163779169686516746, guid: 6235285f4911385458b58a367b5f7726, type: 3}
-  - {fileID: 3563522719698387834, guid: e825faf7d7a020743b1c99a8a3c9cb5f, type: 3}
-  - {fileID: 6356689472583952710, guid: 1ecd416dd25e0c941b2f66ed474e0a5c, type: 3}
-  - {fileID: 1780203060546759512, guid: 30caa4b6041c9f240a831b3547f83124, type: 3}
+  - {fileID: 9163779169686516746, guid: 643481a37ffaadb44a0a801afbaf3638, type: 3}
+  - {fileID: 3563522719698387834, guid: e09480325d310d34eac3da35ea6da58b, type: 3}
+  - {fileID: 6356689472583952710, guid: 7ac2a992f0ddcec41879d6ee630c1d4b, type: 3}
+  - {fileID: 1780203060546759512, guid: 6fcca1fe07b5267449f413bdb7c666b4, type: 3}
   branchProbability: 0.5
   maxCorridorLength: 8
   minRooms: 10
@@ -74,3 +75,17 @@ MonoBehaviour:
   roomSizeY: 25
   ChestPrefab: {fileID: 1002652233622115229, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
   ItemsToDrop: []
+--- !u!114 &1037119391901808808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824933115359314920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bb0b788bd5a2848bce25978aa9f4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingPosition: {x: 0, y: 0, z: 0}
+  StartingRotation: {x: 0, y: 0, z: 0}

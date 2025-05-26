@@ -752,6 +752,7 @@ MonoBehaviour:
   interactCanvas: {fileID: 734549645129551029}
   SceneIndex: 0
   isFinal: 0
+  interactMessage: {fileID: 8524727323688789573}
 --- !u!1 &7049945798019857719
 GameObject:
   m_ObjectHideFlags: 0

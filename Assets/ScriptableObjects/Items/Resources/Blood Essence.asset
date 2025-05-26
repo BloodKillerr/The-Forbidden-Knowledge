@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Blood Essence
   m_EditorClassIdentifier: 
   Name: Blood Essence
+  Description: 'Material for: Healing Potion'
   Icon: {fileID: 21300000, guid: 6929d40a6892ccb42a266c3788e078c5, type: 2}
   Amount: 1
   Type: 4

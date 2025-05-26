@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Chestplate of Forbidden Land
   m_EditorClassIdentifier: 
   Name: Chestplate of Forbidden Land
+  Description: Forgotten in the past
   Icon: {fileID: 21300000, guid: b80ad588b45c92443a875eabd08bb802, type: 3}
   Amount: 1
   Type: 1
   EqSlot: 1
-  ArmorModifier: 60
-  DamageModifier: 50
+  ArmorModifier: 36
+  DamageModifier: 10
   MovementSpeedModifier: 0
   Equipped: 0
-  mesh: {fileID: 0}

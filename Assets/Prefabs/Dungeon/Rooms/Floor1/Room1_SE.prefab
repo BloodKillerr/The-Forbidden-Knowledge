@@ -5613,7 +5613,9 @@ MonoBehaviour:
   - {fileID: 2177048866266285952}
   enemyPrefabs:
   - {fileID: 762435388150360089, guid: 8c5e1be218e189a48891280106789fb0, type: 3}
-  chestChance: 0.3
+  - {fileID: 5657901737958511980, guid: 38b5820729c69924db3b2b6124f45d95, type: 3}
+  - {fileID: 707596404041901365, guid: 827e7afee8540614fad64245b6f88c3d, type: 3}
+  chestChance: 0.1
 --- !u!1 &5702442451505835160
 GameObject:
   m_ObjectHideFlags: 0

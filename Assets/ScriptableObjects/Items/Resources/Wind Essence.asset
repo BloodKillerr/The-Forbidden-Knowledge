@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wind Essence
   m_EditorClassIdentifier: 
   Name: Wind Essence
+  Description: 'Material for: Speed Potion'
   Icon: {fileID: 21300000, guid: 54c1faf0c005e91478805a14496b0f47, type: 2}
   Amount: 1
   Type: 4
