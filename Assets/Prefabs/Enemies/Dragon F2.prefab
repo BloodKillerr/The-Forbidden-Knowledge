@@ -58,15 +58,15 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 40
-    valueUpgradeCap: 40
+    baseValue: 20
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   currentHealth: 0
   maxHealth:
     baseValue: 120
-    valueUpgradeCap: 120
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []

@@ -1060,7 +1060,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 28
+    baseValue: 7
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:

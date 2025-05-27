@@ -1868,11 +1868,11 @@ MonoBehaviour:
     attacks:
     - animationName: Attack1
       damageMultiplier: 1
-      attackCooldown: 0
+      attackCooldown: 2.1
       probability: 0.8
     - animationName: Attack2
       damageMultiplier: 1.5
-      attackCooldown: 0
+      attackCooldown: 2.1
       probability: 0.7
     attackRange: 0.8
     moveSpeed: 4
@@ -1880,7 +1880,7 @@ MonoBehaviour:
     attacks:
     - animationName: Attack3
       damageMultiplier: 2
-      attackCooldown: 0
+      attackCooldown: 4.2
       probability: 1
     attackRange: 1
     moveSpeed: 3

@@ -23,6 +23,11 @@ public class WeaponMeshController : MonoBehaviour
             Destroy(currentHolsteredMesh);
         }
 
+        foreach(Transform child in weaponHolster)
+        {
+            Destroy(child.gameObject);
+        }
+
         if (weapon == null)
         {
             primaryWeapon = null;
@@ -91,7 +96,17 @@ public class WeaponMeshController : MonoBehaviour
             Destroy(currentHandMesh);
         }
 
-        if(primaryWeapon != null)
+        foreach (Transform child in weaponHolster)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in hand)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (primaryWeapon != null)
         {
             currentHolsteredMesh = Instantiate(primaryWeapon.mesh, weaponHolster);
             currentHolsteredMesh.transform.localPosition = primaryWeapon.HolsterPositionOffset;
