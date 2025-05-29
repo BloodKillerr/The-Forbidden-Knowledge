@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PersistBetweenScenes : MonoBehaviour
 {
-    public int[] allowedScenes = { 1, 2 };
+    public int[] allowedScenes = { 1, 2, 3, 4};
 
     public static PersistBetweenScenes Instance { get; private set; }
 

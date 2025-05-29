@@ -56,7 +56,11 @@ public class AutoScrollDynamic : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     void ScrollToSelected(bool quickScroll)
     {
-        GameObject selectedObject = EventSystem.current.currentSelectedGameObject;
+        GameObject selectedObject = null;
+        if (EventSystem.current != null)
+        {
+            selectedObject = EventSystem.current.currentSelectedGameObject;
+        }
         if (selectedObject == null) return;
 
         Selectable selectedElement = selectedObject.GetComponent<Selectable>();

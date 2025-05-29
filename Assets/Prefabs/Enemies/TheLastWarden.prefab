@@ -2250,21 +2250,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: The Last Warden
   armor:
-    baseValue: 30
-    valueUpgradeCap: 30
+    baseValue: 60
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 80
-    valueUpgradeCap: 80
+    baseValue: 40
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   currentHealth: 0
   maxHealth:
-    baseValue: 600
-    valueUpgradeCap: 600
+    baseValue: 2400
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
@@ -2328,8 +2328,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b90116dbfb0304ba27bbc64eda6197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: []
-  xpReward: 200
+  lootTable:
+  - Item: {fileID: 11400000, guid: 6b9c4a6180bef3849a550e0f11928243, type: 2}
+    MinAmount: 1
+    MaxAmount: 1
+    DropChance: 1
+  - Item: {fileID: 11400000, guid: ab9e06b815fd7b44aa04934002211199, type: 2}
+    MinAmount: 1
+    MaxAmount: 1
+    DropChance: 1
+  - Item: {fileID: 11400000, guid: ad08992b8c26a4f4398f0d82f924730f, type: 2}
+    MinAmount: 1
+    MaxAmount: 2
+    DropChance: 0.3
+  xpReward: 600
 --- !u!114 &420137863601995161
 MonoBehaviour:
   m_ObjectHideFlags: 0

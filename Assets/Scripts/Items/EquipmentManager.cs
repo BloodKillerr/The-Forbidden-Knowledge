@@ -49,10 +49,6 @@ public class EquipmentManager : MonoBehaviour
         {
             Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon((Weapon)item);
         }
-        else if(item.EqSlot == EquipmentSlot.SECONDARY)
-        {
-            Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon((Weapon)item);
-        }
     }
 
     public void UnEquip(int slotIndex)
@@ -68,10 +64,6 @@ public class EquipmentManager : MonoBehaviour
             if (oldItem.EqSlot == EquipmentSlot.PRIMARY)
             {
                 Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon(null);
-            }
-            else if (oldItem.EqSlot == EquipmentSlot.SECONDARY)
-            {
-                Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon(null);
             }
         }
     }

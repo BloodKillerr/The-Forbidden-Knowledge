@@ -26,6 +26,10 @@ public class SetPlayerStartingPosition : MonoBehaviour
     private System.Collections.IEnumerator ReenableInterpolation(RigidbodyInterpolation prev)
     {
         yield return null;
-        rb.interpolation = prev;
+
+        if(rb != null)
+        {
+            rb.interpolation = prev;
+        }
     }
 }

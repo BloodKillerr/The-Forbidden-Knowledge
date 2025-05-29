@@ -141,18 +141,6 @@ public class PlayerAnimatorHandler : MonoBehaviour
         Player.Instance.GetComponent<WeaponMeshController>().DisablePrimaryDamageCollider();
     }
 
-    public void StartSecondaryAttack()
-    {
-        playerAttack.SetAttacking(true);
-        Player.Instance.GetComponent<WeaponMeshController>().AttackWithSecondaryWeapon();
-    }
-
-    public void StopSecondaryAttack()
-    {
-        playerAttack.SetAttacking(false);
-        Player.Instance.GetComponent<WeaponMeshController>().HideSecondaryWeapon();
-    }
-
     public void Die()
     {
         //Debug only

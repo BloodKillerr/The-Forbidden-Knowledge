@@ -58,6 +58,5 @@ public enum EquipmentSlot
     CHEST,
     LEGS,
     ARMS,
-    PRIMARY,
-    SECONDARY
+    PRIMARY
 }

@@ -57,7 +57,12 @@ MonoBehaviour:
   tabHolder: {fileID: 0}
   statBlockPrefab: {fileID: 8054701418758060748, guid: 08e4c17118ce05d4796e9d5d4aae3fd3, type: 3}
   statsHolder: {fileID: 0}
-  equipmentSlotHolders: []
+  equipmentSlotHolders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   equipmentConsumableHolders: []
   equipmentSpellHolders: []
   statsButton: {fileID: 0}

@@ -1757,7 +1757,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 60
+    baseValue: 30
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
@@ -1885,8 +1885,8 @@ MonoBehaviour:
     attackRange: 1
     moveSpeed: 3
   portalPrefab: {fileID: 6844379756280990573, guid: 23c563c8f45d6ec43b89f4fa63a6e5ed, type: 3}
-  nextScene: 1
-  isFinal: 1
+  nextScene: 3
+  isFinal: 0
   notes:
   - Note1
   - Note2

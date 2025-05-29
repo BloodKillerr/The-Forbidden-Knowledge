@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Secondary",
-                    "type": "Button",
-                    "id": "34ef268a-481e-4239-9651-feb097e1faba",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Spell",
                     "type": "Value",
                     "id": "f8e783a0-1072-44d7-8b54-757d65fc0d90",
@@ -237,39 +228,6 @@
                     "processors": "",
                     "groups": ";PSController",
                     "action": "Primary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4537e30-7c10-4bef-897d-5fac358706a8",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";KeyBoardMouse",
-                    "action": "Secondary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "acdcce0b-5b47-4bff-aee1-a1dc0a35ce93",
-                    "path": "<XInputController>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";XBoxController",
-                    "action": "Secondary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9f36db8c-c06f-4000-bbce-cf3826373937",
-                    "path": "<DualShockGamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";PSController",
-                    "action": "Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

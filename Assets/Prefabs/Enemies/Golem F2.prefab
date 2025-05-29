@@ -116,21 +116,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Golem
   armor:
-    baseValue: 0
+    baseValue: 20
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 40
-    valueUpgradeCap: 40
+    baseValue: 15
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   currentHealth: 0
   maxHealth:
-    baseValue: 100
-    valueUpgradeCap: 100
+    baseValue: 480
+    valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
@@ -214,8 +214,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b90116dbfb0304ba27bbc64eda6197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: []
-  xpReward: 50
+  lootTable:
+  - Item: {fileID: 11400000, guid: b10aa84fa84eedb4c95a15db8e8a1e13, type: 2}
+    MinAmount: 1
+    MaxAmount: 2
+    DropChance: 0.6
+  - Item: {fileID: 11400000, guid: 28f705eb262c704439f17208ed132ba3, type: 2}
+    MinAmount: 2
+    MaxAmount: 3
+    DropChance: 0.4
+  xpReward: 200
 --- !u!1 &1149942697963491923
 GameObject:
   m_ObjectHideFlags: 0

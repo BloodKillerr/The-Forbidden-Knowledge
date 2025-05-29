@@ -12396,7 +12396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb1fdb66c2b5a45b83aabffd884107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedScenes: 0100000002000000
+  allowedScenes: 01000000020000000300000004000000
 --- !u!1 &8448637109193332778
 GameObject:
   m_ObjectHideFlags: 0
@@ -14312,10 +14312,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3732401134968698297}
     - target: {fileID: 2682410800577544761, guid: 8b4783795e1c0a04587d5ba0836d6960, type: 3}
-      propertyPath: equipmentSlotHolders.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2682410800577544761, guid: 8b4783795e1c0a04587d5ba0836d6960, type: 3}
       propertyPath: equipmentSpellHolders.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -14342,7 +14338,7 @@ PrefabInstance:
     - target: {fileID: 2682410800577544761, guid: 8b4783795e1c0a04587d5ba0836d6960, type: 3}
       propertyPath: 'equipmentSlotHolders.Array.data[5]'
       value: 
-      objectReference: {fileID: 5019139350478349256}
+      objectReference: {fileID: 0}
     - target: {fileID: 2682410800577544761, guid: 8b4783795e1c0a04587d5ba0836d6960, type: 3}
       propertyPath: 'spellCooldownSliders.Array.data[0]'
       value: 
@@ -14521,6 +14517,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 67caf9b73d3759349bb4182ee6849892, type: 2}
   - {fileID: 11400000, guid: 715773b67d4e3ce428344a759f572c31, type: 2}
   - {fileID: 11400000, guid: e942d02439afd9947bc0171281fd3c2c, type: 2}
+  - {fileID: 11400000, guid: 97564d2d2a15ea9429267c95f42d8f78, type: 2}
+  - {fileID: 11400000, guid: a3f6ad59bba643c4385d53f3a29953cc, type: 2}
+  - {fileID: 11400000, guid: 7620647a4152c5d47a62d7d8b06f19ca, type: 2}
 --- !u!114 &4644760657993704691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14840,10 +14839,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -43.97931
       objectReference: {fileID: 0}
-    - target: {fileID: 8261723115065227470, guid: 8e02e10aac4b57348b7034319d60d281, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8901174027297884790, guid: 8e02e10aac4b57348b7034319d60d281, type: 3}
       propertyPath: m_Name
       value: InventoryPanel
@@ -14943,17 +14938,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3434300106538475706, guid: 8e02e10aac4b57348b7034319d60d281, type: 3}
   m_PrefabInstance: {fileID: 7690762870919429674}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5019139350478349256 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3394734114398019042, guid: 8e02e10aac4b57348b7034319d60d281, type: 3}
-  m_PrefabInstance: {fileID: 7690762870919429674}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78289a0d8218f90479ae230d9cea1195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5294114306555616257 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2577023245641703979, guid: 8e02e10aac4b57348b7034319d60d281, type: 3}

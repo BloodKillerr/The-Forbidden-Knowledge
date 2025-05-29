@@ -119,7 +119,11 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
         eventSystem = EventSystem.current;
-        Tooltip = TooltipGO.GetComponent<ToolTipUI>();
+
+        if(TooltipGO)
+        {
+            Tooltip = TooltipGO.GetComponent<ToolTipUI>();
+        }
     }
 
     private void Start()

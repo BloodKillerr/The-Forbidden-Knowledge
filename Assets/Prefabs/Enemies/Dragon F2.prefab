@@ -52,20 +52,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Dragon
   armor:
-    baseValue: 0
+    baseValue: 20
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 20
+    baseValue: 12
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
         m_Calls: []
   currentHealth: 0
   maxHealth:
-    baseValue: 120
+    baseValue: 429
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
@@ -150,8 +150,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b90116dbfb0304ba27bbc64eda6197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: []
-  xpReward: 15
+  lootTable:
+  - Item: {fileID: 11400000, guid: 28f705eb262c704439f17208ed132ba3, type: 2}
+    MinAmount: 2
+    MaxAmount: 3
+    DropChance: 0.4
+  - Item: {fileID: 11400000, guid: 0557a350cf55cb140bb48b02cf8bc0de, type: 2}
+    MinAmount: 1
+    MaxAmount: 2
+    DropChance: 0.3
+  xpReward: 180
 --- !u!1 &476228374799933783
 GameObject:
   m_ObjectHideFlags: 0
