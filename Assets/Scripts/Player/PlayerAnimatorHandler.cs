@@ -141,6 +141,11 @@ public class PlayerAnimatorHandler : MonoBehaviour
         Player.Instance.GetComponent<WeaponMeshController>().DisablePrimaryDamageCollider();
     }
 
+    public void TriggerOnAttackAbilities()
+    {
+        AbilityManager.Instance.PlayerDidAttack();
+    }
+
     public void Die()
     {
         //Debug only

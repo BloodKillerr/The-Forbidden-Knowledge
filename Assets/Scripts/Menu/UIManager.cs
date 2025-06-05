@@ -50,6 +50,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject resourcesHolder;
 
+    [SerializeField] private GameObject abilitiesHolder;
+
+    [SerializeField] private GameObject abilitySlot;
+
     [SerializeField] private Button craftingCloseButton;
 
     [SerializeField] private Transform recipesHolder;
@@ -104,7 +108,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject TooltipGO;
 
+    [SerializeField] private GameObject AbilityTooltipGO;
+
     public ToolTipUI Tooltip;
+
+    public AbilityToolTipUI AbilityTooltip;
 
     public static UIManager Instance { get; private set; }
 
@@ -123,6 +131,11 @@ public class UIManager : MonoBehaviour
         if(TooltipGO)
         {
             Tooltip = TooltipGO.GetComponent<ToolTipUI>();
+        }
+
+        if (AbilityTooltipGO)
+        {
+            AbilityTooltip = AbilityTooltipGO.GetComponent<AbilityToolTipUI>();
         }
     }
 
@@ -159,7 +172,15 @@ public class UIManager : MonoBehaviour
             craftingCloseButton.onClick.AddListener(delegate { ToogleMenu(MenuType.CRAFTING); });
         }
 
-        Tooltip.Hide();
+        if(Tooltip != null)
+        {
+            Tooltip.Hide();
+        }
+
+        if (AbilityTooltip != null)
+        {
+            AbilityTooltip.Hide();
+        }
 
         if (Player.Instance == null)
         {
@@ -394,6 +415,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OnAbilityAdded(Ability ability)
+    {
+        GameObject go = Instantiate(messagePrefab, messageBoxContainer);
+        go.SetActive(false);
+        TMP_Text txt = go.GetComponentInChildren<TMP_Text>();
+        txt.text = $"Ability: {ability.AbilityName} added!";
+
+        pendingMessages.Enqueue(go);
+
+        if (!processingQueue)
+        {
+            StartCoroutine(ProcessMessageQueue());
+        }
+    }
+
     private IEnumerator ProcessMessageQueue()
     {
         processingQueue = true;
@@ -482,6 +518,7 @@ public class UIManager : MonoBehaviour
                     inventoryPanel.blocksRaycasts = true;
                     inventoryPanel.interactable = true;
                     UpdateInventoryUI(InventoryTab.ALL);
+                    UpdateAbilitiesUI();
                     currentInventoryTab = InventoryTab.ALL;
                     ChangeSelectedElement(statsButton);
                 }
@@ -520,6 +557,7 @@ public class UIManager : MonoBehaviour
                     inventoryPanel.blocksRaycasts = false;
                     inventoryPanel.interactable = false;
                     Tooltip.Hide();
+                    AbilityTooltip.Hide();
                 }
                 break;
             case MenuType.CRAFTING:
@@ -529,6 +567,7 @@ public class UIManager : MonoBehaviour
                     craftingPanel.blocksRaycasts = false;
                     craftingPanel.interactable = false;
                     Tooltip.Hide();
+                    AbilityTooltip.Hide();
                 }
                 break;
         }
@@ -611,6 +650,26 @@ public class UIManager : MonoBehaviour
         }
 
         lastUsedItem = null;
+    }
+
+    public void UpdateAbilitiesUI()
+    {
+        if (abilitiesHolder == null)
+        {
+            return;
+        }
+
+        foreach (Transform child in abilitiesHolder.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Ability ability in AbilityManager.Instance.CurrentAbilities)
+        {
+            GameObject go = Instantiate(abilitySlot, abilitiesHolder.transform);
+            AbilitySlot slot = go.GetComponent<AbilitySlot>();
+            slot.AddAbility(ability);
+        }
     }
 
     public void UpdateCraftingUI()

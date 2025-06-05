@@ -195,5 +195,6 @@ public class Enemy : MonoBehaviour
     public virtual void Die()
     {
         //Actions on death
+        AbilityManager.Instance.EnemyWasKilledInt(enemyStats.MaxHealth.GetValue());
     }
 }

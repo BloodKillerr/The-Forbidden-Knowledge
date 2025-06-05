@@ -88,7 +88,7 @@ public class PlayerInputHandler : MonoBehaviour
             
     public void PauseResumeEvent(InputAction.CallbackContext context)
     {
-        if (context.performed && !Player.Instance.IsDead)
+        if (context.performed && !Player.Instance.IsDead && !PauseManager.Instance.RebindingUI.activeSelf)
         {
             UIManager.Instance.ToogleMenu(MenuType.PAUSE);
         }

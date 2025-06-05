@@ -77,5 +77,6 @@ public class GameManager : MonoBehaviour
         Player.Instance.GetComponent<PlayerTracker>().ExitDungeon();
         MinimapManager.Instance.ClearMinimap();
         Player.Instance.GetComponent<WeaponMeshController>().HolsterPrimaryWeapon();
+        AbilityManager.Instance.RemoveAllAbilities();
     }
 }

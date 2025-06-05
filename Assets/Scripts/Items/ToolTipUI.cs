@@ -51,9 +51,6 @@ public class ToolTipUI : MonoBehaviour
         ClampToScreen();
     }
 
-    /// <summary>
-    /// Show immediately at a specific screen‐space position (selection mode).
-    /// </summary>
     public void Show(Item item, Vector3 screenPos)
     {
         currentItem = item;
@@ -63,7 +60,6 @@ public class ToolTipUI : MonoBehaviour
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = false;
 
-        // Directly place at forced position
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             parentCanvas.transform as RectTransform,
             screenPos,
@@ -73,13 +69,9 @@ public class ToolTipUI : MonoBehaviour
         bgRect.anchoredPosition = localPoint;
         ClampToScreen();
 
-        // consume forced position
         forcedPosition = null;
     }
 
-    /// <summary>
-    /// Hide immediately.
-    /// </summary>
     public void Hide()
     {
         canvasGroup.alpha = 0f;
@@ -133,7 +125,6 @@ public class ToolTipUI : MonoBehaviour
         Vector2 anchoredPosition = bgRect.anchoredPosition;
         Vector2 size = bgRect.sizeDelta;
 
-        // Pivot matters! We're assuming it's (0, 1) (top-left)
         if (anchoredPosition.x + size.x > topRight.x)
             anchoredPosition.x = topRight.x - size.x;
         if (anchoredPosition.y - size.y < bottomLeft.y)

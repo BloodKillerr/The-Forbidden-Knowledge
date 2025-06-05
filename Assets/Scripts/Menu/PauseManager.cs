@@ -8,6 +8,8 @@ public class PauseManager : MonoBehaviour
 	[SerializeField] private GameObject pausePanel;
 	[SerializeField] private GameObject optionsPanel;
 	[SerializeField] private GameObject notesPanel;
+	[SerializeField] private GameObject controlsPanel;
+	public GameObject RebindingUI;
 
 	public GameObject ResumeButton;
 	public GameObject OptionsButton;
@@ -60,6 +62,7 @@ public class PauseManager : MonoBehaviour
 			optionsPanel.SetActive(true);
 			pausePanel.SetActive(false);
 			notesPanel.SetActive(false);
+			controlsPanel.SetActive(false);
             UIManager.Instance.ChangeSelectedElement(OptionsButton);
         }
 	}
@@ -69,6 +72,7 @@ public class PauseManager : MonoBehaviour
         pausePanel.SetActive(true);
         optionsPanel.SetActive(false);
         notesPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
 	public void MainMenu()

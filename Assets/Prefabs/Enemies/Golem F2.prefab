@@ -224,6 +224,9 @@ MonoBehaviour:
     MaxAmount: 3
     DropChance: 0.4
   xpReward: 200
+  abilityLootTable:
+  - Ability: {fileID: 11400000, guid: 6c19e6cf1b329c64a99e137ce7e112e9, type: 2}
+    DropChance: 0.15
 --- !u!1 &1149942697963491923
 GameObject:
   m_ObjectHideFlags: 0

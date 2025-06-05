@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -25,6 +26,13 @@ public class OptionsMenu : MonoBehaviour
 
     private Resolution[] resolutions;
     private int currentResolutionIndex = 0;
+
+    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject controlsPanel;
+    [SerializeField] private GameObject optionsBackButton;
+    [SerializeField] private GameObject controlsBackButton;
+
+    [SerializeField] private List<GameObject> inputMaps;
 
     private void Start()
     {
@@ -264,5 +272,54 @@ public class OptionsMenu : MonoBehaviour
     {
         float volume = sliderValue > 0 ? Mathf.Log10(sliderValue / 100f) * 20f : -80f;
         mixer.SetFloat(parameterName, volume);
+    }
+
+    public void ControlsButton()
+    {
+        optionsPanel.SetActive(false);
+        controlsPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(controlsBackButton);
+    }
+
+    public void ControlsBackButton()
+    {
+        optionsPanel.SetActive(true);
+        controlsPanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(optionsBackButton);
+    }
+
+    public void CycleInputMaps()
+    {
+        if (inputMaps == null || inputMaps.Count == 0)
+        {
+            return;
+        }
+
+        int currentIndex = -1;
+        for (int i = 0; i < inputMaps.Count; i++)
+        {
+            if (inputMaps[i].activeSelf)
+            {
+                currentIndex = i;
+                break;
+            }
+        }
+
+        if (currentIndex == -1)
+        {
+            foreach (GameObject go in inputMaps)
+            {
+                go.SetActive(false);
+            }
+
+            inputMaps[0].SetActive(true);
+            return;
+        }
+
+        inputMaps[currentIndex].SetActive(false);
+
+        int nextIndex = (currentIndex + 1) % inputMaps.Count;
+
+        inputMaps[nextIndex].SetActive(true);
     }
 }
