@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class DungeonManager : MonoBehaviour
 {
-    [SerializeField] private bool debugRun = false;
-
     [SerializeField] private GameObject[] roomPrefabs;
 
     [SerializeField] private GameObject[] bossRoomPrefabs;
@@ -31,6 +29,10 @@ public class DungeonManager : MonoBehaviour
 
     public List<Item> ItemsToDrop = new List<Item>();
 
+    public GameObject portalPrefab;
+
+    private int seed;
+
     public Dictionary<Vector2Int, GameObject> PlacedRooms { get => placedRooms; set => placedRooms = value; }
 
     public static DungeonManager Instance { get; private set; }
@@ -49,9 +51,11 @@ public class DungeonManager : MonoBehaviour
 
     private void Start()
     {
-        if (debugRun)
+        if (!SaveManager.IsLoadingSave)
         {
-            GenerateDungeon(UnityEngine.Random.Range(0, int.MaxValue));
+            seed = UnityEngine.Random.Range(0, int.MaxValue);
+            GenerateDungeon(seed);
+            Debug.Log($"[DEBUG] Generated dungeon seed={seed}");
         }
     }
 
@@ -69,7 +73,11 @@ public class DungeonManager : MonoBehaviour
         UnityEngine.Random.InitState(seed);
         BuildGraph();
         InstantiateFromGraph();
-        Player.Instance.gameObject.transform.position = Vector3.zero;
+
+        if(!SaveManager.IsLoadingSave)
+        {
+            Player.Instance.gameObject.transform.position = Vector3.zero;
+        }
 
         MinimapManager.Instance?.CreateRoomIcon(Vector2Int.zero);
         MinimapManager.Instance?.HighlightPlayer(Vector2Int.zero);
@@ -349,6 +357,225 @@ public class DungeonManager : MonoBehaviour
             GameObject go = Instantiate(prefab, worldPos, Quaternion.identity);
             go.GetComponent<RoomController>().Init(data);
             placedRooms[data.Position] = go;
+        }
+    }
+
+    public DungeonData CollectDungeonState()
+    {
+        DungeonData d = new DungeonData();
+
+        d.seed = seed;
+
+        Vector2Int playerRoom = Player.Instance.GetComponent<PlayerTracker>().CurrentRoomPos;
+        d.playerRoomPosition = playerRoom;
+        d.playerWorldPosition = Player.Instance.transform.position;
+
+        d.roomsEntered = graph
+            .Where(r => r.HasBeenEntered)
+            .Select(r => r.Position)
+            .ToList();
+
+        d.roomsCleared = new List<Vector2Int>();
+        foreach (Vector2Int pos in d.roomsEntered)
+        {
+            if (!placedRooms.TryGetValue(pos, out var roomGo) || roomGo == null)
+                continue;
+
+            RoomController rc = roomGo.GetComponent<RoomController>();
+            if (rc?.Enemies != null && rc.Enemies.Count == 0)
+                d.roomsCleared.Add(pos);
+        }
+
+        d.roomsState = new List<RoomControllerState>();
+        foreach (var kv in placedRooms)
+        {
+            Vector2Int pos = kv.Key;
+            GameObject go = kv.Value;
+            RoomController rc = go.GetComponent<RoomController>();
+            if (rc == null) continue;
+
+            d.roomsState.Add(new RoomControllerState
+            {
+                position = pos,
+                hasBeenEntered = rc.Data.HasBeenEntered,
+                isFinished = rc.IsFinished,
+                checkCompletion = rc.CheckCompletion
+            });
+        }
+
+        d.minimapVisited = MinimapManager.Instance.GetVisitedRoomPositions();
+
+        d.currentRoomState = new EnemyRoomState
+        {
+            roomPosition = playerRoom,
+            enemies = placedRooms.TryGetValue(playerRoom, out var curGo) && curGo != null
+                ? curGo.GetComponent<RoomController>()
+                       .Enemies
+                       .Where(e => e != null)
+                       .Select(e => new EnemyState
+                       {
+                           enemyName = e.GetComponent<EnemyStats>().CharacterName,
+                           position = e.transform.position,
+                           remainingHP = e.GetComponent<EnemyStats>().CurrentHealth
+                       })
+                       .ToList()
+                : new List<EnemyState>()
+        };
+
+        d.allChests = new List<ChestState>();
+        foreach (var kv in placedRooms)
+        {
+            foreach (Chest chest in kv.Value.GetComponentsInChildren<Chest>())
+            {
+                List<LootData> lootData = chest.LootTable
+                    .Select(ld => new LootData
+                    {
+                        itemName = ld.Item.Name,
+                        minAmount = ld.MinAmount,
+                        maxAmount = ld.MaxAmount,
+                        dropChance = ld.DropChance
+                    })
+                    .ToList();
+
+                d.allChests.Add(new ChestState
+                {
+                    position = chest.transform.position,
+                    lootTable = lootData
+                });
+            }
+        }
+
+        Boss boss = FindAnyObjectByType<Boss>();
+        d.bossKilled = boss == null || boss.GetComponent<EnemyStats>().CurrentHealth <= 0;
+
+        BossPortal portal = FindAnyObjectByType<BossPortal>();
+        if (portal != null)
+        {
+            d.portalData = new BossPortalData
+            {
+                position = portal.transform.position,
+                rotation = portal.transform.rotation,
+                sceneIndex = portal.SceneIndex,
+                isFinal = portal.isFinal
+            };
+        }
+        else
+        {
+            d.portalData = null;
+        }
+
+        return d;
+    }
+
+    public void RestoreDungeonState(DungeonData d)
+    {
+        seed = d.seed;
+        GenerateDungeon(d.seed);
+
+        foreach (RoomControllerState rs in d.roomsState)
+        {
+            if (rs.hasBeenEntered && placedRooms.TryGetValue(rs.position, out var roomGo) && roomGo != null)
+            {
+                EnemySpawner spawner = roomGo.GetComponent<EnemySpawner>();
+                if (spawner != null) spawner.enabled = false;
+
+                RoomController rc = roomGo.GetComponent<RoomController>();
+                if (rc != null)
+                    Enemy.OnEnemyKilled.RemoveListener(rc.RemoveEnemy);
+            }
+        }
+
+        Vector2Int curPos = d.currentRoomState.roomPosition;
+
+        foreach (RoomControllerState rs in d.roomsState)
+        {
+            if (rs.position == curPos) continue;
+
+            RoomData roomData = GetRoomData(rs.position);
+            if (roomData != null)
+                roomData.HasBeenEntered = rs.hasBeenEntered;
+
+            if (placedRooms.TryGetValue(rs.position, out var roomGo) && roomGo != null)
+            {
+                RoomController rc = roomGo.GetComponent<RoomController>();
+                if (rc != null)
+                {
+                    rc.IsFinished = rs.isFinished;
+                    rc.CheckCompletion = rs.checkCompletion;
+                }
+            }
+        }
+
+        MinimapManager.Instance.SetVisitedRoomPositions(d.minimapVisited);
+        MinimapManager.Instance.HighlightPlayer(d.playerRoomPosition);
+
+        Rigidbody rb = Player.Instance.GetComponent<PlayerMovement>().Rb;
+        rb.position = d.playerWorldPosition;
+
+        if (placedRooms.TryGetValue(curPos, out var curRoomGo) && curRoomGo != null)
+        {
+            RoomController rc = curRoomGo.GetComponent<RoomController>();
+            if (rc != null)
+            {
+                if (rc.Enemies != null)
+                {
+                    foreach (Enemy e in rc.Enemies.ToList())
+                        if (e != null) Destroy(e.gameObject);
+                    rc.Enemies.Clear();
+                }
+
+                foreach (EnemyState es in d.currentRoomState.enemies)
+                {
+                    GameObject prefab = Resources.Load<GameObject>($"Enemies/{es.enemyName}");
+                    if (prefab == null) continue;
+                    GameObject go = Instantiate(prefab, es.position, Quaternion.identity, rc.transform);
+                    Enemy enemy = go.GetComponent<Enemy>();
+                    enemy.GetComponent<EnemyStats>().CurrentHealth = es.remainingHP;
+                    enemy.RoomController = rc;
+
+                    Enemy.OnEnemyKilled.AddListener(rc.RemoveEnemy);
+
+                    rc.Enemies.Add(enemy);
+                }
+
+                rc.CheckCompletion = true;
+
+                bool wasCleared = d.roomsCleared != null && d.roomsCleared.Contains(curPos);
+                rc.IsFinished = wasCleared;
+            }
+        }
+
+        foreach (var kv in placedRooms)
+            foreach (Chest chest in kv.Value.GetComponentsInChildren<Chest>())
+                Destroy(chest.gameObject);
+
+        foreach (ChestState cs in d.allChests)
+        {
+            GameObject go = Instantiate(ChestPrefab, cs.position, Quaternion.identity);
+            Chest ch = go.GetComponent<Chest>();
+            ch.LootTable.Clear();
+            foreach (LootData ld in cs.lootTable)
+            {
+                Item item = ItemDatabase.Instance.GetByName(ld.itemName);
+                ch.AddItem(item, ld.minAmount, ld.maxAmount, ld.dropChance);
+            }
+        }
+
+        if (d.bossKilled)
+        {
+            Boss bossObj = FindAnyObjectByType<Boss>();
+            if (bossObj != null) Destroy(bossObj.gameObject);
+        }
+        if (d.portalData.sceneIndex != 0)
+        {
+            GameObject go = Instantiate(
+                portalPrefab,
+                d.portalData.position,
+                d.portalData.rotation
+            );
+            BossPortal portal = go.GetComponent<BossPortal>();
+            portal.SceneIndex = d.portalData.sceneIndex;
+            portal.isFinal = d.portalData.isFinal;
         }
     }
 

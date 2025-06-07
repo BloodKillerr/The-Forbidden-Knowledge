@@ -3008,7 +3008,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 129376746}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657361280}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &139618980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16228,6 +16240,8 @@ MonoBehaviour:
   statsButton: {fileID: 0}
   craftingPanel: {fileID: 0}
   resourcesHolder: {fileID: 0}
+  abilitiesHolder: {fileID: 0}
+  abilitySlot: {fileID: 0}
   craftingCloseButton: {fileID: 0}
   recipesHolder: {fileID: 0}
   recipeBlockPrefab: {fileID: 0}
@@ -16258,7 +16272,9 @@ MonoBehaviour:
   messageDisplayTime: 2
   maxConcurrentMessages: 3
   TooltipGO: {fileID: 0}
+  AbilityTooltipGO: {fileID: 0}
   Tooltip: {fileID: 0}
+  AbilityTooltip: {fileID: 0}
 --- !u!4 &691508570
 Transform:
   m_ObjectHideFlags: 0

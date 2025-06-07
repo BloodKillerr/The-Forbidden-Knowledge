@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class SpellManager : MonoBehaviour
@@ -53,6 +53,7 @@ public class SpellManager : MonoBehaviour
         spell.slot = slot;
         OnSpellEquipped.Invoke(slot, spell);
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
+        UIManager.Instance.UpdateEquipmentSlotHolder(spell, true);
     }
 
     public void UnEquipSpell(Spell spell)
@@ -142,5 +143,26 @@ public class SpellManager : MonoBehaviour
     {
         nextUseTime1 = 0f;
         nextUseTime2 = 0f;
+    }
+
+    public float GetRemainingCooldown(int slot)
+    {
+        if (slot == 1 && spell1 != null)
+            return Mathf.Max(0f, nextUseTime1 - Time.time);
+        if (slot == 2 && spell2 != null)
+            return Mathf.Max(0f, nextUseTime2 - Time.time);
+        return 0f;
+    }
+
+    public void SetRemainingCooldown(int slot, float remaining)
+    {
+        if (slot == 1 && spell1 != null)
+        {
+            nextUseTime1 = Time.time + remaining;
+        }
+        else if (slot == 2 && spell2 != null)
+        {
+            nextUseTime2 = Time.time + remaining;
+        }
     }
 }

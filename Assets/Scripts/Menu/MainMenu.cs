@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -23,13 +23,20 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        SaveManager.DeleteSave();
         SceneManager.LoadScene(mainHubSceneIndex);
-        Debug.Log("Start game");
     }
 
     public void ContinueGame()
     {
-        Debug.Log("Continue game");
+        MasterSaveData data = SaveManager.LoadGame();
+
+        if (data == null)
+        {
+            Debug.Log("[MainMenu] No valid save found. Starting a New Game instead.");
+            return;
+        }
+        SceneManager.LoadScene(data.LastSceneBuildIndex);
     }
 
     public void Options()

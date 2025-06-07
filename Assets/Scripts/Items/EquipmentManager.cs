@@ -9,6 +9,7 @@ public class EquipmentManager : MonoBehaviour
     public UnityEvent<Equipment, Equipment> EquipmentChanged = new UnityEvent<Equipment, Equipment>();
 
     public static EquipmentManager Instance { get; private set; }
+    public Equipment[] CurrentEquipment { get => currentEquipment; set => currentEquipment = value; }
 
     private void Awake()
     {
@@ -20,12 +21,14 @@ public class EquipmentManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+        currentEquipment = new Equipment[numSlots];
     }
 
     private void Start()
     {
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-        currentEquipment = new Equipment[numSlots];
+        
     }
 
     public void Equip(Equipment item)
@@ -49,6 +52,7 @@ public class EquipmentManager : MonoBehaviour
         {
             Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon((Weapon)item);
         }
+        UIManager.Instance.UpdateEquipmentSlotHolder(item, true);
     }
 
     public void UnEquip(int slotIndex)

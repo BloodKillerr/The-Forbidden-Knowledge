@@ -87,6 +87,29 @@ public class AbilityManager : MonoBehaviour
         return currentAbilities.Any(a => a.GetType() == abilityType);
     }
 
+    public List<string> GetCurrentAbilityNames()
+    {
+        return currentAbilities.Select(a => a.AbilityName).ToList();
+    }
+
+    public void SetCurrentAbilitiesByName(List<string> names)
+    {
+        RemoveAllAbilities();
+
+        foreach (string name in names)
+        {
+            Ability prefab = AbilityDatabase.Instance.GetByName(name);
+            if (prefab != null)
+            {
+                AddAbility(prefab);
+            }
+            else
+            {
+                Debug.LogWarning($"[AbilityManager] Missing ability '{name}' in database");
+            }
+        }
+    }
+
     public void PlayerDidAttack() => OnPlayerAttack?.Invoke();
     public void EnemyWasKilled() => OnEnemyKilled?.Invoke();
     public void EnemyWasKilledInt(int arg) => OnEnemyKilledInt?.Invoke(arg);

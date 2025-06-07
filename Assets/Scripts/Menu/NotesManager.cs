@@ -79,4 +79,19 @@ public class NotesManager : MonoBehaviour
 		else
 			noteContentText.text = "This note is locked";
 	}
+
+    public List<string> GetUnlockedNoteIDs()
+    {
+        return new List<string>(unlockedNoteIDs);
+    }
+
+    public void SetUnlockedNoteIDs(List<string> ids)
+    {
+        if (ids == null)
+        {
+            unlockedNoteIDs.Clear();
+            return;
+        }
+        unlockedNoteIDs = new HashSet<string>(ids);
+    }
 }

@@ -61,4 +61,29 @@ public class LevelingManager : MonoBehaviour
         }
         return false;
     }
+
+    public LevelingData GetLevelingData()
+    {
+        return new LevelingData
+        {
+            statPoints = this.statPoints,
+            currentXP = this.currentXP,
+            requiredXP = this.requiredXP
+        };
+    }
+
+    public void ApplyLevelingData(LevelingData data)
+    {
+        if (data == null)
+        {
+            return;
+        }
+
+        statPoints = data.statPoints;
+        currentXP = data.currentXP;
+        requiredXP = data.requiredXP;
+
+        XPChanged?.Invoke(currentXP, requiredXP);
+        StatPointsChanged?.Invoke(statPoints);
+    }
 }

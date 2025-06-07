@@ -38,7 +38,8 @@ public class PersistBetweenScenes : MonoBehaviour
             Instance = null;
         }
 
-        if (scene.buildIndex == allowedScenes[0] || scene.buildIndex == allowedScenes[1])
+        if ((scene.buildIndex == allowedScenes[0] || scene.buildIndex == allowedScenes[1])
+        && !SaveManager.IsLoadingSave)
         {
             GameManager.Instance.ResetPlayer();
         }

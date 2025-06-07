@@ -4,6 +4,9 @@ using UnityEngine;
 public class Chest : Interactable
 {
     [SerializeField] private List<Loot> lootTable = new List<Loot>();
+
+    public List<Loot> LootTable { get => lootTable; set => lootTable = value; }
+
     public override void Interact()
     {
         if (Player.Instance.GetComponent<PlayerMovement>().IsDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)

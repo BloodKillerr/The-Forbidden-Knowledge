@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d3c960046b1d04eb9b169de45c1892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugRun: 1
   roomPrefabs:
   - {fileID: 9163779169686516746, guid: 6235285f4911385458b58a367b5f7726, type: 3}
   - {fileID: 5865138113214944467, guid: ea7cf8426ac1214429db9804bb1961f5, type: 3}
@@ -75,6 +74,7 @@ MonoBehaviour:
   roomSizeY: 25
   ChestPrefab: {fileID: 1002652233622115229, guid: 657bfa27d64b4ff4fac57c50c48d86d0, type: 3}
   ItemsToDrop: []
+  portalPrefab: {fileID: 6844379756280990573, guid: 23c563c8f45d6ec43b89f4fa63a6e5ed, type: 3}
 --- !u!114 &1037119391901808808
 MonoBehaviour:
   m_ObjectHideFlags: 0

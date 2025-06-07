@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -54,6 +54,7 @@ public class ConsumableManager : MonoBehaviour
         consumable.slot = slot;
         OnConsumableEquipped.Invoke(slot, consumable);
         UIManager.Instance.UpdateInventoryUI(UIManager.Instance.CurrentInventoryTab);
+        UIManager.Instance.UpdateEquipmentSlotHolder(consumable, true);
     }
 
     public void UnEquipConsumable(Consumable consumable)
@@ -145,5 +146,26 @@ public class ConsumableManager : MonoBehaviour
     {
         nextUseTime1 = 0f;
         nextUseTime2 = 0f;
+    }
+
+    public float GetRemainingCooldown(int slot)
+    {
+        if (slot == 1 && consumable1 != null)
+            return Mathf.Max(0f, nextUseTime1 - Time.time);
+        if (slot == 2 && consumable2 != null)
+            return Mathf.Max(0f, nextUseTime2 - Time.time);
+        return 0f;
+    }
+
+    public void SetRemainingCooldown(int slot, float remaining)
+    {
+        if (slot == 1 && consumable1 != null)
+        {
+            nextUseTime1 = Time.time + remaining;
+        }
+        else if (slot == 2 && consumable2 != null)
+        {
+            nextUseTime2 = Time.time + remaining;
+        }
     }
 }

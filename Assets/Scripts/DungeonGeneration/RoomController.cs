@@ -6,18 +6,21 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    protected RoomData data;
-    protected bool isFinished = false;
-    protected bool checkCompletion = false;
+    private RoomData data;
+    private bool isFinished = false;
+    private bool checkCompletion = false;
     protected List<Enemy> enemies = new List<Enemy>();
 
     public List<Enemy> Enemies { get => enemies; set => enemies = value; }
+    public bool IsFinished { get => isFinished; set => isFinished = value; }
+    public bool CheckCompletion { get => checkCompletion; set => checkCompletion = value; }
+    public RoomData Data { get => data; set => data = value; }
 
     public void Init(RoomData data)
     {
         this.data = data;
 
-        if(data.IsStart)
+        if (data.IsStart)
         {
             GetComponent<EnemySpawner>().enabled = false;
             isFinished = true;
@@ -27,7 +30,7 @@ public class RoomController : MonoBehaviour
 
     private void Update()
     {
-        if(checkCompletion && !isFinished && enemies.Count == 0)
+        if (checkCompletion && !isFinished && enemies.Count == 0)
         {
             isFinished = true;
         }
@@ -35,7 +38,7 @@ public class RoomController : MonoBehaviour
 
     public void MovePlayerThroughDoor(Direction direction)
     {
-        if(!isFinished)
+        if (!isFinished)
         {
             return;
         }
@@ -65,7 +68,7 @@ public class RoomController : MonoBehaviour
 
     private void TriggerOnEntryToRoom()
     {
-        if(data.IsStart)
+        if (data.IsStart)
         {
             data.HasBeenEntered = true;
             isFinished = true;
@@ -73,7 +76,7 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        if(!data.HasBeenEntered)
+        if (!data.HasBeenEntered && !IsFinished)
         {
             //Spawn Objects and Enemies
             GetComponent<EnemySpawner>()?.SpawnEnemies();
@@ -88,7 +91,7 @@ public class RoomController : MonoBehaviour
         Enemy.OnEnemyKilled.RemoveListener(RemoveEnemy);
     }
 
-    private void RemoveEnemy(Enemy enemy)
+    public void RemoveEnemy(Enemy enemy)
     {
         if(enemies.Contains(enemy))
         {

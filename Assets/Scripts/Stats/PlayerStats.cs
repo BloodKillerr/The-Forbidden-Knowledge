@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -97,5 +97,63 @@ public class PlayerStats : CharacterStats
         base.Die();
         GetComponentInChildren<Animator>().Play("PlayerDeath");
         Player.Instance.IsDead = true;
+    }
+
+    public StatsData GetStatsData()
+    {
+        return new StatsData
+        {
+            currentHealth = CurrentHealth,
+            baseMaxHealth = MaxHealth.GetBaseValue(),
+            isInvincible = IsInvincible,
+            baseArmor = Armor.GetBaseValue(),
+            baseDamage = Damage.GetBaseValue(),
+            baseMovementSpeed = movementSpeed.GetBaseValue(),
+            currentDodgeCharges = CurrentDodgeCharges,
+            baseMaxDodgeCharges = MaxDodgeCharges.GetBaseValue()
+        };
+    }
+
+    public void ApplyStatsData(StatsData d)
+    {
+        EquipmentManager.Instance.EquipmentChanged.RemoveListener(OnEquipmentChanged);
+
+        MaxHealth = new Stat
+        {
+            BaseValue = d.baseMaxHealth,
+            ValueUpgradeCap = MaxHealth.ValueUpgradeCap
+        };
+        CurrentHealth = d.currentHealth;
+        IsInvincible = d.isInvincible;
+        Armor = new Stat
+        {
+            BaseValue = d.baseArmor,
+            ValueUpgradeCap = Armor.ValueUpgradeCap
+        };
+        Damage = new Stat
+        {
+            BaseValue = d.baseDamage,
+            ValueUpgradeCap = Damage.ValueUpgradeCap
+        };
+
+        movementSpeed = new Stat
+        {
+            BaseValue = d.baseMovementSpeed,
+            ValueUpgradeCap = movementSpeed.ValueUpgradeCap
+        };
+        maxDodgeCharges = new Stat
+        {
+            BaseValue = d.baseMaxDodgeCharges,
+            ValueUpgradeCap = maxDodgeCharges.ValueUpgradeCap
+        };
+        CurrentDodgeCharges = d.currentDodgeCharges;
+
+        EquipmentManager.Instance.EquipmentChanged.AddListener(OnEquipmentChanged);
+
+        HealthChanged?.Invoke(CurrentHealth, MaxHealth.GetValue());
+        DodgeChargesChanged?.Invoke(CurrentDodgeCharges, MaxDodgeCharges.GetValue());
+        ApplyInvincibilityEvent?.Invoke(0f);
+        UIManager.Instance.BuildStatUI(this);
+        GetComponent<PlayerMovement>().RestoreDodgeCharges();
     }
 }

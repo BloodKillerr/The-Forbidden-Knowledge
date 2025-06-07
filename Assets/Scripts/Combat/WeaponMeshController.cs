@@ -62,12 +62,18 @@ public class WeaponMeshController : MonoBehaviour
 
     public void EnablePrimaryDamageCollider()
     {
-        primaryWeaponCollider.EnableDamageCollider();
+        if(primaryWeaponCollider != null)
+        {
+            primaryWeaponCollider.EnableDamageCollider();
+        }
     }
 
     public void DisablePrimaryDamageCollider()
     {
-        primaryWeaponCollider.DisableDamageCollider();
+        if(primaryWeaponCollider != null)
+        {
+            primaryWeaponCollider.DisableDamageCollider();
+        }
     }
 
     public void HolsterPrimaryWeapon()

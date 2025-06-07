@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -137,6 +138,38 @@ public class UIManager : MonoBehaviour
         {
             AbilityTooltip = AbilityTooltipGO.GetComponent<AbilityToolTipUI>();
         }
+
+        if(InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.OnItemAdded.AddListener(OnItemAdded);
+        }
+
+        if (consumableImages[0] != null)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                consumableImages[i].gameObject.SetActive(false);
+                consumableCooldownSliders[i].gameObject.SetActive(false);
+                spellImages[i].gameObject.SetActive(false);
+                spellCooldownSliders[i].gameObject.SetActive(false);
+            }
+        }
+
+        if (ConsumableManager.Instance != null)
+        {
+            ConsumableManager consumableManager = ConsumableManager.Instance;
+            consumableManager.OnConsumableEquipped.AddListener(OnConsumableEquipped);
+            consumableManager.OnConsumableUnequipped.AddListener(OnConsumableUnequipped);
+            consumableManager.OnConsumableUsed.AddListener(OnConsumableUsed);
+        }
+        
+        if(SpellManager.Instance != null)
+        {
+            SpellManager spellManager = SpellManager.Instance;
+            spellManager.OnSpellEquipped.AddListener(OnSpellEquipped);
+            spellManager.OnSpellUnequipped.AddListener(OnSpellUnequipped);
+            spellManager.OnSpellUsed.AddListener(OnSpellUsed);
+        }
     }
 
     private void Start()
@@ -200,26 +233,6 @@ public class UIManager : MonoBehaviour
         levelingManager.StatPointsChanged.AddListener(OnStatPointsChanged);
         OnXPChanged(levelingManager.CurrentXP, levelingManager.RequiredXP);
         OnStatPointsChanged(levelingManager.StatPoints);
-
-        InventoryManager.Instance.OnItemAdded.AddListener(OnItemAdded);
-
-        for (int i = 0; i < 2; i++)
-        {
-            consumableImages[i].gameObject.SetActive(false);
-            consumableCooldownSliders[i].gameObject.SetActive(false);
-            spellImages[i].gameObject.SetActive(false);
-            spellCooldownSliders[i].gameObject.SetActive(false);
-        }
-
-        ConsumableManager consumableManager = ConsumableManager.Instance;
-        consumableManager.OnConsumableEquipped.AddListener(OnConsumableEquipped);
-        consumableManager.OnConsumableUnequipped.AddListener(OnConsumableUnequipped);
-        consumableManager.OnConsumableUsed.AddListener(OnConsumableUsed);
-
-        SpellManager spellManager = SpellManager.Instance;
-        spellManager.OnSpellEquipped.AddListener(OnSpellEquipped);
-        spellManager.OnSpellUnequipped.AddListener(OnSpellUnequipped);
-        spellManager.OnSpellUsed.AddListener(OnSpellUsed);
     }
 
     #region Health & Invincibility
@@ -421,6 +434,21 @@ public class UIManager : MonoBehaviour
         go.SetActive(false);
         TMP_Text txt = go.GetComponentInChildren<TMP_Text>();
         txt.text = $"Ability: {ability.AbilityName} added!";
+
+        pendingMessages.Enqueue(go);
+
+        if (!processingQueue)
+        {
+            StartCoroutine(ProcessMessageQueue());
+        }
+    }
+
+    public void OnGameSaved()
+    {
+        GameObject go = Instantiate(messagePrefab, messageBoxContainer);
+        go.SetActive(false);
+        TMP_Text txt = go.GetComponentInChildren<TMP_Text>();
+        txt.text = $"Game Saved!";
 
         pendingMessages.Enqueue(go);
 
@@ -786,7 +814,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void BuildStatUI(PlayerStats playerStats)
+    public void BuildStatUI(PlayerStats playerStats)
     {
         foreach (Transform t in statsHolder)
         {
@@ -853,5 +881,63 @@ public class UIManager : MonoBehaviour
         var sb = go.GetComponent<StatBlock>();
         sb.Initialize(label, readout, onUpgrade);
         changeEvent.AddListener((cur, max) => sb.Refresh());
+    }
+
+    public void ResumeSpellCooldown(int slot, float remaining)
+    {
+        int idx = slot - 1;
+        Spell item = (slot == 1) ? SpellManager.Instance.Spell1 : SpellManager.Instance.Spell2;
+        if (item == null || remaining <= 0f) return;
+
+        spellImages[idx].sprite = item.Icon;
+        spellImages[idx].gameObject.SetActive(true);
+
+        _ = StartCoroutine(RunPartialCooldown(
+            remaining,
+            item.Cooldown,
+            idx,
+            spellImages,
+            spellCooldownSliders
+        ));
+    }
+
+    public void ResumeConsumableCooldown(int slot, float remaining)
+    {
+        int idx = slot - 1;
+        Consumable item = (slot == 1) ? ConsumableManager.Instance.Consumable1 : ConsumableManager.Instance.Consumable2;
+        if (item == null || remaining <= 0f) return;
+
+        consumableImages[idx].sprite = item.Icon;
+        consumableImages[idx].gameObject.SetActive(true);
+
+        _ = StartCoroutine(RunPartialCooldown(
+            remaining,
+            item.Cooldown,
+            idx,
+            consumableImages,
+            consumableCooldownSliders
+        ));
+    }
+
+    private IEnumerator RunPartialCooldown(
+        float remaining,
+        float full,
+        int idx,
+        Image[] images,
+        Slider[] sliders
+    )
+    {
+        sliders[idx].maxValue = full;
+        sliders[idx].value = remaining;
+        sliders[idx].gameObject.SetActive(true);
+
+        while (remaining > 0f)
+        {
+            remaining -= Time.deltaTime;
+            sliders[idx].value = Mathf.Max(0f, remaining);
+            yield return null;
+        }
+
+        sliders[idx].gameObject.SetActive(false);
     }
 }

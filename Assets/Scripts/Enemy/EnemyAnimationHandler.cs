@@ -43,5 +43,6 @@ public class EnemyAnimationHandler : MonoBehaviour
     public void DisableDamageCollider()
     {
         enemy.DamageCollider.DisableDamageCollider();
+        enemyStats.IsInvincible = false;
     }
 }
