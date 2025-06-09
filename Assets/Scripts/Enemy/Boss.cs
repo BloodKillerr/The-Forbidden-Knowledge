@@ -170,10 +170,10 @@ public class Boss : Enemy
     {
         base.Die();
 
-        if(RoomController is BossRoomController)
+        if (RoomController is BossRoomController)
         {
             BossRoomController controller = RoomController as BossRoomController;
-            BossPortal portal = Instantiate(portalPrefab, controller.PortalSpawnPoint.transform.position, 
+            BossPortal portal = Instantiate(portalPrefab, controller.PortalSpawnPoint.transform.position,
                 controller.PortalSpawnPoint.transform.rotation, RoomController.gameObject.transform).GetComponent<BossPortal>();
 
             portal.SceneIndex = nextScene;

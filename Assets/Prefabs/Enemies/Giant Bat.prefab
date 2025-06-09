@@ -1155,10 +1155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable:
-  - Item: {fileID: 11400000, guid: e921d40746cd35943998e104c6e2f17a, type: 2}
-    MinAmount: 1
-    MaxAmount: 2
-    DropChance: 0.45
   - Item: {fileID: 11400000, guid: a160b6cdcc4c1f34c9bab617fc7d7882, type: 2}
     MinAmount: 1
     MaxAmount: 1

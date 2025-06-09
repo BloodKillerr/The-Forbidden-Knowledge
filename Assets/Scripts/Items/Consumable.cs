@@ -43,7 +43,6 @@ public class Consumable : Item
     {
         List<(string label, string value)> data = new List<(string, string)>
         {
-            ("Description", Description),
             ("Cooldown", Cooldown.ToString()),
             ("Amount", Amount.ToString())
         };

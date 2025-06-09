@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0c9b78b8a74fb4593079b3c718362e, type: 3}
+  m_Name: Black Steel Sword
+  m_EditorClassIdentifier: 
+  Name: Black Steel Sword
+  Description: Made from the sturdy material
+  Icon: {fileID: -436451260, guid: ba3bdd3907851bf419b6dc8dbe397b9d, type: 3}
+  Amount: 1
+  Type: 1
+  EqSlot: 4
+  ArmorModifier: 0
+  DamageModifier: 24
+  MovementSpeedModifier: 0
+  Equipped: 0
+  mesh: {fileID: 8420959461155091612, guid: 5397397a36f344c46810459aa22f55a6, type: 3}
+  HolsterPositionOffset: {x: 0.228, y: -0.196, z: -0.029}
+  HolsterRotationOffset: {x: 0, y: 0, z: 52.624}
+  HandPositionOffset: {x: -0.0097, y: 0.0142, z: -0.0021}
+  HandRotationOffset: {x: -6.074, y: -90.883, z: -81.711}
+  AttackAnimations:
+  - SwordAttack1
+  - SwordAttack2
+  - SwordAttack3
+  ComboResetTime: 1
+  SoundType: 0

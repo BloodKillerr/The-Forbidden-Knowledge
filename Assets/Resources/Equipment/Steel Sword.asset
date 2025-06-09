@@ -25,7 +25,7 @@ MonoBehaviour:
   mesh: {fileID: 136761960666699431, guid: 58fb2c34ef69e34448fdb38a9759ea14, type: 3}
   HolsterPositionOffset: {x: 0.228, y: -0.196, z: -0.029}
   HolsterRotationOffset: {x: 0, y: 0, z: 52.624}
-  HandPositionOffset: {x: -0.0097, y: 0.0142, z: -0.0021}
+  HandPositionOffset: {x: -0.0097, y: 0.0083, z: -0.0427}
   HandRotationOffset: {x: -6.074, y: -90.883, z: -81.711}
   AttackAnimations:
   - SwordAttack1

@@ -263,6 +263,13 @@ MonoBehaviour:
   interactCanvas: {fileID: 7732931194786765734}
   recipes:
   - {fileID: 11400000, guid: b8862d79dcf044a4dadb206617e9d33d, type: 2}
+  - {fileID: 11400000, guid: 7e0940cdbc9c212448abf2b18799c03b, type: 2}
+  - {fileID: 11400000, guid: 2315ae92d9c2bcd42ac1083e4251d127, type: 2}
+  - {fileID: 11400000, guid: 78d7038f7de256c409586cea59495f8d, type: 2}
+  - {fileID: 11400000, guid: fe17c807ce07a9544bea509104d30885, type: 2}
+  - {fileID: 11400000, guid: 11d78cc65a128e743bfa36a935cdcd62, type: 2}
+  - {fileID: 11400000, guid: 97aa5afb28556894686a87880a2b4786, type: 2}
+  - {fileID: 11400000, guid: 97c54b5af7ff23f4d986272383abcace, type: 2}
   soundType: 19
 --- !u!65 &799948060273640235
 BoxCollider:
