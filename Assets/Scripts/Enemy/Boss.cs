@@ -31,6 +31,9 @@ public class Boss : Enemy
     [SerializeField] private List<PhaseSettings> phases = new List<PhaseSettings>();
 
     private int totalPhases => phases.Count;
+
+    public GameObject PortalPrefab { get => portalPrefab; set => portalPrefab = value; }
+
     private int currentPhase = 1;
     private List<Attack> currentAttacks;
 
@@ -69,7 +72,7 @@ public class Boss : Enemy
 
     private void UpdatePhase()
     {
-        float healthPercent = (float)enemyStats.CurrentHealth / enemyStats.MaxHealth.GetValue();
+        float healthPercent = (float)EnemyStats.CurrentHealth / EnemyStats.MaxHealth.GetValue();
         int newPhase = Mathf.Clamp(
             Mathf.CeilToInt((1 - healthPercent) * totalPhases),
             1,
@@ -125,7 +128,7 @@ public class Boss : Enemy
 
     public override void AttackAction()
     {
-        if (enemyStats.CurrentHealth <= 0 ||
+        if (EnemyStats.CurrentHealth <= 0 ||
         currentPhaseSettings == null ||
         currentPhaseSettings.attacks.Count == 0)
         {
@@ -167,10 +170,10 @@ public class Boss : Enemy
     {
         base.Die();
 
-        if(RoomController is BossRoomController)
+        if (RoomController is BossRoomController)
         {
             BossRoomController controller = RoomController as BossRoomController;
-            BossPortal portal = Instantiate(portalPrefab, controller.PortalSpawnPoint.transform.position, 
+            BossPortal portal = Instantiate(portalPrefab, controller.PortalSpawnPoint.transform.position,
                 controller.PortalSpawnPoint.transform.rotation, RoomController.gameObject.transform).GetComponent<BossPortal>();
 
             portal.SceneIndex = nextScene;

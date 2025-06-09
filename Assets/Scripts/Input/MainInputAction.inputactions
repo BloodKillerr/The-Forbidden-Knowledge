@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Secondary",
-                    "type": "Button",
-                    "id": "34ef268a-481e-4239-9651-feb097e1faba",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Spell",
                     "type": "Value",
                     "id": "f8e783a0-1072-44d7-8b54-757d65fc0d90",
@@ -60,7 +51,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PauseResume",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "d1ee3959-c1d7-4b51-8cae-e1b7b881b0a4",
                     "expectedControlType": "",
@@ -155,7 +146,7 @@
                 {
                     "name": "",
                     "id": "29365a3b-daac-419e-99f1-9159aa9c89f1",
-                    "path": "<XInputController>/leftStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -188,7 +179,7 @@
                 {
                     "name": "",
                     "id": "12aa16a8-3e82-4cd7-aad0-2ba69a525b93",
-                    "path": "<XInputController>/rightStick",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "StickDeadzone,ScaleVector2(x=200,y=200)",
                     "groups": ";XBoxController",
@@ -221,7 +212,7 @@
                 {
                     "name": "",
                     "id": "d5261cf4-b7b0-4ee0-aeca-bcdb27de6887",
-                    "path": "<XInputController>/rightTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -237,39 +228,6 @@
                     "processors": "",
                     "groups": ";PSController",
                     "action": "Primary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4537e30-7c10-4bef-897d-5fac358706a8",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";KeyBoardMouse",
-                    "action": "Secondary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "acdcce0b-5b47-4bff-aee1-a1dc0a35ce93",
-                    "path": "<XInputController>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";XBoxController",
-                    "action": "Secondary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9f36db8c-c06f-4000-bbce-cf3826373937",
-                    "path": "<DualShockGamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";PSController",
-                    "action": "Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -320,7 +278,7 @@
                 {
                     "name": "negative",
                     "id": "f87cfc19-fee2-40be-8175-8d3e96386e27",
-                    "path": "<XInputController>/leftShoulder",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -331,7 +289,7 @@
                 {
                     "name": "positive",
                     "id": "cddc3acd-69e8-482e-bc81-1871799daf65",
-                    "path": "<XInputController>/rightShoulder",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -419,7 +377,7 @@
                 {
                     "name": "negative",
                     "id": "c43844c5-655f-4932-81e9-87c7a1172679",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -430,7 +388,7 @@
                 {
                     "name": "positive",
                     "id": "364dee95-8cde-4d3a-bcaa-53771d5c296f",
-                    "path": "<XInputController>/buttonEast",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -478,18 +436,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyBoardMouse",
-                    "action": "PauseResume",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "a895759f-9f91-4749-b64c-3fdfaccb4485",
-                    "path": "<XInputController>/start",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
-                    "action": "PauseResume",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -500,7 +458,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";PSController",
-                    "action": "PauseResume",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -518,7 +476,7 @@
                 {
                     "name": "",
                     "id": "ca16aaec-c7ee-427c-b177-dad583c9f972",
-                    "path": "<XInputController>/select",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -551,7 +509,7 @@
                 {
                     "name": "",
                     "id": "58bdfcd1-99c2-45c6-86ee-e2e1e752e31f",
-                    "path": "<XInputController>/buttonSouth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",
@@ -584,7 +542,7 @@
                 {
                     "name": "",
                     "id": "a2edfa8b-0d6d-42b4-a7a5-d0b8210a4978",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XBoxController",

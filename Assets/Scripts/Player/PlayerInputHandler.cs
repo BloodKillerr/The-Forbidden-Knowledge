@@ -85,21 +85,10 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
     }
-
-    public void SecondaryEvent(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (!GameManager.Instance.IsGameStatePaused && !Player.Instance.IsDead)
-            {
-                Player.Instance.GetComponent<PlayerAttack>().HandleNormalSecondaryAttack();
-            }
-        }
-    }
             
     public void PauseResumeEvent(InputAction.CallbackContext context)
     {
-        if (context.performed && !Player.Instance.IsDead)
+        if (context.performed && !Player.Instance.IsDead && !PauseManager.Instance.RebindingUI.activeSelf)
         {
             UIManager.Instance.ToogleMenu(MenuType.PAUSE);
         }

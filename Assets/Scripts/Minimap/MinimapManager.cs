@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -80,10 +81,22 @@ public class MinimapManager : MonoBehaviour
 
 	public void ClearMinimap()
 	{
-		foreach (var icon in roomIcons.Values)
+		foreach (GameObject icon in roomIcons.Values)
 		{
 			Destroy(icon);
 		}
 		roomIcons.Clear();
 	}
+
+    public List<Vector2Int> GetVisitedRoomPositions()
+    {
+        return roomIcons.Keys.ToList();
+    }
+
+    public void SetVisitedRoomPositions(List<Vector2Int> positions)
+    {
+        ClearMinimap();
+        foreach (Vector2Int pos in positions)
+            CreateRoomIcon(pos);
+    }
 }

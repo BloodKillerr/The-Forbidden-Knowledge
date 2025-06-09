@@ -134,6 +134,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
     public void EnablePrimaryDamageCollider()
     {
         Player.Instance.GetComponent<WeaponMeshController>().EnablePrimaryDamageCollider();
+        SoundManager.PlaySound(Player.Instance.GetComponent<WeaponMeshController>().PrimaryWeapon.SoundType, GetComponentInParent<AudioSource>(), 1);
     }
 
     public void DisablePrimaryDamageCollider()
@@ -141,16 +142,9 @@ public class PlayerAnimatorHandler : MonoBehaviour
         Player.Instance.GetComponent<WeaponMeshController>().DisablePrimaryDamageCollider();
     }
 
-    public void StartSecondaryAttack()
+    public void TriggerOnAttackAbilities()
     {
-        playerAttack.SetAttacking(true);
-        Player.Instance.GetComponent<WeaponMeshController>().AttackWithSecondaryWeapon();
-    }
-
-    public void StopSecondaryAttack()
-    {
-        playerAttack.SetAttacking(false);
-        Player.Instance.GetComponent<WeaponMeshController>().HideSecondaryWeapon();
+        AbilityManager.Instance.PlayerDidAttack();
     }
 
     public void Die()

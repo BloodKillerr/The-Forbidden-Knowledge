@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e37ba309becbf4bbd2f6fe17ad303f, type: 3}
+  m_Name: Steel Chestplate
+  m_EditorClassIdentifier: 
+  Name: Steel Chestplate
+  Description: Not many survived using that
+  Icon: {fileID: 21300000, guid: d41f1ac86eae4e446a222c497acab6b8, type: 2}
+  Amount: 1
+  Type: 1
+  EqSlot: 1
+  ArmorModifier: 12
+  DamageModifier: 9
+  MovementSpeedModifier: 0
+  Equipped: 0

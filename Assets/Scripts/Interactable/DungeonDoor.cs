@@ -17,5 +17,10 @@ public class DungeonDoor : Interactable
         }
         base.Interact();
         roomController.MovePlayerThroughDoor(direction);
+
+        if(GetComponentInParent<RoomController>().IsFinished)
+        {
+            SoundManager.PlaySound(SoundType.DOOR, GetComponent<AudioSource>(), 1);
+        }
     }
 }

@@ -8,6 +8,8 @@ public class PlayerTracker : MonoBehaviour
 
 	private bool inDungeon = false;
 
+    public Vector2Int CurrentRoomPos { get => currentRoomPos; set => currentRoomPos = value; }
+
     private void Start()
     {
         InvokeRepeating(nameof(CheckRoom), 0f, checkInterval);

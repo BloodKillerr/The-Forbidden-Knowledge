@@ -4,6 +4,11 @@ using UnityEngine;
 public class Chest : Interactable
 {
     [SerializeField] private List<Loot> lootTable = new List<Loot>();
+
+    public GameObject ChestPS;
+
+    public List<Loot> LootTable { get => lootTable; set => lootTable = value; }
+
     public override void Interact()
     {
         if (Player.Instance.GetComponent<PlayerMovement>().IsDodging || Player.Instance.GetComponent<PlayerAttack>().IsAttacking)
@@ -27,6 +32,9 @@ public class Chest : Interactable
                 InventoryManager.Instance.Add(copy);
             }
         }
+        GameObject ps = Instantiate(ChestPS, transform.position, Quaternion.identity);
+        Destroy(ps,2f);
+        SoundManager.PlaySound(SoundType.CHEST, null, 1);
         Destroy(gameObject);
     }
 

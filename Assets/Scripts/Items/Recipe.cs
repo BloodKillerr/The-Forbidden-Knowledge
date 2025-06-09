@@ -28,4 +28,16 @@ public class Recipe : ScriptableObject
             InventoryManager.Instance.Add(Instantiate(Result));
         }
     }
+
+    public bool CanCraft()
+    {
+        foreach (RecipeComponent component in Components)
+        {
+            if (!InventoryManager.Instance.ContainsItem(component.Item, component.Amount))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

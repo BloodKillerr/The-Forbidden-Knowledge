@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4359642149f744290f39f882792a81, type: 3}
+  m_Name: MainSoundSO
+  m_EditorClassIdentifier: 
+  sounds:
+  - type: 0
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 84003733f01bb9c499eb58d8806964f6, type: 3}
+    - {fileID: 8300000, guid: 48220f7e6499d4441b0c58d2d494cb81, type: 3}
+    - {fileID: 8300000, guid: 0a6e0f426755c5b4f8a6cb0235673dc4, type: 3}
+  - type: 1
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: d9100410982647f48ac4701afc02de9f, type: 3}
+    - {fileID: 8300000, guid: 8aea8e391bf031c4ea1cd595afccae5c, type: 3}
+  - type: 2
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 6f626a39333a9a2438842194b1ce0005, type: 3}
+    - {fileID: 8300000, guid: 0a7c34c8d6d7438418201065349ccfe7, type: 3}
+    - {fileID: 8300000, guid: a79b87982c5d9ec4aad0a77d41893612, type: 3}
+  - type: 3
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 3714831afb1bd5840b032643e3b45dd9, type: 3}
+  - type: 4
+    volume: 0.5
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: a9d1ae4f906c8364f88f3d37746ffdff, type: 3}
+  - type: 5
+    volume: 0.5
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: a788dd37818e7014b92843abe5beae44, type: 3}
+  - type: 6
+    volume: 0.5
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: a9e03e82793357a42b13272103c47c02, type: 3}
+  - type: 7
+    volume: 0.5
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: d5a60cc96cd33fb4aa6e627d086b7252, type: 3}
+  - type: 8
+    volume: 1
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: d2c1c99aa5a38cd45b27c14473b50ff9, type: 3}
+  - type: 9
+    volume: 0.1
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 216fc73126db9e146b2e825ab45dc2ba, type: 3}
+  - type: 10
+    volume: 0.1
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 216fc73126db9e146b2e825ab45dc2ba, type: 3}
+  - type: 11
+    volume: 0.1
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 216fc73126db9e146b2e825ab45dc2ba, type: 3}
+  - type: 12
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: bf44b68288c218f4eb45b45689916d96, type: 3}
+  - type: 13
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 84003733f01bb9c499eb58d8806964f6, type: 3}
+    - {fileID: 8300000, guid: 48220f7e6499d4441b0c58d2d494cb81, type: 3}
+    - {fileID: 8300000, guid: 0a6e0f426755c5b4f8a6cb0235673dc4, type: 3}
+  - type: 14
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: d9100410982647f48ac4701afc02de9f, type: 3}
+    - {fileID: 8300000, guid: 8aea8e391bf031c4ea1cd595afccae5c, type: 3}
+  - type: 15
+    volume: 0.3
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 84003733f01bb9c499eb58d8806964f6, type: 3}
+    - {fileID: 8300000, guid: 48220f7e6499d4441b0c58d2d494cb81, type: 3}
+    - {fileID: 8300000, guid: 0a6e0f426755c5b4f8a6cb0235673dc4, type: 3}
+  - type: 16
+    volume: 0.4
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 8e2e009802d1d204aa38703d93cb4826, type: 3}
+  - type: 17
+    volume: 1
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 6cbcd25584dc7fb47a603fb6349dfe4a, type: 3}
+  - type: 18
+    volume: 0.7
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 4ce079dc7d5e833439ce0d4e28b48192, type: 3}
+    - {fileID: 8300000, guid: 991e729ee5632574881a585c2fd8a4a0, type: 3}
+  - type: 19
+    volume: 0.7
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 3f0aece6f57b2c241b230a6ab45ec6b0, type: 3}
+    - {fileID: 8300000, guid: 4f399a9920850664eb7bcae23b2deea4, type: 3}
+  - type: 20
+    volume: 1
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 9e96aa2371288774b9f65dff298d6f88, type: 3}
+  - type: 21
+    volume: 0.7
+    mixer: {fileID: -2881366614214186240, guid: 7d5822770b3e3ae4885d3c1b3f200d60, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: 3aa06c3ddba28bc489b00dbadf46eb5a, type: 3}

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -146,5 +147,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rechargeCoroutine = null;
+    }
+
+    public void RestoreDodgeCharges()
+    {
+        if (rechargeCoroutine == null)
+        {
+            PlayerStats stats = GetComponent<PlayerStats>();
+            rechargeCoroutine = StartCoroutine(RechargeDodge(stats));
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PersistBetweenScenes : MonoBehaviour
 {
-    public int[] allowedScenes = { 1, 2 };
+    public int[] allowedScenes = { 1, 2, 3, 4 };
 
     public static PersistBetweenScenes Instance { get; private set; }
 
@@ -38,7 +38,8 @@ public class PersistBetweenScenes : MonoBehaviour
             Instance = null;
         }
 
-        if(scene.buildIndex == allowedScenes[0])
+        if ((scene.buildIndex == allowedScenes[0] || scene.buildIndex == allowedScenes[1])
+        && !SaveManager.IsLoadingSave)
         {
             GameManager.Instance.ResetPlayer();
         }

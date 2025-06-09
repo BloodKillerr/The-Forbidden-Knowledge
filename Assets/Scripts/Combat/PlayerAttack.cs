@@ -82,16 +82,6 @@ public class PlayerAttack : MonoBehaviour
         inputBuffered = false;
     }
 
-    public void HandleNormalSecondaryAttack()
-    {
-        Weapon secondaryWeapon = Player.Instance.GetComponent<WeaponMeshController>().SecondaryWeapon;
-
-        if (secondaryWeapon != null && !Player.Instance.GetComponent<PlayerMovement>().IsDodging)
-        {
-            animatorHandler.Animator.Play(secondaryWeapon.AttackAnimations[0]);
-        }
-    }
-
     public void SetAttacking(bool state)
     {
         IsAttacking = state;

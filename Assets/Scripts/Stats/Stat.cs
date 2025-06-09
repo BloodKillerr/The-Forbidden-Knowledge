@@ -13,6 +13,9 @@ public class Stat
 
     public UnityEvent ValueChanged = new UnityEvent();
 
+    public int BaseValue { get => baseValue; set => baseValue = value; }
+    public int ValueUpgradeCap { get => valueUpgradeCap; set => valueUpgradeCap = value; }
+
     public int GetValue()
     {
         int finalValue = baseValue;
@@ -49,5 +52,10 @@ public class Stat
             return true;
         }
         return false;
+    }
+
+    public int GetBaseValue()
+    {
+        return baseValue;
     }
 }

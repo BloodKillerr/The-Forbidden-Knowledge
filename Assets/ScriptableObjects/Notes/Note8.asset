@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82653bffd4ca524eb8f3738c81d067c, type: 3}
+  m_Name: Note8
+  m_EditorClassIdentifier: 
+  noteID: Note8
+  title: Choice
+  content: What is this? Where am I? With those questions, the man was trapped in
+    the black room. Then, the King appeared before him and the man flinched in surprise,
+    but only for a moment. The King told him, that he will soon die, if left alone.
+    The man had a sad grimace on his face, but was ready to leave if that was his
+    fate. And then, the King gave him a chance.

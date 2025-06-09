@@ -9,6 +9,7 @@ public class EquipmentManager : MonoBehaviour
     public UnityEvent<Equipment, Equipment> EquipmentChanged = new UnityEvent<Equipment, Equipment>();
 
     public static EquipmentManager Instance { get; private set; }
+    public Equipment[] CurrentEquipment { get => currentEquipment; set => currentEquipment = value; }
 
     private void Awake()
     {
@@ -20,12 +21,14 @@ public class EquipmentManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+        currentEquipment = new Equipment[numSlots];
     }
 
     private void Start()
     {
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-        currentEquipment = new Equipment[numSlots];
+        
     }
 
     public void Equip(Equipment item)
@@ -49,10 +52,7 @@ public class EquipmentManager : MonoBehaviour
         {
             Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon((Weapon)item);
         }
-        else if(item.EqSlot == EquipmentSlot.SECONDARY)
-        {
-            Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon((Weapon)item);
-        }
+        UIManager.Instance.UpdateEquipmentSlotHolder(item, true);
     }
 
     public void UnEquip(int slotIndex)
@@ -68,10 +68,6 @@ public class EquipmentManager : MonoBehaviour
             if (oldItem.EqSlot == EquipmentSlot.PRIMARY)
             {
                 Player.Instance.GetComponent<WeaponMeshController>().SetPrimaryWeapon(null);
-            }
-            else if (oldItem.EqSlot == EquipmentSlot.SECONDARY)
-            {
-                Player.Instance.GetComponent<WeaponMeshController>().SetSecondaryWeapon(null);
             }
         }
     }

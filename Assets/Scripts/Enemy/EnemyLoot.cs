@@ -7,6 +7,8 @@ public class EnemyLoot : MonoBehaviour
 
     [SerializeField] private int xpReward = 5;
 
+    [SerializeField] private List<AbilityLoot> abilityLootTable = new List<AbilityLoot>();
+
     public void GetLoot()
     {
         foreach (Loot entry in lootTable)
@@ -23,6 +25,15 @@ public class EnemyLoot : MonoBehaviour
                 Item copy = Instantiate(entry.Item);
                 copy.Amount = count;
                 InventoryManager.Instance.Add(copy);
+            }
+        }
+
+        foreach (AbilityLoot entry in abilityLootTable)
+        {
+            if (Random.value <= entry.DropChance)
+            {
+                Ability copy = Instantiate(entry.Ability);
+                AbilityManager.Instance.AddAbility(copy);
             }
         }
 

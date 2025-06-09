@@ -41,10 +41,7 @@ public class CharacterStats : MonoBehaviour
 
         HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        CheckHealth();
     }
 
     public void Heal(int amount)
@@ -59,6 +56,14 @@ public class CharacterStats : MonoBehaviour
         {
             currentHealth = Mathf.Clamp(currentHealth + upgrade, 0, maxHealth.GetValue());
             HealthChanged?.Invoke(currentHealth, maxHealth.GetValue());
+        }
+    }
+
+    public void CheckHealth()
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
         }
     }
 

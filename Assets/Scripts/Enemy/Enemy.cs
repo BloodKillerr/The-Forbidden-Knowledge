@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    protected EnemyStats enemyStats;
+    private EnemyStats enemyStats;
 
     protected EnemyLoot enemyLoot;
 
@@ -35,9 +35,12 @@ public class Enemy : MonoBehaviour
 
     public RoomController RoomController;
 
+    public SoundType SoundType;
+
     public static UnityEvent<Enemy> OnEnemyKilled = new UnityEvent<Enemy>();
 
     public DamageCollider DamageCollider { get => damageCollider; set => damageCollider = value; }
+    public EnemyStats EnemyStats { get => enemyStats; set => enemyStats = value; }
 
     protected virtual void Awake()
     {
@@ -48,6 +51,10 @@ public class Enemy : MonoBehaviour
         agent.updateRotation = false;
         damageCollider = GetComponentInChildren<DamageCollider>();
         originalRotationSpeed = rotationSpeed;
+    }
+
+    protected virtual void Start()
+    {
         healthUI = GetComponentInChildren<EnemyHealthUI>();
         healthUI.Initialize(enemyStats);
     }
@@ -195,5 +202,6 @@ public class Enemy : MonoBehaviour
     public virtual void Die()
     {
         //Actions on death
+        AbilityManager.Instance.EnemyWasKilledInt(enemyStats.MaxHealth.GetValue());
     }
 }

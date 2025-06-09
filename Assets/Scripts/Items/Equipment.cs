@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
@@ -42,7 +41,6 @@ public class Equipment : Item
     {
         List<(string label, string value)> data = new List<(string, string)>
         {
-            ("Description", Description),
             ("Armor", ArmorModifier.ToString()),
             ("Damage", DamageModifier.ToString()),
             ("Speed", MovementSpeedModifier.ToString()),
@@ -58,6 +56,5 @@ public enum EquipmentSlot
     CHEST,
     LEGS,
     ARMS,
-    PRIMARY,
-    SECONDARY
+    PRIMARY
 }

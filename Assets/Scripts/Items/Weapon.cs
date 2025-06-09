@@ -14,4 +14,6 @@ public class Weapon : Equipment
     [Header("Attack Animations")]
     public string[] AttackAnimations;
     public float ComboResetTime = 1f;
+
+    public SoundType SoundType;
 }
