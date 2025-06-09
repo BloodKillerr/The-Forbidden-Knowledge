@@ -464,7 +464,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 20
+    baseValue: 40
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
@@ -522,6 +522,7 @@ MonoBehaviour:
   rotationSpeed: 25
   damageCollider: {fileID: 0}
   RoomController: {fileID: 0}
+  SoundType: 10
 --- !u!195 &36500162658164351
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1317,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085f0b63df77c4743b6ae1abbed8781f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playSoundOnAttack: 0
 --- !u!1 &8977565969033016710
 GameObject:
   m_ObjectHideFlags: 0

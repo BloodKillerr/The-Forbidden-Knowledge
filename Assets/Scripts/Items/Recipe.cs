@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Inventory/Recipe")]
@@ -27,5 +28,17 @@ public class Recipe : ScriptableObject
 
             InventoryManager.Instance.Add(Instantiate(Result));
         }
+    }
+
+    public bool CanCraft()
+    {
+        foreach (RecipeComponent component in Components)
+        {
+            if (!InventoryManager.Instance.ContainsItem(component.Item, component.Amount))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

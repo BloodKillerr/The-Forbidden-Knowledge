@@ -211,6 +211,7 @@ MonoBehaviour:
   rotationSpeed: 25
   damageCollider: {fileID: 0}
   RoomController: {fileID: 0}
+  SoundType: 6
 --- !u!195 &8378229451958035878
 NavMeshAgent:
   m_ObjectHideFlags: 0

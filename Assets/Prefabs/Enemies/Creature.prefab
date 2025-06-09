@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085f0b63df77c4743b6ae1abbed8781f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playSoundOnAttack: 0
 --- !u!95 &3112986412753600443
 Animator:
   serializedVersion: 7
@@ -2503,7 +2504,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   damage:
-    baseValue: 19
+    baseValue: 35
     valueUpgradeCap: 0
     ValueChanged:
       m_PersistentCalls:
@@ -2561,6 +2562,7 @@ MonoBehaviour:
   rotationSpeed: 25
   damageCollider: {fileID: 0}
   RoomController: {fileID: 0}
+  SoundType: 12
 --- !u!195 &2367073534885228228
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2605,6 +2607,7 @@ MonoBehaviour:
     MaxAmount: 2
     DropChance: 0.6
   xpReward: 260
+  abilityLootTable: []
 --- !u!1 &8547664389264947050
 GameObject:
   m_ObjectHideFlags: 0

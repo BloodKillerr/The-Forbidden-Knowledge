@@ -98,6 +98,8 @@ public static class SaveManager
             try
             {
                 File.Delete(fullPath);
+                LoadedData = null;
+                IsLoadingSave = false;
                 Debug.Log($"[SaveLoadManager] Deleted save file at:\n{fullPath}");
             }
             catch (Exception ex)

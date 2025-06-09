@@ -53,6 +53,6 @@ public class AbilitySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnDeselect(BaseEventData eventData)
     {
-        UIManager.Instance.Tooltip.Hide();
+        UIManager.Instance.AbilityTooltip.Hide();
     }
 }

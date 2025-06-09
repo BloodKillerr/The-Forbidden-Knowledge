@@ -8,6 +8,8 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     private Enemy enemy;
 
+    public bool playSoundOnAttack = false;
+
     public Animator Animator { get => animator; set => animator = value; }
 
     private void Start()
@@ -38,6 +40,10 @@ public class EnemyAnimationHandler : MonoBehaviour
     public void EnableDamageCollider()
     {
         enemy.DamageCollider.EnableDamageCollider();
+        if(playSoundOnAttack)
+        {
+            SoundManager.PlaySound(enemy.SoundType, GetComponentInParent<AudioSource>(), 1);
+        }
     }
 
     public void DisableDamageCollider()

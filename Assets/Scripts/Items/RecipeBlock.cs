@@ -17,6 +17,10 @@ public class RecipeBlock : MonoBehaviour
         {
             GetComponent<Button>().interactable = false;
         }
+        else
+        {
+            RefreshState();
+        }
     }
 
     public void SetUpRecipe(Recipe recipe)
@@ -59,7 +63,20 @@ public class RecipeBlock : MonoBehaviour
             {
                 GetComponent<Button>().interactable = false;
                 UIManager.Instance.UpdateCraftingUI();
+                UIManager.Instance.RefreshRecipesState();
             }
+        }
+    }
+
+    public void RefreshState()
+    {
+        if (Recipe.CanCraft())
+        {
+            GetComponent<Image>().color = Color.yellow;
+        }
+        else
+        {
+            GetComponent<Image>().color = Color.white;
         }
     }
 }

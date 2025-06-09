@@ -16,4 +16,4 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: fdf7060282287ee469b42a9a12171cee, type: 3}
   Description: Heals for the portion of the killed enemy's max health
   type: 1
-  healPercent: 0.2
+  healPercent: 0.02

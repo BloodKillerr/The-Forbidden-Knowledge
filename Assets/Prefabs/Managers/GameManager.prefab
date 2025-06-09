@@ -101,7 +101,9 @@ MonoBehaviour:
   messageDisplayTime: 2
   maxConcurrentMessages: 3
   TooltipGO: {fileID: 0}
+  AbilityTooltipGO: {fileID: 0}
   Tooltip: {fileID: 0}
+  AbilityTooltip: {fileID: 0}
 --- !u!114 &2863442861457126608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,5 +241,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnEnemyKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnemyKilledInt:
     m_PersistentCalls:
       m_Calls: []

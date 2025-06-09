@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     public RoomController RoomController;
 
+    public SoundType SoundType;
+
     public static UnityEvent<Enemy> OnEnemyKilled = new UnityEvent<Enemy>();
 
     public DamageCollider DamageCollider { get => damageCollider; set => damageCollider = value; }

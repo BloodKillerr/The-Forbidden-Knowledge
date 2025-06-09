@@ -742,6 +742,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void RefreshRecipesState()
+    {
+        foreach (Transform child in recipesHolder)
+        {
+            child.gameObject.GetComponent<RecipeBlock>().RefreshState();
+        }
+    }
+
     public void UpdateEquipmentSlotHolder(Item item, bool equipped)
     {
         if(item.Type == ItemType.EQUIPMENT)

@@ -134,6 +134,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
     public void EnablePrimaryDamageCollider()
     {
         Player.Instance.GetComponent<WeaponMeshController>().EnablePrimaryDamageCollider();
+        SoundManager.PlaySound(Player.Instance.GetComponent<WeaponMeshController>().PrimaryWeapon.SoundType, GetComponentInParent<AudioSource>(), 1);
     }
 
     public void DisablePrimaryDamageCollider()

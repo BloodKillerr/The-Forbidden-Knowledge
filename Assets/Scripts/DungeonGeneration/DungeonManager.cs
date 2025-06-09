@@ -536,6 +536,7 @@ public class DungeonManager : MonoBehaviour
                     Enemy.OnEnemyKilled.AddListener(rc.RemoveEnemy);
 
                     rc.Enemies.Add(enemy);
+                    enemy.EnemyStats.CheckHealth();
                 }
 
                 rc.CheckCompletion = true;

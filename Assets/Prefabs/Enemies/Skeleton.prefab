@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085f0b63df77c4743b6ae1abbed8781f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playSoundOnAttack: 0
 --- !u!1 &756413300116930737
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +282,7 @@ MonoBehaviour:
   rotationSpeed: 25
   damageCollider: {fileID: 0}
   RoomController: {fileID: 0}
+  SoundType: 4
 --- !u!195 &7424356737646863206
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -319,7 +321,7 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 61d2d5e6d8b593c4ba978f3450833e34, type: 2}
     MinAmount: 1
     MaxAmount: 2
-    DropChance: 0.3
+    DropChance: 0.6
   - Item: {fileID: 11400000, guid: 9d644398e52e2004e8432f4ffe3ac812, type: 2}
     MinAmount: 1
     MaxAmount: 2
@@ -327,8 +329,13 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 18a041ec0a6075d4b9e023c8a6677aea, type: 2}
     MinAmount: 1
     MaxAmount: 2
+    DropChance: 0.5
+  - Item: {fileID: 11400000, guid: b549b1499ad5bfb448908d3a17be5ecb, type: 2}
+    MinAmount: 2
+    MaxAmount: 2
     DropChance: 0.6
   xpReward: 100
+  abilityLootTable: []
 --- !u!1 &1002332986224932717
 GameObject:
   m_ObjectHideFlags: 0
