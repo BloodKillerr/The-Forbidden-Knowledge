@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660526fbf0dafa54988c57fcbde3cfdc, type: 3}
+  m_Name: Black King's Cast
+  m_EditorClassIdentifier: 
+  Result: {fileID: 11400000, guid: 6816b224674e0bc4a84814f859d791aa, type: 2}
+  Components:
+  - Item: {fileID: 11400000, guid: 6b9c4a6180bef3849a550e0f11928243, type: 2}
+    Amount: 5
+  - Item: {fileID: 11400000, guid: d41f624a5d2a0db4ab619de51abf8d7a, type: 2}
+    Amount: 5
+  - Item: {fileID: 11400000, guid: ab9e06b815fd7b44aa04934002211199, type: 2}
+    Amount: 5
+  - Item: {fileID: 11400000, guid: efd94e04f43a7254890ea33f5315ee2b, type: 2}
+    Amount: 5
+  - Item: {fileID: 11400000, guid: 520c0128078898944ba2ea945a92fe2a, type: 2}
+    Amount: 5

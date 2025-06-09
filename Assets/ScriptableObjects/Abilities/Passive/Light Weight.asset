@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c423097c8a0468479aa7e135e894915, type: 3}
+  m_Name: Light Weight
+  m_EditorClassIdentifier: 
+  AbilityName: Light Weight
+  Icon: {fileID: 21300000, guid: a1e1cec70d3231c45892917f34f0e703, type: 3}
+  Description: Grants boost to the movement speed
+  type: 0
+  SpeedBoost: 1

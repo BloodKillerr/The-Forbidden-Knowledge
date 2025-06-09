@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82653bffd4ca524eb8f3738c81d067c, type: 3}
+  m_Name: Note4
+  m_EditorClassIdentifier: 
+  noteID: Note4
+  title: Discovery
+  content: "Yet for some reason, the King couldn\u2019t take his eyes off of him.
+    The creature struggled through life, not giving up once. Then, the King thought
+    to himself. Why didn\u2019t I think about it before? I was looking for strong
+    and brave, but what I needed the most was\u2026"
